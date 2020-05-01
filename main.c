@@ -344,11 +344,11 @@ void Boss()
         coordxy(2,0);
         puts("Anúbis: Você chegou até aqui, mas daqui você não passa!\nAnúbis: Tente me vencer, você precisará de sorte, muita sorte!\n");
         printf("Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.");
-        Sleep(10);
+        Sleep(3000);
         system("cls");
         printf("Você vai em busca de sua arma para derrotar Anúbis, mas derrepente você escuta sua voz.\n\n");
         printf("Anúbis: Você nunca saberá o que é (A->B)<->(B'->A').");
-        Sleep(80);
+        Sleep(8000);
         system("cls");
         printf("Encontre pela sala o que é a expressão dita por Anúbis.\n\n");
         printf("Você vê duas peças, uma em sua direita e outra em sua esquerda.\nO que você deseja fazer ?\n\n");
