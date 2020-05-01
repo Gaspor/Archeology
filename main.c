@@ -16,9 +16,8 @@ void coordxy(int x,int y)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Mouse);
 }
 
-void main()
+void Testinho()
 {
-    setlocale(LC_ALL,"Portuguese");
     int Fase,Acertos = 0;
     do{
         Tabelas:
@@ -112,7 +111,7 @@ void main()
                 goto Tabelas;
             } else {
                 coordxy(2,12);
-                printf("Voçê errou!");
+                printf("VoÃ§Ãª errou!");
                 Sleep(2000);
                 main();
             }
@@ -141,14 +140,14 @@ void main()
                 coordxy(34,5);
                 printf("F");
                 coordxy(2,12);
-                printf("Você passou de fase");
+                printf("VocÃª passou de fase");
                 Sleep(2000);
                 system("cls");
                 Acertos++;
                 main();
             } else {
                 coordxy(2,12);
-                printf("Voçê errou!");
+                printf("VoÃ§Ãª errou!");
                 Sleep(2000);
                 main();
             }
