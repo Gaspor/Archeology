@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1588376059 source:d:\gaspor\c programs\archeology\main.c
+1588376698 source:d:\gaspor\c programs\archeology\main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
