@@ -111,7 +111,7 @@ void Testinho()
                 goto Tabelas;
             } else {
                 coordxy(2,12);
-                printf("Voçê errou!");
+                printf("Você errou!");
                 Sleep(2000);
                 main();
             }
@@ -147,7 +147,7 @@ void Testinho()
                 main();
             } else {
                 coordxy(2,12);
-                printf("Voçê errou!");
+                printf("Você errou!");
                 Sleep(2000);
                 main();
             }
