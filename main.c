@@ -154,3 +154,121 @@ void Testinho()
         }
     }while(Fase!=2);
 }
+void Boss()
+{
+    do{
+        opcao=0;
+        L=18;b=2;
+        coordxy(2,0);
+        puts("Anúbis: Você chegou até aqui, mas daqui você não passa!\nAnúbis: Tente me vencer, você precisará de sorte, muita sorte!\n");
+        printf("Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.");
+        Sleep(10);
+        system("cls");
+        printf("Você vai em busca de sua arma para derrotar Anúbis, mas derrepente você escuta sua voz.\n\n");
+        printf("Anúbis: Você nunca saberá o que é (A->B)<->(B'->A').");
+        Sleep(80);
+        system("cls");
+        printf("Encontre pela sala o que é a expressão dita por Anúbis.\n\n");
+        printf("Você vê duas peças, uma em sua direita e outra em sua esquerda.\nO que você deseja fazer ?\n\n");
+        printf("\n\t\t\===================================================================================\n\t\t|   Virar para a esquerda       Seguir em frente            Virar para a direita  |\n\t\t===================================================================================\n");
+        do{
+            coordxy(L,7);
+            printf(">");
+            coordxy(0,20);
+            if(kbhit){KeyPress=getch();}
+            if (KeyPress == 77 && b < 4) {coordxy(L,7);printf(" ");L=L+28;b++;}
+            if (KeyPress == 75 && b > 2) {coordxy(L,7);printf(" ");L=L-28;b--;}
+            if (KeyPress == 27) {Quit();}
+            if(KeyPress == 13){opcao=b-1;}
+        }while(opcao == 0);
+        switch(opcao){
+        case 1:
+            opcao=0;
+            L=18;b=2;
+            coordxy(2,0);
+            system("cls");
+            printf("Você encontrou uma peça escrita Contradição, o que você deseja fazer ?\n");
+            printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Essa não é a peça para a arma   |\n\t\t=================================================================\n");
+        do{
+            coordxy(L,3);
+            printf(">");
+            coordxy(0,20);
+            if(kbhit){KeyPress=getch();}
+            if (KeyPress == 77 && b < 3) {coordxy(L,3);printf(" ");L=L+28;b++;}
+            if (KeyPress == 75 && b > 2) {coordxy(L,3);printf(" ");L=L-28;b--;}
+            if (KeyPress == 27) {Quit();}
+            if(KeyPress == 13){opcao=b-1;}
+        }while(opcao == 0);
+                switch(opcao){
+                case 1:
+                    system("cls");
+                    printf("Essa não é a peça correta para montar a arma\n\n");
+                    Sleep(5000);
+                    printf("Game over");
+                    Sleep(2000);
+                    system("cls");
+                    main();
+
+                case 2:
+                    printf("Você descartou uma peça e voltou para o inicio fase.");
+                    Sleep(5000);
+                    system("cls");
+                    Boss();
+
+                }
+
+        case 2:
+            system("cls");
+            printf("Voçê não conseguiu reunir as peças necessárias para derrotar Anúbis.\nEle arrancou a sua cabeça!!\n\n");
+            Sleep(6000);
+            printf("Game over");
+            Sleep(2000);
+            main();
+
+        case 3:
+        do{
+            system("cls");
+            opcao=0;
+            L=18;b=2;
+            coordxy(2,0);
+            system("cls");
+            printf("Você encontrou uma peça escrita Tautologia, o que você deseja fazer ?\n");
+            printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Descartar   |\n\t\t=================================================================\n");
+        do{
+            coordxy(L,3);
+            printf(">");
+            coordxy(0,20);
+            if(kbhit){KeyPress=getch();}
+            if (KeyPress == 77 && b < 3) {coordxy(L,3);printf(" ");L=L+28;b++;}
+            if (KeyPress == 75 && b > 2) {coordxy(L,3);printf(" ");L=L-28;b--;}
+            if (KeyPress == 27) {Quit();}
+            if(KeyPress == 13){opcao=b-1;}
+        }while(opcao == 0);
+                switch(opcao){
+                case 1:
+                    system("cls");
+                    printf("Você conseguiu a peça correta para a arma.\nVocê termina de montar a arma definitiva para derrotar Anúbis.\n\n");
+                    printf("Parabéns %s, você venceu!!\n\n");
+                    printf("Obrigado por jogar o Beta.");
+                    Sleep(8000);
+                    system("cls");
+                    main();
+                case 2:
+                    system("cls");
+
+
+
+
+
+
+
+
+
+
+        }
+
+    }while(opcao!=2);
+
+}
+    }while(opcao!=2);
+}
