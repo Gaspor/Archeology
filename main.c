@@ -321,12 +321,11 @@ void Fase3()
     printf("Você passa pela entrada da segunda fase e observa que há outra entrada, você anda até ela e de repente a entrada se \nfecha e você ouve uma voz.\n");
     puts("Eu sou o Deus daquilo que traz a tristeza e o medo, mas sempre chego na hora certa, as vezes venho depois de uma doença,\ne outras, depois de um ato de violência e também sou guardião daquilo que você procura, me diga do que eu sou Deus e \nsua passagem será liberada.\n");
     printf("Me diga, eu sou Deus da: ");
-    scanf("%s", &RespostaChar);
+    gets(RespostaChar);
     if ((strcmp (RespostaChar, "MORTE")== 0)||(strcmp (RespostaChar, "morte")== 0)||(strcmp (RespostaChar, "Morte")== 0)) {
-        printf("\n");
-        printf("Você descobriu do que eu sou Deus, agora me enfrente e verá o meu poder!\n");
+        printf("\nVocê descobriu do que eu sou Deus, agora me enfrente e verá o meu poder!\n");
         Sleep(4000);
-        system("cls\n");
+        system("cls");
         Boss();
     }else {
         printf("\n");
@@ -340,21 +339,20 @@ void Fase3()
 void Boss()
 {
     do{
-        opcao=0;
-        L=18;b=2;
-        coordxy(2,0);
-        puts("Anúbis: Você chegou até aqui, mas daqui você não passa!\nAnúbis: Tente me vencer, você precisará de sorte, muita sorte!\n");
-        printf("Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.");
+        puts("Anúbis: Você chegou até aqui, mas daqui você não passa!\nAnúbis: Tente me vencer, você precisará de sorte, muita sorte!\n\n");
+        printf("Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.\n\n");
         Sleep(3000);
-        system("cls");
         printf("Você vai em busca de sua arma para derrotar Anúbis, mas derrepente você escuta sua voz.\n\n");
         printf("Anúbis: Você nunca saberá o que é (A->B)<->(B'->A').");
         Sleep(8000);
+        BossDoor:
+        L=18;b=2;
         system("cls");
         printf("Encontre pela sala o que é a expressão dita por Anúbis.\n\n");
         printf("Você vê duas peças, uma em sua direita e outra em sua esquerda.\nO que você deseja fazer ?\n\n");
         printf("\n\t\t\===================================================================================\n\t\t|   Virar para a esquerda       Seguir em frente            Virar para a direita  |\n\t\t===================================================================================\n");
         do{
+            opcao=0;
             coordxy(L,7);
             printf(">");
             coordxy(0,20);
@@ -386,56 +384,74 @@ void Boss()
             switch(opcao){
                 case 1:
                     system("cls");
-                    printf("Essa não é a peça correta para montar a arma\n\n");
+                    printf("Você tentou usar a arma Contradição para derrotar Anúbis...\n\n");
+                    Sleep(4000);
+                    printf("A arma não funcionou e Anúbis conseguiu chegar até você e te matou...\n\n");
                     Sleep(5000);
                     printf("Game over");
                     Sleep(2000);
                     system("cls");
                     main();
                 case 2:
-                    printf("Você descartou uma peça e voltou para o inicio fase.");
+                    printf("Você descartou a peça Contradição e voltou para o inicio.");
                     Sleep(5000);
                     system("cls");
-                    Boss();
+                    goto BossDoor;
                 }
             }while(opcao!=2);
         case 2:
             system("cls");
-            printf("Voçê não conseguiu reunir as peças necessárias para derrotar Anúbis.\nEle arrancou a sua cabeça!!\n\n");
-            Sleep(6000);
+            printf("Esse não era o caminho correto! \n\n");
+            Sleep(3000);
+            printf("Você não conseguiu reunir as peças necessárias para derrotar Anúbis.\n\n");
+            Sleep(5000);
+            printf("Ele arrancou a sua cabeça!!\n\n");
+            Sleep(2000);
             printf("Game over");
             Sleep(2000);
+            system("cls");
             main();
         case 3:
             do{
                 system("cls");
                 opcao=0;
-                L=18;b=2;
+                L=22;b=2;
                 coordxy(2,0);
                 system("cls");
                 printf("Você encontrou uma peça escrita Tautologia, o que você deseja fazer ?\n");
-                printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Descartar   |\n\t\t=================================================================\n");
+                printf("\n\t\t\    =============================================================\n\t\t    |   Pegar a peça e usar                           Descartar |\n\t\t    =============================================================\n");
                 do{
                     coordxy(L,3);
                     printf(">");
                     coordxy(0,20);
                     if(kbhit){KeyPress=getch();}
-                    if (KeyPress == 77 && b < 3) {coordxy(L,3);printf(" ");L=L+28;b++;}
-                    if (KeyPress == 75 && b > 2) {coordxy(L,3);printf(" ");L=L-28;b--;}
+                    if (KeyPress == 77 && b < 3) {coordxy(L,3);printf(" ");L=L+46;b++;}
+                    if (KeyPress == 75 && b > 2) {coordxy(L,3);printf(" ");L=L-46;b--;}
                     if (KeyPress == 27) {Quit();}
                     if(KeyPress == 13){opcao=b-1;}
                 }while(opcao == 0);
             switch(opcao){
                 case 1:
                     system("cls");
-                    printf("Você conseguiu a peça correta para a arma.\nVocê termina de montar a arma definitiva para derrotar Anúbis.\n\n");
+                    printf("Você conseguiu a peça correta para a arma.\n\n");
+                    Sleep(3000);
+                    printf("Você termina de montar a arma definitiva para derrotar Anúbis e usa contra ele.\n\n");
+                    Sleep(5000);
                     printf("Parabéns %s, você venceu!!\n\n", NamePlayer);
                     printf("Obrigado por jogar o Beta.");
-                    Sleep(8000);
+                    Sleep(7000);
                     system("cls");
                     main();
                 case 2:
                     system("cls");
+                    printf("Você acaba de jogar a arma para derrotar Anúbis fora.\n\n");
+                    Sleep(3000);
+                    printf("Você começa a correr pela sala de Anúbis, ele consegue de pegar...\n\n");
+                    Sleep(3500);
+                    printf("Game Over");
+                    Sleep(2000);
+                    system("cls");
+                    main();
                 }
             }while(opcao!=2);
         }
