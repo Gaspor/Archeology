@@ -6,7 +6,8 @@
 
 char RespostaChar[20];
 char NamePlayer[20];
-int KeyPress,b,L,L2,Password,opcao;
+char Password[20];
+int KeyPress,b,L,L2,opcao;
 
 void coordxy(int x,int y)
 {
@@ -43,8 +44,8 @@ void main()
         case 2:
             system("cls");
             printf("Este é o menu do desenvolvedor, por favor digite sua senha: ");
-            scanf("%d", &Password);
-            if (Password == 1234) {
+            gets(Password);
+            if ((strcmp (Password, "1234")== 0)){
                 printf("Verificando...\n");
                 Sleep(1000);
                 printf("Você será direcionado para o menu de escolha de fase, por favor aguarde.");
@@ -165,59 +166,151 @@ void Fase1()
         printf("Aperte enter para continuar a história");
         if (kbhit) {KeyPress=getch();}
         if (KeyPress == 13) {
+            Skipped:
             system("cls");
+            int Acertos = 0, Vs = 2,Fs = 6;
             do{
-                Skipped:
+                Tabelas:
                 opcao=0;
-                L=18;L2=12;b=2;
-                printf("\n  Você entra na piramide e logo se depara com o primeiro desafio, uma sala com 3 portas, sem saber o que fazer você \ncomeça a andar pela sala.\n\n");
-                printf(" Andando pela sala você vê que tinha uma escrita escondida em um dos pilares da piramide, você se aproxima para ver o \nque é, nesse pilar você vê o seguinte símbolo: (A^B) ^ (B'^A)\n\n Sem saber o que significa você volta para onde estavam as portas pra tentar entender, logo você percebe que\n nas portas tem alguns símbolos parecidos com qual você tinha encontrado, você então percebe que o que você tinha\n lido vai te ajudar a descobrir por qual porta você deve seguir");
-                coordxy(2,15);
-                printf("====================================   ======================================   =====================================\n");
-                printf("  |         Porta da esquerda        |   |            Porta da meio           |   |          Porta da direita         |\n");
-                printf("  | A B (A^B) B' (B'^A) (A^B)^(B'^A) |   |   A B (AvB) B' (B'vA) (AvB)^(B'vA) |   |  A B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
-                printf("  | F F   V   V    V         V       |   |  F F   F   V     V        F        |   |  F F   F   V     F        F       |\n");
-                printf("  | F V   F   V    F         V       |   |  F V   V   F     F        F        |   |  F V   F   F     F        F       |\n");
-                printf("  | V F   V   F    F         V       |   |  V F   V   V     V        V        |   |  V F   F   V     V        F       |\n");
-                printf("  | V V   F   V    V         V       |   |  V V   V   F     V        V        |   |  V V   V   F     F        F       |\n");
-                printf("  ====================================   ======================================   =====================================\n\n");
-                printf("Apenas uma das portas é a correta, faça sua escolha sabiamente.\n");
-                do{
-                    coordxy(L,L2);
-                    printf("|");
-                    coordxy(L,L2+1);
+                L=15;L2=15;b=2;
+                system("cls");
+                printf("\n  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \nsem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's\n\n");
+                printf("\t\t\t\t  ========================================\n");
+                printf("\t\t\t\t  |   A   B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
+                printf("\t\t\t\t  |       F       V              F       |\n");
+                printf("\t\t\t\t  |   F   V   F   F     F                |\n");
+                printf("\t\t\t\t  |       F   F   V     V                |\n");
+                printf("\t\t\t\t  |   V       V         F        F       |\n");
+                printf("\t\t\t\t  ========================================\n\n O que você deseja colocar nesta parte da tabela?");
+                if (Acertos == 0) {
+                    coordxy(36,8);
+                    printf(">");
+                }if (Acertos == 1) {
+                    coordxy(38,8);
+                    printf("F");
+                    coordxy(44,8);
+                    printf(">");
+                } if (Acertos == 2) {
+                    coordxy(38,8);
+                    printf("F   F   F");
+                    coordxy(54,8);
+                    printf(">");
+                }if (Acertos == 3) {
+                    coordxy(38,8);
+                    printf("F   F   F   V     F");
+                    coordxy(63,9);
+                    printf(">");
+                } if (Acertos == 4) {
+                    coordxy(38,8);
+                    printf("F   F   F   V     F");
+                    coordxy(38,9);
+                    printf("F   V   F   F     F        F");
+                    coordxy(36,10);
+                    printf(">");
+                }if (Acertos == 5) {
+                    coordxy(38,8);
+                    printf("F   F   F   V     F");
+                    coordxy(38,9);
+                    printf("F   V   F   F     F        F");
+                    coordxy(38,10);
                     printf("V");
-                    coordxy(0,24);
+                    coordxy(63,10);
+                    printf(">");
+                }if (Acertos == 6) {
+                    coordxy(38,8);
+                    printf("F   F   F   V     F");
+                    coordxy(38,9);
+                    printf("F   V   F   F     F        F");
+                    coordxy(38,10);
+                    printf("V   F   F   V     V        F");
+                    coordxy(40,11);
+                    printf(">");
+                }if (Acertos == 7) {
+                    coordxy(38,8);
+                    printf("F   F   F   V     F");
+                    coordxy(38,9);
+                    printf("F   V   F   F     F        F");
+                    coordxy(38,10);
+                    printf("V   F   F   V     V        F");
+                    coordxy(38,11);
+                    printf("V   V   V");
+                    coordxy(48,11);
+                    printf(">");
+                }
+                coordxy(6,15);
+                printf("V\n      F");
+                printf("\n\nInventário\n Total de F: %d\n Total de V: %d",Fs, Vs);
+                do{
+                    coordxy(3,L);
+                    printf("->");
+                    coordxy(10,18);
                     if(kbhit){KeyPress=getch();}
-                    if (KeyPress == 77 && b < 4) {coordxy(L,L2-1);printf(" ");coordxy(L,L2);printf(" ");coordxy(L,L2+1);printf(" ");L=L+41;b++;}
-                    if (KeyPress == 75 && b > 2) {coordxy(L,L2-1);printf(" ");coordxy(L,L2);printf(" ");coordxy(L,L2+1);printf(" ");L=L-41;b--;}
                     if (KeyPress == 27) {Quit();}
+                    if(KeyPress == 80 && b < 3){L2=L;L++;b++;}
+                    if(KeyPress == 72 && b > 2){L2=L;L--;b--;}
+                    if(L!=L2){coordxy(3,L2);printf("  ");L2=L;}
                     if(KeyPress == 13){opcao=b-1;}
                 }while(opcao == 0);
             switch (opcao){
                 case 1:
-                    printf("Você acaba de entrar em um labirinto, e percebe que não consegue encontrar a saida...\n");
-                    Sleep(5000);
-                    printf("Você ficou perdido para todo o sempre\n");
-                    Sleep(2000);
-                    printf("\aGame over\n");
-                    Sleep(2000);
-                    system("cls");
-                    main();
+                    if (Acertos == 4) {
+                        Vs--;
+                        system("cls");
+                        Acertos++;
+                        goto Tabelas;
+                    }if (Acertos == 6) {
+                        Vs--;
+                        system("cls");
+                        Acertos++;
+                        goto Tabelas;
+                    } else {
+                        coordxy(1,22);
+                        printf("Você errou!");
+                        Sleep(2000);
+                        main();
+                    }
                 case 2:
-                    printf("Você caiu em um poço que não possui fundo!                     \n");
-                    Sleep(2000);
-                    printf("Você caiu por toda a eternidade...                             \n");
-                    Sleep(2000);
-                    printf("Game over\n");
-                    Sleep(2000);
-                    system("cls");
-                    main();
-                case 3:
-                    printf("Você passou de fase!                                           \n");
-                    Sleep(2000);
-                    system("cls");
-                    Fase2();
+                    if (Acertos == 0) {
+                        Fs--;
+                        system("cls");
+                        Acertos++;
+                        goto Tabelas;
+                    }if (Acertos == 1) {
+                        Fs--;
+                        system("cls");
+                        Acertos++;
+                        goto Tabelas;
+                    }if (Acertos == 2) {
+                        Fs--;
+                        system("cls");
+                        Acertos++;
+                        goto Tabelas;
+                    }if (Acertos == 3) {
+                        Fs--;
+                        system("cls");
+                        Acertos++;
+                        goto Tabelas;
+                    }if (Acertos == 5) {
+                        Fs--;
+                        system("cls");
+                        Acertos++;
+                        goto Tabelas;
+                    }if (Acertos == 7) {
+                        Fs--;
+                        coordxy(50,11);
+                        printf("F");
+                        coordxy(1,22);
+                        printf("A porta se abre e você consegue ir pra próxima sala.");
+                        Sleep(2000);
+                        system("cls");
+                        Acertos++;
+                        Fase2();
+                    } else {
+                        coordxy(2,19);
+                        printf("Você errou!");
+                        Sleep(2000);
+                        main();
+                    }
                 }
             }while(opcao!=2);
         }if (KeyPress == 32) {system("cls");goto Skipped;}
