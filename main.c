@@ -137,7 +137,7 @@ void SelectFase()
             printf("Iniciando o Boss...\n");
             Sleep(1500);
             system("cls");
-            //Boss();
+            Boss();
         case 6:
             main();
         default:
