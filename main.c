@@ -9,12 +9,22 @@ char NamePlayer[20];
 char Password[20];
 int KeyPress,b,L,L2,opcao,i,TimeText = 70;
 
+
 void coordxy(int x,int y)
 {
     COORD Mouse;
     Mouse.X = x;
     Mouse.Y = y;
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Mouse);
+}
+
+char SlowText(char* Text)
+{
+    for (i = 0; Text[i] != '\0'; i++)
+    {
+        printf("%c",Text[i]);
+        Sleep(TimeText);
+    }
 }
 
 void main()
@@ -162,50 +172,28 @@ void Player()
 void Lore()
 {
     system("cls");
-    char Texto1[] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\nNinguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram um guardião para \n\n a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara tomar posse desse poderoso \n\n artefato. Essa é a lenda que é contada até os dias de hoje.\n";
+    char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\nNinguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\num guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\ntomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n";
     char Texto2[] ="  Vocé é um arqueólogo conhecido como";
     char Texto3[] ="ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \ndesafios... \n\n";
     char TextFase1[] = "  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \nsem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's, depois de encontrar está sacola você \ndecide voltar para a porta, ao voltar você logo percebe o que terá que fazer, você terá que colocar essas letras da sacola na porta para passar \n\n";
 
-    for (i = 0; Texto1[i] != '\0'; i++)
-    {
-        printf("%c",Texto1[i]);
-        Sleep(TimeText);
-    }
-    printf("\n\nPressione Enter para continuar...");
-
+    SlowText(Texto1);
+    printf("\nPressione Enter para continuar...");
     if (kbhit) {KeyPress=getch();}
     if (KeyPress == 13) {
         system("cls");
-        for (i = 0; Texto2[i] != '\0'; i++)
-        {
-            printf("%c",Texto2[i]);
-            Sleep(TimeText);
-        }
+        SlowText(Texto2);
         printf(" ");
-        for (i = 0; NamePlayer[i] != '\0'; i++)
-        {
-            printf("%c",NamePlayer[i]);
-            Sleep(TimeText);
-        }
+        SlowText(NamePlayer);
         printf(", ");
-        for (i = 0; Texto3[i] != '\0'; i++)
-        {
-            printf("%c",Texto3[i]);
-            Sleep(TimeText);
-        }
-        for (i = 0; TextFase1[i] != '\0'; i++)
-        {
-            printf("%c",TextFase1[i]);
-            Sleep(TimeText);
-        }
+        SlowText(Texto3);
+        SlowText(TextFase1);
         printf("\n\nPressione Enter para continuar...");
         if (kbhit) {KeyPress=getch();}
         if (KeyPress == 13)
             Fase1();
     }
 }
-
 
 void Fase1()
 {
@@ -381,7 +369,6 @@ void ErrorFase2()
     Sleep(1000);
     system("cls");
     main();
-
 }
 
 void Fase2()
