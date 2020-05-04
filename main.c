@@ -74,7 +74,7 @@ void main()
             system("cls");
             printf("Você está sendo direcionado ao nosso projeto no GitHub...");
             Sleep(2000);
-            system("start iexplore.exe https://github.com/Gaspor/Archeology");
+            system("start https://github.com/Gaspor/Archeology");
             Sleep(2000);
             main();
         case 4:
