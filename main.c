@@ -521,7 +521,7 @@ void Boss()
                     Sleep(5000);
                     GameOver();
                 case 2:
-                    system("cls");
+                    coordxy(0,10);
                     char Contradicao4[] = "Você descartou a peça Contradição e voltou para o inicio.";
                     SlowText(Contradicao4);
                     Sleep(5000);
