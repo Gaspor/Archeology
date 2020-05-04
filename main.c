@@ -7,7 +7,7 @@
 char RespostaChar[20];
 char NamePlayer[20];
 char Password[20];
-int KeyPress,b,L,L2,opcao;
+int KeyPress,b,L,L2,opcao,i,TimeText = 70;
 
 void coordxy(int x,int y)
 {
@@ -64,7 +64,7 @@ void main()
             system("cls");
             printf("Você está sendo direcionado ao nosso projeto no GitHub...");
             Sleep(2000);
-            system("start https://github.com/Gaspor/Archeology");
+            system("start iexplore.exe https://github.com/Gaspor/Archeology");
             Sleep(2000);
             main();
         case 4:
@@ -75,7 +75,6 @@ void main()
         }
     }while(opcao!=2);
 }
-
 
 void SelectFase()
 {
@@ -150,192 +149,261 @@ void Quit()
 void Player()
 {
     system("cls");
+    printf("Por favor não aperte nada enquanto o texto é digitado em sua tela.\n");
     printf("Por favor, não use espaço nem caractere especial\n");
     printf("Digite o nome do Arqueólogo: ");
     gets(NamePlayer);
-    system("cls");
-    Fase1();
+    printf("\n\nVocê deseja pular a História? \n Aperte S para Sim.\n Aperte N para Não.\n");
+    if (kbhit) {KeyPress=getch();}
+    if (KeyPress == 110) {Lore();}
+    if (KeyPress == 115) {Fase1();}
 }
 
-void Fase1()
+void Lore()
 {
-    printf("   Há muitas eras no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris e ninguém se \n\n atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram um guardião para \n\n a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara tomar posse desse poderoso \n\n artefato. Essa lenda é contada até os dias de hoje.\n");
-    coordxy(81,28);
-    printf("Aperte espaço para pular a história ou\n");
-    coordxy(81,29);
-    printf("Aperte enter para continuar a história");
+    system("cls");
+    char Texto1[] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\nNinguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram um guardião para \n\n a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara tomar posse desse poderoso \n\n artefato. Essa é a lenda que é contada até os dias de hoje.\n";
+    char Texto2[] ="  Vocé é um arqueólogo conhecido como";
+    char Texto3[] ="ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \ndesafios... \n\n";
+    char TextFase1[] = "  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \nsem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's, depois de encontrar está sacola você \ndecide voltar para a porta, ao voltar você logo percebe o que terá que fazer, você terá que colocar essas letras da sacola na porta para passar \n\n";
+
+    for (i = 0; Texto1[i] != '\0'; i++)
+    {
+        printf("%c",Texto1[i]);
+        Sleep(TimeText);
+    }
+    printf("\n\nPressione Enter para continuar...");
+
     if (kbhit) {KeyPress=getch();}
     if (KeyPress == 13) {
         system("cls");
-        printf("  Vocé é um arqueólogo conhecido como %s, você está em busca de um artefato antigo, mais conhecido como \n'O olho de Osíris'... \n", NamePlayer);
-        printf("\n  Essa jornada será tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \ndesafios... \n");
-        coordxy(81,29);
-        printf("Aperte enter para continuar a história");
+        for (i = 0; Texto2[i] != '\0'; i++)
+        {
+            printf("%c",Texto2[i]);
+            Sleep(TimeText);
+        }
+        printf(" ");
+        for (i = 0; NamePlayer[i] != '\0'; i++)
+        {
+            printf("%c",NamePlayer[i]);
+            Sleep(TimeText);
+        }
+        printf(", ");
+        for (i = 0; Texto3[i] != '\0'; i++)
+        {
+            printf("%c",Texto3[i]);
+            Sleep(TimeText);
+        }
+        for (i = 0; TextFase1[i] != '\0'; i++)
+        {
+            printf("%c",TextFase1[i]);
+            Sleep(TimeText);
+        }
+        printf("\n\nPressione Enter para continuar...");
         if (kbhit) {KeyPress=getch();}
-        if (KeyPress == 13) {
-            Skipped:
-            system("cls");
-            int Acertos = 0, Vs = 2,Fs = 6;
-            do{
-                Tabelas:
-                opcao=0;
-                L=15;L2=15;b=2;
+        if (KeyPress == 13)
+            Fase1();
+    }
+}
+
+
+void Fase1()
+{
+    system("cls");
+    int Acertos = 0, Vs = 2,Fs = 6;
+    do{
+        Tabelas:
+        opcao=0;
+        L=15;L2=15;b=2;
+        system("cls");
+        printf("Você então começa a completar a tabela...\n");
+        coordxy(0,6);
+        printf("\t\t\t\t  ========================================\n");
+        printf("\t\t\t\t  |   A   B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
+        printf("\t\t\t\t  |       F       V              F       |\n");
+        printf("\t\t\t\t  |   F   V   F   F     F                |\n");
+        printf("\t\t\t\t  |       F   F   V     V                |\n");
+        printf("\t\t\t\t  |   V       V         F        F       |\n");
+        printf("\t\t\t\t  ========================================\n\nO que você deseja colocar nesta parte da tabela?");
+        if (Acertos == 0) {
+            coordxy(36,8);
+            printf(">");
+        }if (Acertos == 1) {
+            coordxy(38,8);
+            printf("F");
+            coordxy(44,8);
+            printf(">");
+        } if (Acertos == 2) {
+            coordxy(38,8);
+            printf("F   F   F");
+            coordxy(54,8);
+            printf(">");
+        }if (Acertos == 3) {
+            coordxy(38,8);
+            printf("F   F   F   V     F");
+            coordxy(63,9);
+            printf(">");
+        } if (Acertos == 4) {
+            coordxy(38,8);
+            printf("F   F   F   V     F");
+            coordxy(38,9);
+            printf("F   V   F   F     F        F");
+            coordxy(36,10);
+            printf(">");
+        }if (Acertos == 5) {
+            coordxy(38,8);
+            printf("F   F   F   V     F");
+            coordxy(38,9);
+            printf("F   V   F   F     F        F");
+            coordxy(38,10);
+            printf("V");
+            coordxy(63,10);
+            printf(">");
+        }if (Acertos == 6) {
+            coordxy(38,8);
+            printf("F   F   F   V     F");
+            coordxy(38,9);
+            printf("F   V   F   F     F        F");
+            coordxy(38,10);
+            printf("V   F   F   V     V        F");
+            coordxy(40,11);
+            printf(">");
+        }if (Acertos == 7) {
+            coordxy(38,8);
+            printf("F   F   F   V     F");
+            coordxy(38,9);
+            printf("F   V   F   F     F        F");
+            coordxy(38,10);
+            printf("V   F   F   V     V        F");
+            coordxy(38,11);
+            printf("V   V   V");
+            coordxy(48,11);
+            printf(">");
+        }
+        coordxy(6,15);
+        printf("V\n      F");
+        printf("\n\nInventário\n Total de F: %d\n Total de V: %d",Fs, Vs);
+        do{
+            coordxy(3,L);
+            printf("->");
+            coordxy(10,18);
+            if(kbhit){KeyPress=getch();}
+            if (KeyPress == 27) {Quit();}
+            if(KeyPress == 80 && b < 3){L2=L;L++;b++;}
+            if(KeyPress == 72 && b > 2){L2=L;L--;b--;}
+            if(L!=L2){coordxy(3,L2);printf("  ");L2=L;}
+            if(KeyPress == 13){opcao=b-1;}
+        }while(opcao == 0);
+    switch (opcao){
+        case 1:
+            if (Acertos == 4) {
+                Vs--;
                 system("cls");
-                printf("\n  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \nsem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's\n\n");
-                printf("\t\t\t\t  ========================================\n");
-                printf("\t\t\t\t  |   A   B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
-                printf("\t\t\t\t  |       F       V              F       |\n");
-                printf("\t\t\t\t  |   F   V   F   F     F                |\n");
-                printf("\t\t\t\t  |       F   F   V     V                |\n");
-                printf("\t\t\t\t  |   V       V         F        F       |\n");
-                printf("\t\t\t\t  ========================================\n\n O que você deseja colocar nesta parte da tabela?");
-                if (Acertos == 0) {
-                    coordxy(36,8);
-                    printf(">");
-                }if (Acertos == 1) {
-                    coordxy(38,8);
-                    printf("F");
-                    coordxy(44,8);
-                    printf(">");
-                } if (Acertos == 2) {
-                    coordxy(38,8);
-                    printf("F   F   F");
-                    coordxy(54,8);
-                    printf(">");
-                }if (Acertos == 3) {
-                    coordxy(38,8);
-                    printf("F   F   F   V     F");
-                    coordxy(63,9);
-                    printf(">");
-                } if (Acertos == 4) {
-                    coordxy(38,8);
-                    printf("F   F   F   V     F");
-                    coordxy(38,9);
-                    printf("F   V   F   F     F        F");
-                    coordxy(36,10);
-                    printf(">");
-                }if (Acertos == 5) {
-                    coordxy(38,8);
-                    printf("F   F   F   V     F");
-                    coordxy(38,9);
-                    printf("F   V   F   F     F        F");
-                    coordxy(38,10);
-                    printf("V");
-                    coordxy(63,10);
-                    printf(">");
-                }if (Acertos == 6) {
-                    coordxy(38,8);
-                    printf("F   F   F   V     F");
-                    coordxy(38,9);
-                    printf("F   V   F   F     F        F");
-                    coordxy(38,10);
-                    printf("V   F   F   V     V        F");
-                    coordxy(40,11);
-                    printf(">");
-                }if (Acertos == 7) {
-                    coordxy(38,8);
-                    printf("F   F   F   V     F");
-                    coordxy(38,9);
-                    printf("F   V   F   F     F        F");
-                    coordxy(38,10);
-                    printf("V   F   F   V     V        F");
-                    coordxy(38,11);
-                    printf("V   V   V");
-                    coordxy(48,11);
-                    printf(">");
+                Acertos++;
+                goto Tabelas;
+            }if (Acertos == 6) {
+                Vs--;
+                system("cls");
+                Acertos++;
+                goto Tabelas;
+            } else {
+                coordxy(1,22);
+                printf("Você errou!");
+                Sleep(2000);
+                main();
+            }
+        case 2:
+            if (Acertos == 0) {
+                Fs--;
+                system("cls");
+                Acertos++;
+                goto Tabelas;
+            }if (Acertos == 1) {
+                Fs--;
+                system("cls");
+                Acertos++;
+                goto Tabelas;
+            }if (Acertos == 2) {
+                Fs--;
+                system("cls");
+                Acertos++;
+                goto Tabelas;
+            }if (Acertos == 3) {
+                Fs--;
+                system("cls");
+                Acertos++;
+                goto Tabelas;
+            }if (Acertos == 5) {
+                Fs--;
+                system("cls");
+                Acertos++;
+                goto Tabelas;
+            }if (Acertos == 7) {
+                Fs--;
+                coordxy(50,11);
+                printf("F");
+                coordxy(1,22);
+                char NextFase[] = "A porta se abre e você consegue ir pra próxima sala.";
+                for (i = 0; NextFase[i] != '\0'; i++)
+                {
+                    printf("%c",NextFase[i]);
+                    Sleep(TimeText);
                 }
-                coordxy(6,15);
-                printf("V\n      F");
-                printf("\n\nInventário\n Total de F: %d\n Total de V: %d",Fs, Vs);
-                do{
-                    coordxy(3,L);
-                    printf("->");
-                    coordxy(10,18);
-                    if(kbhit){KeyPress=getch();}
-                    if (KeyPress == 27) {Quit();}
-                    if(KeyPress == 80 && b < 3){L2=L;L++;b++;}
-                    if(KeyPress == 72 && b > 2){L2=L;L--;b--;}
-                    if(L!=L2){coordxy(3,L2);printf("  ");L2=L;}
-                    if(KeyPress == 13){opcao=b-1;}
-                }while(opcao == 0);
-            switch (opcao){
-                case 1:
-                    if (Acertos == 4) {
-                        Vs--;
-                        system("cls");
-                        Acertos++;
-                        goto Tabelas;
-                    }if (Acertos == 6) {
-                        Vs--;
-                        system("cls");
-                        Acertos++;
-                        goto Tabelas;
-                    } else {
-                        coordxy(1,22);
-                        printf("Você errou!");
-                        Sleep(2000);
-                        main();
-                    }
-                case 2:
-                    if (Acertos == 0) {
-                        Fs--;
-                        system("cls");
-                        Acertos++;
-                        goto Tabelas;
-                    }if (Acertos == 1) {
-                        Fs--;
-                        system("cls");
-                        Acertos++;
-                        goto Tabelas;
-                    }if (Acertos == 2) {
-                        Fs--;
-                        system("cls");
-                        Acertos++;
-                        goto Tabelas;
-                    }if (Acertos == 3) {
-                        Fs--;
-                        system("cls");
-                        Acertos++;
-                        goto Tabelas;
-                    }if (Acertos == 5) {
-                        Fs--;
-                        system("cls");
-                        Acertos++;
-                        goto Tabelas;
-                    }if (Acertos == 7) {
-                        Fs--;
-                        coordxy(50,11);
-                        printf("F");
-                        coordxy(1,22);
-                        printf("A porta se abre e você consegue ir pra próxima sala.");
-                        Sleep(2000);
-                        system("cls");
-                        Acertos++;
-                        Fase2();
-                    } else {
-                        coordxy(2,19);
-                        printf("Você errou!");
-                        Sleep(2000);
-                        main();
-                    }
-                }
-            }while(opcao!=2);
-        }if (KeyPress == 32) {system("cls");goto Skipped;}
-        if (KeyPress == 27) {Quit();}
-    }if (KeyPress == 32) {system("cls");goto Skipped;}
-    if (KeyPress == 27) {Quit();}
+                Sleep(1000);
+                system("cls");
+                Acertos++;
+                Fase2();
+            } else {
+                coordxy(2,19);
+                printf("Você errou!");
+                Sleep(2000);
+                main();
+            }
+        }
+    }while(opcao!=2);
+}
+
+void ErrorFase2()
+{
+    char ErroPiso[] ="Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n";
+    for (i = 0; ErroPiso[i] != '\0'; i++)
+    {
+        printf("%c", ErroPiso[i]);
+        Sleep(TimeText);
+    }
+    Sleep(2000);
+    char GameOver[] = "Game over\n";
+    for (i = 0; GameOver[i] != '\0'; i++)
+    {
+        printf("%c", GameOver[i]);
+        Sleep(TimeText);
+    }
+    Sleep(1000);
+    system("cls");
+    main();
+
 }
 
 void Fase2()
 {
     int Acertos = 0;
+    char Text1[] = " Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
+    char Text2[] = "\n  Para chegar à entrada você deve no primeiro piso ir ao máximo para a esquerda, no próximo piso você deve quadruplicar\na sua posição atual, no próximo você deve dividir por dois a sua posição atual e no último piso você deve somar um a\nsua posição atual.\n";
+    for (i = 0; Text1[i] != '\0'; i++)
+    {
+        printf("%c",Text1[i]);
+        Sleep(TimeText);
+    }
+    for (i = 0; Text2[i] != '\0'; i++)
+    {
+        printf("%c",Text2[i]);
+        Sleep(TimeText);
+    }
     Acerto:
     do{
         opcao=0;
         L=41;b=2;
         coordxy(2,0);
-        printf("Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n");
-        printf("\n  Para chegar à entrada você deve no primeiro piso ir ao máximo para a esquerda, no próximo piso você deve quadruplicar\na sua posição atual, no próximo você deve dividir por dois a sua posição atual e no último piso você deve somar um a\nsua posição atual.\n");
         if (Acertos == 0){coordxy(49,7);printf("== Primeiro Piso == \n");}
         if (Acertos == 1){coordxy(49,7);printf("== Segundo Piso == \n");}
         if (Acertos == 2){coordxy(49,7);printf("== Terceiro Piso == \n");}
@@ -356,61 +424,59 @@ void Fase2()
         case 1:
             if (Acertos == 0)
             {
-                printf("Você acertou e passou para o próximo piso           \n");
+                char Acerto1[] ="Você acertou e passou para o próximo piso           \n";
                 Acertos++;
+                for (i = 0; Acerto1[i] != '\0'; i++)
+                {
+                    printf("%c",Acerto1[i]);
+                    Sleep(TimeText);
+                }
                 goto Acerto;
             } else {
-                printf("Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n");
-                Sleep(4000);
-                printf("Game over\n");
-                Sleep(1000);
-                system("cls");
-                main();
+                ErrorFase2();
             }
         case 2:
             if (Acertos == 2)
             {
-                printf("Você acertou, por pouco!                            \n");
+                char Acerto3[] = "Você acertou, por pouco!                            \n";
                 Acertos++;
+                for (i = 0; Acerto3[i] != '\0'; i++)
+                {
+                    printf("%c",Acerto3[i]);
+                    Sleep(TimeText);
+                }
                 goto Acerto;
             } else {
-                printf("Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n");
-                Sleep(4000);
-                printf("Game over\n");
-                Sleep(1000);
-                system("cls");
-                main();
+                ErrorFase2();
             }
-
         case 3:
             if (Acertos == 3)
             {
-                printf("Você finalmente passou sem cair em nenhuma armadilha\n");
+                char Acerto4[] = "Você finalmente passou sem cair em nenhuma armadilha\n";
+                for (i = 0; Acerto4[i] != '\0'; i++)
+                {
+                    printf("%c",Acerto4[i]);
+                    Sleep(TimeText);
+                }
                 Sleep(3000);
                 system("cls");
                 Fase3();
             } else {
-                printf("Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n");
-                Sleep(4000);
-                printf("Game over\n");
-                Sleep(1000);
-                system("cls");
-                main();
+                ErrorFase2();
             }
-
         case 4:
             if (Acertos == 1)
             {
-                printf("Você acertou, tome cuidado com os pisos falsos      \n");
+                char Acerto2[] = "Você acertou, tome cuidado com os pisos falsos      \n";
                 Acertos++;
+                for (i = 0; Acerto2[i] != '\0'; i++)
+                {
+                    printf("%c",Acerto2[i]);
+                    Sleep(TimeText);
+                }
                 goto Acerto;
             } else {
-                printf("Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n");
-                Sleep(4000);
-                printf("Game over\n");
-                Sleep(1000);
-                system("cls");
-                main();
+                ErrorFase2();
             }
         }
     }while(opcao!=2);
