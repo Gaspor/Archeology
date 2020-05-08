@@ -17,6 +17,7 @@ void coordxy(int x,int y)
 
 void SetaUpDown(La, coordx, BLimite, LOper)
 {
+    opcao = 0;
     L=La;b=1;
     do{
         coordxy(coordx,L);
@@ -32,6 +33,7 @@ void SetaUpDown(La, coordx, BLimite, LOper)
 
 void SetaLeftRight(La, coordy, BLimite, LOper)
 {
+    opcao = 0;
     L=La;b=1;
     do{
         coordxy(L,coordy);
@@ -286,67 +288,67 @@ void Fase1()
     printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d",Fs, Vs);
     SetaUpDown(15, 3, 2, 1);
 
-    switch (opcao){
-        case 1:
-            if (Acertos == 4) {
-                Vs--;
-                system("cls");
-                Acertos++;
-                goto Tabelas;
-            }if (Acertos == 6) {
-                Vs--;
-                system("cls");
-                Acertos++;
-                goto Tabelas;
-            } else {
-                coordxy(2,22);
-                printf("Você errou!");
-                Sleep(2000);
-                main();
-            }
-        case 2:
-            if (Acertos == 0) {
-                Fs--;
-                system("cls");
-                Acertos++;
-                goto Tabelas;
-            }if (Acertos == 1) {
-                Fs--;
-                system("cls");
-                Acertos++;
-                goto Tabelas;
-            }if (Acertos == 2) {
-                Fs--;
-                system("cls");
-                Acertos++;
-                goto Tabelas;
-            }if (Acertos == 3) {
-                Fs--;
-                system("cls");
-                Acertos++;
-                goto Tabelas;
-            }if (Acertos == 5) {
-                Fs--;
-                system("cls");
-                Acertos++;
-                goto Tabelas;
-            }if (Acertos == 7) {
-                Fs--;
-                coordxy(50,11);
-                printf("F");
-                coordxy(1,22);
-                char NextFase[] = " A porta se abre e você consegue ir pra próxima sala.";
-                SlowText(NextFase);
-                Sleep(1000);
-                system("cls");
-                Acertos++;
-                Fase2();
-            } else {
-                coordxy(2,22);
-                printf("Você errou!");
-                Sleep(2000);
-                main();
-            }
+switch (opcao){
+    case 1:
+        if (Acertos == 4) {
+            Vs--;
+            system("cls");
+            Acertos++;
+            goto Tabelas;
+        }if (Acertos == 6) {
+            Vs--;
+            system("cls");
+            Acertos++;
+            goto Tabelas;
+        } else {
+            coordxy(2,22);
+            printf("Você errou!");
+            Sleep(2000);
+            main();
+        }
+    case 2:
+        if (Acertos == 0) {
+            Fs--;
+            system("cls");
+            Acertos++;
+            goto Tabelas;
+        }if (Acertos == 1) {
+            Fs--;
+            system("cls");
+            Acertos++;
+            goto Tabelas;
+        }if (Acertos == 2) {
+            Fs--;
+            system("cls");
+            Acertos++;
+            goto Tabelas;
+        }if (Acertos == 3) {
+            Fs--;
+            system("cls");
+            Acertos++;
+            goto Tabelas;
+        }if (Acertos == 5) {
+            Fs--;
+            system("cls");
+            Acertos++;
+            goto Tabelas;
+        }if (Acertos == 7) {
+            Fs--;
+            coordxy(50,11);
+            printf("F");
+            coordxy(1,22);
+            char NextFase[] = " A porta se abre e você consegue ir pra próxima sala.";
+            SlowText(NextFase);
+            Sleep(1000);
+            system("cls");
+            Acertos++;
+            Fase2();
+        } else {
+            coordxy(2,22);
+            printf("Você errou!");
+            Sleep(2000);
+            main();
+        }
     }
 }
 
