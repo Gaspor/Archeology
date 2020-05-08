@@ -1,13 +1,49 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <locale.h>
 #include <conio.h>
 #include <windows.h>
 
-char RespostaChar[20];
-char NamePlayer[20];
-char Password[20];
-int KeyPress,b,L,L2,opcao,i,TimeText = 70;
+char RespostaChar[20], NamePlayer[20], Password[20];
+int KeyPress,b,L,opcao,i,TimeText = 1;
+
+
+void coordxy(int x,int y)
+{
+    COORD Mouse;
+    Mouse.X = x;
+    Mouse.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Mouse);
+}
+
+void SetaUpDown(La, coordx, BLimite, LOper)
+{
+    L=La;b=1;
+    do{
+        coordxy(coordx,L);
+        printf("->");
+        coordxy(0,20);
+        if(kbhit){KeyPress=getch();}
+        if(KeyPress == 80 && b < BLimite){coordxy(coordx,L);printf("  ");L+=LOper;b++;}
+        if(KeyPress == 72 && b > 1){coordxy(coordx,L);printf("  ");L-=LOper;b--;}
+        if (KeyPress == 27) {Quit();}
+        if(KeyPress == 13){opcao=b;}
+    }while(opcao == 0);
+}
+
+void SetaLeftRight(La, coordy, BLimite, LOper)
+{
+    L=La;b=1;
+    do{
+        coordxy(L,coordy);
+        printf(">");
+        coordxy(0,20);
+        if(kbhit){KeyPress=getch();}
+        if (KeyPress == 77 && b < BLimite) {coordxy(L,coordy);printf(" ");L+=LOper;b++;}
+        if (KeyPress == 75 && b > 1) {coordxy(L,coordy);printf(" ");L-=LOper;b--;}
+        if (KeyPress == 27) {Quit();}
+        if(KeyPress == 13){opcao=b;}
+    }while(opcao == 0);
+}
 
 char SlowText(char* Text)
 {
@@ -18,35 +54,14 @@ char SlowText(char* Text)
     }
 }
 
-void coordxy(int x,int y)
-{
-    COORD Mouse;
-    Mouse.X = x;
-    Mouse.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Mouse);
-}
-
 void main()
 {
     PlaySound(TEXT("Menu.wav"),NULL,SND_ASYNC|SND_LOOP);
     setlocale(LC_ALL,"Portuguese");
-    do{
-        opcao=0;
-        L=2;L2=2;b=2;
-        system("cls");
-        printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair\n");
-        do
-        {
-            coordxy(3,L);
-            printf("->");
-            coordxy(0,6);
-            if(kbhit){KeyPress=getch();}
-            if(KeyPress == 80 && b < 5){L2=L;L++;b++;}
-            if(KeyPress == 72 && b > 2){L2=L;L--;b--;}
-            if(L!=L2){coordxy(2,L2);printf("    \n     ");L2=L;}
-            if (KeyPress == 27) {Quit();}
-            if(KeyPress == 13){opcao=b-1;}
-        }while(opcao == 0);
+    system("cls");
+    printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair\n");
+    SetaUpDown(2, 3, 4, 1);
+
     switch (opcao){
         case 1:
             system("cls");
@@ -82,31 +97,16 @@ void main()
         default:
             printf("  Essa opção não existe, por favor tente uma nova.\n");
             Sleep(1500);
-        }
-    }while(opcao!=2);
+    }
 }
 
 void SelectFase()
 {
-    int Fase;
-    do{
-        Fase=0;
-        L=2;L2=2;b=2;
-        system("cls");
-        printf("     \"Menu de Fases\"\n\n     Ir para a Fase 1\n     Ir para a Fase 2\n     Ir para a Fase 3\n     Ir para o Boss\n\n     Voltar ao Menu principal\n");
-        do
-        {
-            coordxy(3,L);
-            printf("->");
-            coordxy(0,8);
-            if(kbhit){KeyPress=getch();}
-            if(KeyPress == 80 && b < 7){L2=L;L++;b++;}
-            if(KeyPress == 72 && b > 2){L2=L;L--;b--;}
-            if(L!=L2){coordxy(1,L2);printf("    ");L2=L;}
-            if (KeyPress == 27) {Quit();}
-            if(KeyPress == 13){Fase=b-1;}
-        }while(Fase == 0);
-    switch (Fase){
+    system("cls");
+    char EscolherFase[] = "     \"Menu de Fases\"\n\n      Ir para a Fase 1\n      Ir para a Fase 2\n      Ir para a Fase 3\n      Ir para o Boss\n\n      Voltar ao Menu principal\n";
+    SetaUpDown(2, 3, 6, 1);
+
+    switch (opcao){
         case 1:
             system("cls");
             printf("   Você escolheu ir para a Fase 1.\n");
@@ -146,8 +146,7 @@ void SelectFase()
         default:
             printf("  Opção inválida, tente outra");
             Sleep(1000);
-        }
-    }while(Fase!=2);
+    }
 }
 
 void Quit()
@@ -174,36 +173,41 @@ void Player()
     printf("  Por favor, não use caractere especial\n\n");
     printf("  Digite o nome do Arqueólogo: ");
     gets(NamePlayer);
-    printf("\n\n Você deseja pular a História? \n   Aperte S para Sim.\n   Aperte N para Não.\n");
-    if (kbhit) {KeyPress=getch();}
-    if (KeyPress == 110) {Lore();}
-    if (KeyPress == 115) {Fase1();}
+    KbLore:
+        coordxy(0,5);
+        printf("\n\n Você deseja pular a História? \n   Aperte S para Sim.\n   Aperte N para Não.\n");
+        if (kbhit) {KeyPress=getch();}
+        if (KeyPress == 110) {Lore();}
+        if (KeyPress == 115) {Fase1();}
+        else {goto KbLore;}
 }
 
 void Lore()
 {
     system("cls");
-    char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\n Ninguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\n um guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\n tomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n";
+    char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n   Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\n   Ninguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\n um guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\n tomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n";
     char Texto2[] ="  Vocé é um arqueólogo conhecido como";
     char Texto3[] ="ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \n\n desafios... \n\n";
     char TextFase1[] = "  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \n\n sem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's, depois de encontrar está sacola você \n\n decide voltar para a porta, ao voltar você logo percebe o que terá que fazer, você terá que colocar essas letras da \n\n sacola na porta para passar \n\n";
 
     SlowText(Texto1);
-    printf("\n  Pressione Enter para continuar...");
-    if (kbhit) {KeyPress=getch();}
-    if (KeyPress == 13) {
-        system("cls");
-        SlowText(Texto2);
-        printf(" ");
-        SlowText(NamePlayer);
-        printf(", ");
-        SlowText(Texto3);
-        SlowText(TextFase1);
-        printf("\n  Pressione Enter para continuar...");
+    LoreEnter1:
+        printf("\n Pressione Enter para continuar...");
         if (kbhit) {KeyPress=getch();}
-        if (KeyPress == 13)
-            Fase1();
-    }
+        if (KeyPress == 13) {
+            system("cls");
+            SlowText(Texto2);
+            printf(" ");
+            SlowText(NamePlayer);
+            printf(", ");
+            SlowText(Texto3);
+            SlowText(TextFase1);
+            LoreEnter2:
+                printf("\n Pressione Enter para continuar...");
+                if (kbhit) {KeyPress=getch();}
+                if (KeyPress == 13) {Fase1();}
+                else {goto LoreEnter2;}
+        } else {goto LoreEnter1;}
 }
 
 void Fase1()
@@ -211,89 +215,77 @@ void Fase1()
     system("cls");
     PlaySound(TEXT("null"),NULL,SND_ASYNC);
     int Acertos = 0, Vs = 2,Fs = 6;
-    do{
-        Tabelas:
-        opcao=0;
-        L=15;L2=15;b=2;
-        system("cls");
-        printf(" Você então começa a completar a tabela...\n");
-        coordxy(0,6);
-        printf("\t\t\t\t  ========================================\n");
-        printf("\t\t\t\t  |   A   B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
-        printf("\t\t\t\t  |       F       V              F       |\n");
-        printf("\t\t\t\t  |   F   V   F   F     F                |\n");
-        printf("\t\t\t\t  |       F   F   V     V                |\n");
-        printf("\t\t\t\t  |   V       V         F        F       |\n");
-        printf("\t\t\t\t  ========================================\n\n O que você deseja colocar nesta parte da tabela?");
-        if (Acertos == 0) {
-            coordxy(36,8);
-            printf(">");
-        }if (Acertos == 1) {
-            coordxy(38,8);
-            printf("F");
-            coordxy(44,8);
-            printf(">");
-        } if (Acertos == 2) {
-            coordxy(38,8);
-            printf("F   F   F");
-            coordxy(54,8);
-            printf(">");
-        }if (Acertos == 3) {
-            coordxy(38,8);
-            printf("F   F   F   V     F");
-            coordxy(63,9);
-            printf(">");
-        } if (Acertos == 4) {
-            coordxy(38,8);
-            printf("F   F   F   V     F");
-            coordxy(38,9);
-            printf("F   V   F   F     F        F");
-            coordxy(36,10);
-            printf(">");
-        }if (Acertos == 5) {
-            coordxy(38,8);
-            printf("F   F   F   V     F");
-            coordxy(38,9);
-            printf("F   V   F   F     F        F");
-            coordxy(38,10);
-            printf("V");
-            coordxy(63,10);
-            printf(">");
-        }if (Acertos == 6) {
-            coordxy(38,8);
-            printf("F   F   F   V     F");
-            coordxy(38,9);
-            printf("F   V   F   F     F        F");
-            coordxy(38,10);
-            printf("V   F   F   V     V        F");
-            coordxy(40,11);
-            printf(">");
-        }if (Acertos == 7) {
-            coordxy(38,8);
-            printf("F   F   F   V     F");
-            coordxy(38,9);
-            printf("F   V   F   F     F        F");
-            coordxy(38,10);
-            printf("V   F   F   V     V        F");
-            coordxy(38,11);
-            printf("V   V   V");
-            coordxy(48,11);
-            printf(">");
-        }
-        coordxy(6,15);
-        printf("V\n      F");
-        printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d",Fs, Vs);
-        do{
-            coordxy(3,L);
-            printf("->");
-            coordxy(10,18);
-            if(kbhit){KeyPress=getch();}
-            if (KeyPress == 27) {Quit();}
-            if(KeyPress == 80 && b < 3){L2=L;L++;b++;}
-            if(KeyPress == 72 && b > 2){L2=L;L--;b--;}
-            if(L!=L2){coordxy(3,L2);printf("  ");L2=L;}
-            if(KeyPress == 13){opcao=b-1;}
-        }while(opcao == 0);
+    Tabelas:
+    system("cls");
+    printf(" Você então começa a completar a tabela...\n");
+    coordxy(0,6);
+    printf("\t\t\t\t  ========================================\n");
+    printf("\t\t\t\t  |   A   B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
+    printf("\t\t\t\t  |       F       V              F       |\n");
+    printf("\t\t\t\t  |   F   V   F   F     F                |\n");
+    printf("\t\t\t\t  |       F   F   V     V                |\n");
+    printf("\t\t\t\t  |   V       V         F        F       |\n");
+    printf("\t\t\t\t  ========================================\n\n O que você deseja colocar nesta parte da tabela?");
+    if (Acertos == 0) {
+        coordxy(36,8);
+        printf(">");
+    }if (Acertos == 1) {
+        coordxy(38,8);
+        printf("F");
+        coordxy(44,8);
+        printf(">");
+    } if (Acertos == 2) {
+        coordxy(38,8);
+        printf("F   F   F");
+        coordxy(54,8);
+        printf(">");
+    }if (Acertos == 3) {
+        coordxy(38,8);
+        printf("F   F   F   V     F");
+        coordxy(63,9);
+        printf(">");
+    } if (Acertos == 4) {
+        coordxy(38,8);
+        printf("F   F   F   V     F");
+        coordxy(38,9);
+        printf("F   V   F   F     F        F");
+        coordxy(36,10);
+        printf(">");
+    }if (Acertos == 5) {
+        coordxy(38,8);
+        printf("F   F   F   V     F");
+        coordxy(38,9);
+        printf("F   V   F   F     F        F");
+        coordxy(38,10);
+        printf("V");
+        coordxy(63,10);
+        printf(">");
+    }if (Acertos == 6) {
+        coordxy(38,8);
+        printf("F   F   F   V     F");
+        coordxy(38,9);
+        printf("F   V   F   F     F        F");
+        coordxy(38,10);
+        printf("V   F   F   V     V        F");
+        coordxy(40,11);
+        printf(">");
+    }if (Acertos == 7) {
+        coordxy(38,8);
+        printf("F   F   F   V     F");
+        coordxy(38,9);
+        printf("F   V   F   F     F        F");
+        coordxy(38,10);
+        printf("V   F   F   V     V        F");
+        coordxy(38,11);
+        printf("V   V   V");
+        coordxy(48,11);
+        printf(">");
+    }
+    coordxy(6,15);
+    printf("V\n      F");
+    printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d",Fs, Vs);
+    SetaUpDown(15, 3, 2, 1);
+
     switch (opcao){
         case 1:
             if (Acertos == 4) {
@@ -355,8 +347,7 @@ void Fase1()
                 Sleep(2000);
                 main();
             }
-        }
-    }while(opcao!=2);
+    }
 }
 
 void ErrorFase2()
@@ -375,9 +366,6 @@ void Fase2()
     SlowText(Text1);
     SlowText(Text2);
     Acerto:
-    do{
-        opcao=0;
-        L=41;b=2;
         coordxy(2,0);
         if (Acertos == 0){coordxy(49,7);printf("== Primeiro Piso == \n");}
         if (Acertos == 1){coordxy(49,7);printf("== Segundo Piso == \n");}
@@ -385,60 +373,51 @@ void Fase2()
         if (Acertos == 3){coordxy(49,7);printf(" == Quarto Piso ==  \n");}
         coordxy(19,7);
         printf("\n\t\t\t\t\t\====================================\n\t\t\t\t\t|  1         2         3         4 |\n\t\t\t\t\t|        Posição do jogador        |\n\t\t\t\t\t====================================\n");
-        do{
-            coordxy(L,9);
-            printf(">");
-            coordxy(0,20);
-            if(kbhit){KeyPress=getch();}
-            if (KeyPress == 77 && b < 5) {coordxy(L,9);printf(" ");L=L+10;b++;}
-            if (KeyPress == 75 && b > 2) {coordxy(L,9);printf(" ");L=L-10;b--;}
-            if (KeyPress == 27) {Quit();}
-            if(KeyPress == 13){opcao=b-1;}
-        }while(opcao == 0);
-    switch (opcao){
-        case 1:
-            if (Acertos == 0)
-            {
-                char Acerto1[] ="   Você acertou e passou para o próximo piso           \n";
-                Acertos++;
-                SlowText(Acerto1);
-                goto Acerto;
-            } else {
-                ErrorFase2();
-            }
-        case 2:
-            if (Acertos == 2)
-            {
-                char Acerto3[] = "   Você acertou, por pouco!                            \n";
-                Acertos++;
-                SlowText(Acerto3);
-                goto Acerto;
-            } else {
-                ErrorFase2();
-            }
-        case 3:
-            if (Acertos == 3)
-            {
-                char Acerto4[] = "   Você finalmente passou sem cair em nenhuma armadilha\n";
-                SlowText(Acerto4);
-                Sleep(3000);
-                system("cls");
-                Fase3();
-            } else {
-                ErrorFase2();
-            }
-        case 4:
-            if (Acertos == 1)
-            {
-                char Acerto2[] = "   Você acertou, tome cuidado com os pisos falsos      \n";
-                Acertos++;
-                SlowText(Acerto2);
-                goto Acerto;
-            } else {
-                ErrorFase2();
-            }
+        SetaLeftRight(41, 9, 4, 10);
+
+        switch (opcao){
+            case 1:
+                if (Acertos == 0)
+                {
+                    char Acerto1[] ="   Você acertou e passou para o próximo piso           \n";
+                    Acertos++;
+                    SlowText(Acerto1);
+                    goto Acerto;
+                } else {
+                    ErrorFase2();
+                }
+            case 2:
+                if (Acertos == 2)
+                {
+                    char Acerto3[] = "   Você acertou, por pouco!                            \n";
+                    Acertos++;
+                    SlowText(Acerto3);
+                    goto Acerto;
+                } else {
+                    ErrorFase2();
+                }
+            case 3:
+                if (Acertos == 3)
+                {
+                    char Acerto4[] = "   Você finalmente passou sem cair em nenhuma armadilha\n";
+                    SlowText(Acerto4);
+                    Sleep(3000);
+                    system("cls");
+                    Fase3();
+                } else {
+                    ErrorFase2();
+                }
+            case 4:
+                if (Acertos == 1)
+                {
+                    char Acerto2[] = "   Você acertou, tome cuidado com os pisos falsos      \n";
+                    Acertos++;
+                    SlowText(Acerto2);
+                    goto Acerto;
+                } else {
+                    ErrorFase2();
+                }
         }
-    }while(opcao!=2);
 }
 
 void Fase3()
@@ -468,117 +447,86 @@ void Fase3()
 void Boss()
 {
     PlaySound(TEXT("Boss.wav"),NULL,SND_ASYNC|SND_LOOP);
-    do{
-        char Texto1[] = "   Anúbis: Você chegou até aqui, mas daqui você não passa!\n   Anúbis: Tente me vencer, você precisará de sorte, muita sorte!\n\n";
-        char Texto2[] = "   Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.\n\n";
-        SlowText(Texto1);
-        SlowText(Texto2);
-        Sleep(3000);
-        char Texto3[] = "   Você vai em busca de sua arma para derrotar Anúbis, mas derrepente você escuta sua voz.\n\n";
-        char Texto4[] = "   Anúbis: Você nunca saberá o que é (A->B)<->(B'->A').";
-        SlowText(Texto3);
-        SlowText(Texto4);
-        Sleep(8000);
+    char Texto1[] = "   Anúbis: Você chegou até aqui, mas daqui você não passa!\n   Anúbis: Tente me vencer, você precisará de sorte, muita sorte!\n\n";
+    char Texto2[] = "   Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.\n\n";
+    SlowText(Texto1);
+    SlowText(Texto2);
+    Sleep(3000);
+    char Texto3[] = "   Você vai em busca de sua arma para derrotar Anúbis, mas derrepente você escuta sua voz.\n\n";
+    char Texto4[] = "   Anúbis: Você nunca saberá o que é (A->B)<->(B'->A').\n\n";
+    SlowText(Texto3);
+    SlowText(Texto4);
+    AnubisEnter1:
+    printf("\n   Aperte enter se já tiver memorizado a espressão dita por Anúbis.");
+    if (kbhit) {KeyPress=getch();}
+    if (KeyPress == 27) {Quit();}
+    if (KeyPress == 13) {
         BossDoor:
-        L=18;b=2;
         system("cls");
         char Texto5[] = "   Encontre pela sala o que é a expressão dita por Anúbis.\n\n";
         char Texto6[] = "   Você vê duas peças, uma em sua direita e outra em sua esquerda.\n\n   O que você deseja fazer ?\n\n";
         SlowText(Texto5);
         SlowText(Texto6);
         printf("\t\t\===================================================================================\n\t\t|   Virar para a esquerda       Seguir em frente            Virar para a direita  |\n\t\t===================================================================================\n");
-        do{
-            opcao=0;
-            coordxy(L,7);
-            printf(">");
-            coordxy(0,20);
-            if(kbhit){KeyPress=getch();}
-            if (KeyPress == 77 && b < 4) {coordxy(L,7);printf(" ");L=L+28;b++;}
-            if (KeyPress == 75 && b > 2) {coordxy(L,7);printf(" ");L=L-28;b--;}
-            if (KeyPress == 27) {Quit();}
-            if(KeyPress == 13){opcao=b-1;}
-        }while(opcao == 0);
-    switch(opcao){
-        case 1:
-            do {
-                opcao=0;
-                L=18;b=2;
-                coordxy(2,0);
+        SetaLeftRight(18, 7, 3, 28);
+
+        switch(opcao){
+            case 1:
+                    coordxy(2,0);
+                    system("cls");
+                    char Contradicao[] = "   Você encontrou uma peça escrita Contradição, o que você deseja fazer ?\n";
+                    SlowText(Contradicao);
+                    printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Essa não é a peça para a arma   |\n\t\t=================================================================\n");
+                    SetaLeftRight(18, 3, 2, 28);
+
+                    switch(opcao){
+                        case 1:
+                            system("cls");
+                            char Contradicao3[] = "   Você tentou usar a arma Contradição para derrotar Anúbis...\n\n   A arma não funcionou e Anúbis conseguiu chegar até você e te matou...\n\n";
+                            SlowText(Contradicao3);
+                            Sleep(5000);
+                            GameOver();
+                        case 2:
+                            coordxy(0,10);
+                            char Contradicao4[] = "   Você descartou a peça Contradição e voltou para o inicio.";
+                            SlowText(Contradicao4);
+                            Sleep(5000);
+                            system("cls");
+                            goto BossDoor;
+                    }
+            case 2:
                 system("cls");
-                char Contradicao[] = "   Você encontrou uma peça escrita Contradição, o que você deseja fazer ?\n";
-                SlowText(Contradicao);
-                printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Essa não é a peça para a arma   |\n\t\t=================================================================\n");
-                do{
-                    coordxy(L,3);
-                    printf(">");
-                    coordxy(0,20);
-                    if(kbhit){KeyPress=getch();}
-                    if (KeyPress == 77 && b < 3) {coordxy(L,3);printf(" ");L=L+28;b++;}
-                    if (KeyPress == 75 && b > 2) {coordxy(L,3);printf(" ");L=L-28;b--;}
-                    if (KeyPress == 27) {Quit();}
-                    if(KeyPress == 13){opcao=b-1;}
-                }while(opcao == 0);
-            switch(opcao){
-                case 1:
+                char MidRoad[] = "   Esse não era o caminho correto! \n\n   Você não conseguiu reunir as peças necessárias para derrotar Anúbis.\n\n   Ele arrancou a sua cabeça!!\n\n";
+                SlowText(MidRoad);
+                Sleep(2000);
+                GameOver();
+            case 3:
                     system("cls");
-                    char Contradicao3[] = "   Você tentou usar a arma Contradição para derrotar Anúbis...\n\nA arma não funcionou e Anúbis conseguiu chegar até você e te matou...\n\n";
-                    SlowText(Contradicao3);
-                    Sleep(5000);
-                    GameOver();
-                case 2:
-                    coordxy(0,10);
-                    char Contradicao4[] = "   Você descartou a peça Contradição e voltou para o inicio.";
-                    SlowText(Contradicao4);
-                    Sleep(5000);
+                    coordxy(2,0);
                     system("cls");
-                    goto BossDoor;
-                }
-            }while(opcao!=2);
-        case 2:
-            system("cls");
-            char MidRoad[] = "   Esse não era o caminho correto! \n\n   Você não conseguiu reunir as peças necessárias para derrotar Anúbis.\n\n   Ele arrancou a sua cabeça!!\n\n";
-            SlowText(MidRoad);
-            Sleep(2000);
-            GameOver();
-        case 3:
-            do{
-                system("cls");
-                opcao=0;
-                L=22;b=2;
-                coordxy(2,0);
-                system("cls");
-                char Tautologia[] = "   Você encontrou uma peça escrita Tautologia, o que você deseja fazer ?\n";
-                SlowText(Tautologia);
-                printf("\n\t\t\    =============================================================\n\t\t    |   Pegar a peça e usar                           Descartar |\n\t\t    =============================================================\n");
-                do{
-                    coordxy(L,3);
-                    printf(">");
-                    coordxy(0,20);
-                    if(kbhit){KeyPress=getch();}
-                    if (KeyPress == 77 && b < 3) {coordxy(L,3);printf(" ");L=L+46;b++;}
-                    if (KeyPress == 75 && b > 2) {coordxy(L,3);printf(" ");L=L-46;b--;}
-                    if (KeyPress == 27) {Quit();}
-                    if(KeyPress == 13){opcao=b-1;}
-                }while(opcao == 0);
-            switch(opcao){
-                case 1:
-                    system("cls");
-                    char Text8[] = "   Você conseguiu a peça correta para a arma.\n\n   Você termina de montar a arma definitiva para derrotar Anúbis e usa contra ele.\n\n";
-                    SlowText(Text8);
-                    Sleep(2000);
-                    printf("   Parabéns %s, você venceu!!\n\n", NamePlayer);
-                    printf("   Obrigado por jogar o Beta.");
-                    Sleep(7000);
-                    system("cls");
-                    main();
-                case 2:
-                    system("cls");
-                    char Text2[] = "   Você acaba de jogar a arma para derrotar Anúbis fora.\n\n   Você começa a correr pela sala de Anúbis, mas infelizmente ele consegue de pegar...\n\n";
-                    SlowText(Text2);
-                    Sleep(3500);
-                    GameOver();
-                }
-            }while(opcao!=2);
+                    char Tautologia[] = "   Você encontrou uma peça escrita Tautologia, o que você deseja fazer ?\n";
+                    SlowText(Tautologia);
+                    printf("\n\t\t\    =============================================================\n\t\t    |   Pegar a peça e usar                           Descartar |\n\t\t    =============================================================\n");
+                    SetaLeftRight(22, 3, 2, 46);
+
+                    switch(opcao){
+                        case 1:
+                            system("cls");
+                            char Text8[] = "   Você conseguiu a peça correta para a arma.\n\n   Você termina de montar a arma definitiva para derrotar Anúbis e usa contra ele.\n\n";
+                            SlowText(Text8);
+                            Sleep(2000);
+                            printf("   Parabéns %s, você venceu!!\n\n", NamePlayer);
+                            printf("   Obrigado por jogar o Beta.");
+                            Sleep(7000);
+                            system("cls");
+                            main();
+                        case 2:
+                            system("cls");
+                            char Text2[] = "   Você acaba de jogar a arma para derrotar Anúbis fora.\n\n   Você começa a correr pela sala de Anúbis, mas infelizmente ele consegue te pegar...\n\n";
+                            SlowText(Text2);
+                            Sleep(3500);
+                            GameOver();
+                    }
         }
-    }while(opcao!=2);
+    } else {goto AnubisEnter1;}
 }
