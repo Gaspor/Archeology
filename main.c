@@ -60,7 +60,7 @@ void main()
     PlaySound(TEXT("menu.wav"),NULL,SND_ASYNC|SND_LOOP);
     setlocale(LC_ALL,"Portuguese");
     system("cls");
-    printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair\n");
+    printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
     SetaUpDown(2, 3, 4, 1);
 
     switch (opcao){
