@@ -6,7 +6,6 @@
 char RespostaChar[20], NamePlayer[20], Password[20];
 int KeyPress,b,L,opcao,i,TimeText = 1;
 
-
 void coordxy(int x,int y)
 {
     COORD Mouse;
@@ -58,7 +57,7 @@ char SlowText(char* Text)
 
 void main()
 {
-    PlaySound(TEXT("Menu.wav"),NULL,SND_ASYNC|SND_LOOP);
+    PlaySound(TEXT("menu.wav"),NULL,SND_ASYNC|SND_LOOP);
     setlocale(LC_ALL,"Portuguese");
     system("cls");
     printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair\n");
@@ -105,7 +104,7 @@ void main()
 void SelectFase()
 {
     system("cls");
-    char EscolherFase[] = "     \"Menu de Fases\"\n\n      Ir para a Fase 1\n      Ir para a Fase 2\n      Ir para a Fase 3\n      Ir para o Boss\n\n      Voltar ao Menu principal\n";
+    printf("     \"Menu de Fases\"\n\n      Ir para a Fase 1\n      Ir para a Fase 2\n      Ir para a Fase 3\n      Ir para o Boss\n\n      Voltar ao Menu principal\n");
     SetaUpDown(2, 3, 6, 1);
 
     switch (opcao){
@@ -124,7 +123,7 @@ void SelectFase()
             printf("   Iniciando a Fase 2...\n");
             Sleep(1500);
             system("cls");
-            PlaySound(TEXT("null"),NULL,SND_ASYNC);
+            PlaySound(TEXT("Fases.wav"),NULL,SND_ASYNC|SND_LOOP);
             Fase2();
         case 3:
             system("cls");
@@ -133,7 +132,7 @@ void SelectFase()
             printf("   Iniciando a Fase 3...\n");
             Sleep(1500);
             system("cls");
-            PlaySound(TEXT("null"),NULL,SND_ASYNC);
+            PlaySound(TEXT("Fases.wav"),NULL,SND_ASYNC);
             Fase3();
         case 4:
             system("cls");
@@ -215,7 +214,7 @@ void Lore()
 void Fase1()
 {
     system("cls");
-    PlaySound(TEXT("null"),NULL,SND_ASYNC);
+    PlaySound(TEXT("Fases.wav"),NULL,SND_ASYNC|SND_LOOP);
     int Acertos = 0, Vs = 2,Fs = 6;
     Tabelas:
     system("cls");
@@ -364,15 +363,14 @@ void Fase2()
 {
     int Acertos = 0;
     char Text1[] = "   Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
-    char Text2[] = "\n   Para chegar à entrada você deve no primeiro piso ir ao máximo para a esquerda, no próximo piso você deve quadruplicar\na sua posição atual, no próximo você deve dividir por dois a sua posição atual e no último piso você deve somar um a\nsua posição atual.\n";
     SlowText(Text1);
-    SlowText(Text2);
     Acerto:
-        coordxy(2,0);
-        if (Acertos == 0){coordxy(49,7);printf("== Primeiro Piso == \n");}
-        if (Acertos == 1){coordxy(49,7);printf("== Segundo Piso == \n");}
-        if (Acertos == 2){coordxy(49,7);printf("== Terceiro Piso == \n");}
-        if (Acertos == 3){coordxy(49,7);printf(" == Quarto Piso ==  \n");}
+        coordxy(2,3);
+        printf("Passos: ");
+        if (Acertos == 0){coordxy(2,4);printf("Vá ao maxímo para esquerda.              ");coordxy(49,7);printf("== Primeiro Piso == \n");}
+        if (Acertos == 1){coordxy(2,4);printf("Quadruplique!!              ");coordxy(49,7);printf("== Segundo Piso == \n");}
+        if (Acertos == 2){coordxy(2,4);printf("Divida por dois.              ");coordxy(49,7);printf("== Terceiro Piso == \n");}
+        if (Acertos == 3){coordxy(2,4);printf("Adicione um.              ");coordxy(49,7);printf("== Quarto Piso ==       \n");}
         coordxy(19,7);
         printf("\n\t\t\t\t\t\====================================\n\t\t\t\t\t|  1         2         3         4 |\n\t\t\t\t\t|        Posição do jogador        |\n\t\t\t\t\t====================================\n");
         SetaLeftRight(41, 9, 4, 10);
