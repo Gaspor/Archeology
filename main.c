@@ -5,6 +5,7 @@
 
 char RespostaChar[20], NamePlayer[20], Password[20];
 int KeyPress,b,L,opcao,i,TimeText = 1;
+int TextOk = 0;
 
 void coordxy(int x,int y)
 {
@@ -147,6 +148,7 @@ void SelectFase()
         default:
             printf("  Opção inválida, tente outra");
             Sleep(1000);
+            SelectFase();
     }
 }
 
@@ -173,6 +175,7 @@ void Player()
     printf("  Por favor, não aperte nada enquanto o texto é digitado em sua tela.\n");
     printf("  Por favor, não use caractere especial\n\n");
     printf("  Digite o nome do Arqueólogo: ");
+    fflush(stdin);
     gets(NamePlayer);
     KbLore:
         coordxy(0,5);
@@ -186,29 +189,25 @@ void Player()
 void Lore()
 {
     system("cls");
-    char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n   Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\n   Ninguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\n um guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\n tomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n";
+    char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n   Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\n   Ninguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\n um guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\n tomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n\n";
     char Texto2[] ="  Vocé é um arqueólogo conhecido como";
     char Texto3[] ="ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \n\n desafios... \n\n";
     char TextFase1[] = "  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \n\n sem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's, depois de encontrar está sacola você \n\n decide voltar para a porta, ao voltar você logo percebe o que terá que fazer, você terá que colocar essas letras da \n\n sacola na porta para passar \n\n";
 
     SlowText(Texto1);
-    LoreEnter1:
-        printf("\n Pressione Enter para continuar...");
-        if (kbhit) {KeyPress=getch();}
-        if (KeyPress == 13) {
-            system("cls");
-            SlowText(Texto2);
-            printf(" ");
-            SlowText(NamePlayer);
-            printf(", ");
-            SlowText(Texto3);
-            SlowText(TextFase1);
-            LoreEnter2:
-                printf("\n Pressione Enter para continuar...");
-                if (kbhit) {KeyPress=getch();}
-                if (KeyPress == 13) {Fase1();}
-                else {goto LoreEnter2;}
-        } else {goto LoreEnter1;}
+    fflush(stdin);
+    system("pause");
+    system("cls");
+    SlowText(Texto2);
+    printf(" ");
+    SlowText(NamePlayer);
+    printf(", ");
+    SlowText(Texto3);
+    SlowText(TextFase1);
+    LoreEnter2:
+    fflush(stdin);
+    system("pause");
+    Fase1();
 }
 
 void Fase1()
@@ -338,6 +337,7 @@ switch (opcao){
             coordxy(1,22);
             char NextFase[] = " A porta se abre e você consegue ir pra próxima sala.";
             SlowText(NextFase);
+            fflush(stdin);
             Sleep(1000);
             system("cls");
             Acertos++;
@@ -365,6 +365,7 @@ void Fase2()
     char Text1[] = "   Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
     SlowText(Text1);
     Acerto:
+        fflush(stdin);
         coordxy(2,3);
         printf("Passos: ");
         if (Acertos == 0){coordxy(2,4);printf("Vá ao maxímo para esquerda.              ");coordxy(49,7);printf("== Primeiro Piso == \n");}
@@ -428,6 +429,7 @@ void Fase3()
     SlowText(Text1Fase3);
     SlowText(Text2Fase3);
     SlowText(Text3Fase3);
+    fflush(stdin);
     gets(RespostaChar);
     if ((strcmp (RespostaChar, "MORTE")== 0)||(strcmp (RespostaChar, "morte")== 0)||(strcmp (RespostaChar, "Morte")== 0)) {
         char Text4Fase3[] = "\n   Você descobriu do que eu sou Deus, agora me enfrente e verá o meu poder!\n";
@@ -457,7 +459,8 @@ void Boss()
     SlowText(Texto3);
     SlowText(Texto4);
     AnubisEnter1:
-    printf("\n   Aperte enter se já tiver memorizado a espressão dita por Anúbis.");
+    printf("\n   Aperte Enter se já tiver memorizado a espressão dita por Anúbis.");
+    fflush(stdin);
     if (kbhit) {KeyPress=getch();}
     if (KeyPress == 27) {Quit();}
     if (KeyPress == 13) {
@@ -477,6 +480,7 @@ void Boss()
                     char Contradicao[] = "   Você encontrou uma peça escrita Contradição, o que você deseja fazer ?\n";
                     SlowText(Contradicao);
                     printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Essa não é a peça para a arma   |\n\t\t=================================================================\n");
+                    fflush(stdin);
                     SetaLeftRight(18, 3, 2, 28);
 
                     switch(opcao){
@@ -507,6 +511,7 @@ void Boss()
                     char Tautologia[] = "   Você encontrou uma peça escrita Tautologia, o que você deseja fazer ?\n";
                     SlowText(Tautologia);
                     printf("\n\t\t\    =============================================================\n\t\t    |   Pegar a peça e usar                           Descartar |\n\t\t    =============================================================\n");
+                    fflush(stdin);
                     SetaLeftRight(22, 3, 2, 46);
 
                     switch(opcao){
