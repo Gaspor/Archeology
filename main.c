@@ -5,60 +5,53 @@
 
 char RespostaChar[20], NamePlayer[20], Password[20];
 int KeyPress,b,L,opcao,i,TimeText = 1;
-int TextOk = 0;
 
-void coordxy(int x,int y)
-{
+void coordxy(int x,int y) {
     COORD Mouse;
     Mouse.X = x;
     Mouse.Y = y;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),Mouse);
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Mouse);
 }
 
-void SetaUpDown(La, coordx, BLimite, LOper)
-{
+void SetaUpDown(La, coordx, BLimite, LOper) {
     opcao = 0;
-    L=La;b=1;
+    L=La; b=1;
     do{
-        coordxy(coordx,L);
+        coordxy(coordx, L);
         printf("->");
         coordxy(0,20);
         if(kbhit){KeyPress=getch();}
-        if(KeyPress == 80 && b < BLimite){coordxy(coordx,L);printf("  ");L+=LOper;b++;}
-        if(KeyPress == 72 && b > 1){coordxy(coordx,L);printf("  ");L-=LOper;b--;}
+        if(KeyPress == 80 && b < BLimite){coordxy(coordx, L);printf("  ");L+=LOper;b++;}
+        if(KeyPress == 72 && b > 1){coordxy(coordx, L);printf("  ");L-=LOper;b--;}
         if (KeyPress == 27) {Quit();}
         if(KeyPress == 13){opcao=b;}
     }while(opcao == 0);
 }
 
-void SetaLeftRight(La, coordy, BLimite, LOper)
-{
+void SetaLeftRight(La, coordy, BLimite, LOper) {
     opcao = 0;
-    L=La;b=1;
+    L=La; b=1;
     do{
-        coordxy(L,coordy);
+        coordxy(L, coordy);
         printf(">");
         coordxy(0,20);
         if(kbhit){KeyPress=getch();}
-        if (KeyPress == 77 && b < BLimite) {coordxy(L,coordy);printf(" ");L+=LOper;b++;}
-        if (KeyPress == 75 && b > 1) {coordxy(L,coordy);printf(" ");L-=LOper;b--;}
+        if (KeyPress == 77 && b < BLimite) {coordxy(L, coordy);printf(" ");L+=LOper;b++;}
+        if (KeyPress == 75 && b > 1) {coordxy(L, coordy);printf(" ");L-=LOper;b--;}
         if (KeyPress == 27) {Quit();}
         if(KeyPress == 13){opcao=b;}
     }while(opcao == 0);
 }
 
-char SlowText(char* Text)
-{
-    for (i = 0; Text[i] != '\0'; i++)
-    {
+char SlowText(char* Text) {
+    for (i = 0; Text[i] != '\0'; i++) {
         printf("%c",Text[i]);
         Sleep(TimeText);
     }
 }
 
-void main()
-{
-    PlaySound(TEXT("menu.wav"),NULL,SND_ASYNC|SND_LOOP);
+void main() {
+    PlaySound(TEXT("menu.wav"), NULL,SND_ASYNC|SND_LOOP);
     setlocale(LC_ALL,"Portuguese");
     system("cls");
     printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
@@ -102,8 +95,7 @@ void main()
     }
 }
 
-void SelectFase()
-{
+void SelectFase() {
     system("cls");
     printf("     \"Menu de Fases\"\n\n      Ir para a Fase 1\n      Ir para a Fase 2\n      Ir para a Fase 3\n      Ir para o Boss\n\n      Voltar ao Menu principal\n");
     SetaUpDown(2, 3, 6, 1);
@@ -124,7 +116,7 @@ void SelectFase()
             printf("   Iniciando a Fase 2...\n");
             Sleep(1500);
             system("cls");
-            PlaySound(TEXT("Fases.wav"),NULL,SND_ASYNC|SND_LOOP);
+            PlaySound(TEXT("Fases.wav"), NULL,SND_ASYNC|SND_LOOP);
             Fase2();
         case 3:
             system("cls");
@@ -133,7 +125,7 @@ void SelectFase()
             printf("   Iniciando a Fase 3...\n");
             Sleep(1500);
             system("cls");
-            PlaySound(TEXT("Fases.wav"),NULL,SND_ASYNC);
+            PlaySound(TEXT("Fases.wav"), NULL,SND_ASYNC);
             Fase3();
         case 4:
             system("cls");
@@ -152,16 +144,14 @@ void SelectFase()
     }
 }
 
-void Quit()
-{
+void Quit() {
     system("cls");
     printf("\aSaindo...\n");
     Sleep(800);
     exit(0);
 }
 
-void GameOver()
-{
+void GameOver() {
     char GameOver[] = "   Game Over";
     SlowText(GameOver);
     Sleep(2000);
@@ -169,8 +159,7 @@ void GameOver()
     main();
 }
 
-void Player()
-{
+void Player() {
     system("cls");
     printf("  Por favor, não aperte nada enquanto o texto é digitado em sua tela.\n");
     printf("  Por favor, não use caractere especial\n\n");
@@ -186,12 +175,11 @@ void Player()
         else {goto KbLore;}
 }
 
-void Lore()
-{
+void Lore() {
     system("cls");
     char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n   Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\n   Ninguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\n um guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\n tomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n\n";
-    char Texto2[] ="  Vocé é um arqueólogo conhecido como";
-    char Texto3[] ="ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \n\n desafios... \n\n";
+    char Texto2[] = "  Vocé é um arqueólogo conhecido como";
+    char Texto3[] = "ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \n\n desafios... \n\n";
     char TextFase1[] = "  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \n\n sem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's, depois de encontrar está sacola você \n\n decide voltar para a porta, ao voltar você logo percebe o que terá que fazer, você terá que colocar essas letras da \n\n sacola na porta para passar \n\n";
 
     SlowText(Texto1);
@@ -210,11 +198,10 @@ void Lore()
     Fase1();
 }
 
-void Fase1()
-{
+void Fase1() {
     system("cls");
-    PlaySound(TEXT("Fases.wav"),NULL,SND_ASYNC|SND_LOOP);
-    int Acertos = 0, Vs = 2,Fs = 6;
+    PlaySound(TEXT("Fases.wav"), NULL,SND_ASYNC|SND_LOOP);
+    int Acertos = 0, Vs = 2, Fs = 6;
     Tabelas:
     system("cls");
     printf(" Você então começa a completar a tabela...\n");
@@ -229,7 +216,7 @@ void Fase1()
     if (Acertos == 0) {
         coordxy(36,8);
         printf(">");
-    }if (Acertos == 1) {
+    } if (Acertos == 1) {
         coordxy(38,8);
         printf("F");
         coordxy(44,8);
@@ -239,7 +226,7 @@ void Fase1()
         printf("F   F   F");
         coordxy(54,8);
         printf(">");
-    }if (Acertos == 3) {
+    } if (Acertos == 3) {
         coordxy(38,8);
         printf("F   F   F   V     F");
         coordxy(63,9);
@@ -251,7 +238,7 @@ void Fase1()
         printf("F   V   F   F     F        F");
         coordxy(36,10);
         printf(">");
-    }if (Acertos == 5) {
+    } if (Acertos == 5) {
         coordxy(38,8);
         printf("F   F   F   V     F");
         coordxy(38,9);
@@ -260,7 +247,7 @@ void Fase1()
         printf("V");
         coordxy(63,10);
         printf(">");
-    }if (Acertos == 6) {
+    } if (Acertos == 6) {
         coordxy(38,8);
         printf("F   F   F   V     F");
         coordxy(38,9);
@@ -269,7 +256,7 @@ void Fase1()
         printf("V   F   F   V     V        F");
         coordxy(40,11);
         printf(">");
-    }if (Acertos == 7) {
+    } if (Acertos == 7) {
         coordxy(38,8);
         printf("F   F   F   V     F");
         coordxy(38,9);
@@ -283,7 +270,7 @@ void Fase1()
     }
     coordxy(6,15);
     printf("V\n      F");
-    printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d",Fs, Vs);
+    printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d", Fs, Vs);
     SetaUpDown(15, 3, 2, 1);
 
 switch (opcao){
@@ -293,7 +280,7 @@ switch (opcao){
             system("cls");
             Acertos++;
             goto Tabelas;
-        }if (Acertos == 6) {
+        } if (Acertos == 6) {
             Vs--;
             system("cls");
             Acertos++;
@@ -310,27 +297,27 @@ switch (opcao){
             system("cls");
             Acertos++;
             goto Tabelas;
-        }if (Acertos == 1) {
+        } if (Acertos == 1) {
             Fs--;
             system("cls");
             Acertos++;
             goto Tabelas;
-        }if (Acertos == 2) {
+        } if (Acertos == 2) {
             Fs--;
             system("cls");
             Acertos++;
             goto Tabelas;
-        }if (Acertos == 3) {
+        } if (Acertos == 3) {
             Fs--;
             system("cls");
             Acertos++;
             goto Tabelas;
-        }if (Acertos == 5) {
+        } if (Acertos == 5) {
             Fs--;
             system("cls");
             Acertos++;
             goto Tabelas;
-        }if (Acertos == 7) {
+        } if (Acertos == 7) {
             Fs--;
             coordxy(50,11);
             printf("F");
@@ -351,16 +338,14 @@ switch (opcao){
     }
 }
 
-void ErrorFase2()
-{
+void ErrorFase2() {
     char ErroPiso[] ="   Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n";
     SlowText(ErroPiso);
     Sleep(2000);
     GameOver();
 }
 
-void Fase2()
-{
+void Fase2() {
     int Acertos = 0;
     char Text1[] = "   Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
     SlowText(Text1);
@@ -378,8 +363,7 @@ void Fase2()
 
         switch (opcao){
             case 1:
-                if (Acertos == 0)
-                {
+                if (Acertos == 0) {
                     char Acerto1[] ="   Você acertou e passou para o próximo piso           \n";
                     Acertos++;
                     SlowText(Acerto1);
@@ -388,8 +372,7 @@ void Fase2()
                     ErrorFase2();
                 }
             case 2:
-                if (Acertos == 2)
-                {
+                if (Acertos == 2) {
                     char Acerto3[] = "   Você acertou, por pouco!                            \n";
                     Acertos++;
                     SlowText(Acerto3);
@@ -398,8 +381,7 @@ void Fase2()
                     ErrorFase2();
                 }
             case 3:
-                if (Acertos == 3)
-                {
+                if (Acertos == 3) {
                     char Acerto4[] = "   Você finalmente passou sem cair em nenhuma armadilha\n";
                     SlowText(Acerto4);
                     Sleep(3000);
@@ -409,8 +391,7 @@ void Fase2()
                     ErrorFase2();
                 }
             case 4:
-                if (Acertos == 1)
-                {
+                if (Acertos == 1) {
                     char Acerto2[] = "   Você acertou, tome cuidado com os pisos falsos      \n";
                     Acertos++;
                     SlowText(Acerto2);
@@ -421,8 +402,7 @@ void Fase2()
         }
 }
 
-void Fase3()
-{
+void Fase3() {
     char Text1Fase3[] = "   Você passa pela entrada da segunda fase e observa que há outra entrada, você anda até ela e de repente a entrada se \n\n fecha e você ouve uma voz.\n\n";
     char Text2Fase3[] = "   \"Eu sou o Deus daquilo que traz a tristeza e o medo, mas sempre chego na hora certa, as vezes venho depois de \n\n uma doença, e outras, depois de um ato de violência e também sou guardião daquilo que você procura, me diga do que \n\n eu sou Deus e sua passagem será liberada.\"\n\n";
     char Text3Fase3[] = "   Me diga, eu sou Deus da: ";
@@ -437,7 +417,7 @@ void Fase3()
         Sleep(4000);
         system("cls");
         Boss();
-    }else {
+    } else {
         char Text5Fase3[] = "\n   Se você não sabe que tipo de Deus eu sou você não é digno de me enfrentar, saia da minha pirâmide!\n";
         SlowText(Text5Fase3);
         Sleep(6000);
@@ -446,8 +426,7 @@ void Fase3()
     }
 }
 
-void Boss()
-{
+void Boss() {
     PlaySound(TEXT("Boss.wav"),NULL,SND_ASYNC|SND_LOOP);
     char Texto1[] = "   Anúbis: Você chegou até aqui, mas daqui você não passa!\n   Anúbis: Tente me vencer, você precisará de sorte, muita sorte!\n\n";
     char Texto2[] = "   Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.\n\n";
