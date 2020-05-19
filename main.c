@@ -411,7 +411,7 @@ void Fase3() {
     SlowText(Text3Fase3);
     fflush(stdin);
     gets(RespostaChar);
-    if ((strcmp (RespostaChar, "MORTE")== 0)||(strcmp (RespostaChar, "morte")== 0)||(strcmp (RespostaChar, "Morte")== 0)) {
+    if (strcasecmp (RespostaChar, "MORTE")== 0) {
         char Text4Fase3[] = "\n   Você descobriu do que eu sou Deus, agora me enfrente e verá o meu poder!\n";
         SlowText(Text4Fase3);
         Sleep(4000);
@@ -427,7 +427,7 @@ void Fase3() {
 }
 
 void Boss() {
-    PlaySound(TEXT("Boss.wav"),NULL,SND_ASYNC|SND_LOOP);
+    PlaySound(TEXT("Boss.wav"), NULL, SND_ASYNC|SND_LOOP);
     char Texto1[] = "   Anúbis: Você chegou até aqui, mas daqui você não passa!\n   Anúbis: Tente me vencer, você precisará de sorte, muita sorte!\n\n";
     char Texto2[] = "   Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.\n\n";
     SlowText(Texto1);
