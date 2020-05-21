@@ -13,31 +13,31 @@ void coordxy(int x,int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Mouse);
 }
 
-void SetaUpDown(La, coordx, BLimite, LOper) {
+void SetaUpDown(La, coordx, BLimite, LOper, SetaModel, SetaModelSpace) {
     opcao = 0;
     L=La; b=1;
     do{
         coordxy(coordx, L);
-        printf("->");
+        printf(SetaModel);
         coordxy(0,20);
         if(kbhit){KeyPress=getch();}
-        if(KeyPress == 80 && b < BLimite){coordxy(coordx, L);printf("  ");L+=LOper;b++;}
-        if(KeyPress == 72 && b > 1){coordxy(coordx, L);printf("  ");L-=LOper;b--;}
+        if(KeyPress == 80 && b < BLimite){coordxy(coordx, L);printf(SetaModelSpace);L+=LOper;b++;}
+        if(KeyPress == 72 && b > 1){coordxy(coordx, L);printf(SetaModelSpace);L-=LOper;b--;}
         if (KeyPress == 27) {Quit();}
         if(KeyPress == 13){opcao=b;}
     }while(opcao == 0);
 }
 
-void SetaLeftRight(La, coordy, BLimite, LOper) {
+void SetaLeftRight(La, coordy, BLimite, LOper, SetaModel, SetaModelSpace) {
     opcao = 0;
     L=La; b=1;
     do{
         coordxy(L, coordy);
-        printf(">");
+        printf(SetaModel);
         coordxy(0,20);
         if(kbhit){KeyPress=getch();}
-        if (KeyPress == 77 && b < BLimite) {coordxy(L, coordy);printf(" ");L+=LOper;b++;}
-        if (KeyPress == 75 && b > 1) {coordxy(L, coordy);printf(" ");L-=LOper;b--;}
+        if (KeyPress == 77 && b < BLimite) {coordxy(L, coordy);printf(SetaModelSpace);L+=LOper;b++;}
+        if (KeyPress == 75 && b > 1) {coordxy(L, coordy);printf(SetaModelSpace);L-=LOper;b--;}
         if (KeyPress == 27) {Quit();}
         if(KeyPress == 13){opcao=b;}
     }while(opcao == 0);
@@ -51,11 +51,12 @@ char SlowText(char* Text) {
 }
 
 void main() {
-    PlaySound(TEXT("menu.wav"), NULL,SND_ASYNC|SND_LOOP);
     setlocale(LC_ALL,"Portuguese");
+    PlaySound(TEXT("menu.wav"), NULL, SND_ASYNC|SND_LOOP);
     system("cls");
     printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
-    SetaUpDown(2, 3, 4, 1);
+    printf("\nPor Favor, coloque o jogo em tela cheia");
+    SetaUpDown(2, 3, 4, 1, "->", "  ");
 
     switch (opcao){
         case 1:
@@ -65,7 +66,7 @@ void main() {
             system("cls");
             printf("  Este é o menu do desenvolvedor, por favor digite sua senha: ");
             gets(Password);
-            if ((strcmp (Password, "1234")== 0)){
+            if (strcmp (Password, "1234")== 0) {
                 printf("  Verificando...\n");
                 Sleep(1000);
                 printf("  Você será direcionado para o menu de escolha de fase, por favor aguarde.");
@@ -98,7 +99,7 @@ void main() {
 void SelectFase() {
     system("cls");
     printf("     \"Menu de Fases\"\n\n      Ir para a Fase 1\n      Ir para a Fase 2\n      Ir para a Fase 3\n      Ir para o Boss\n\n      Voltar ao Menu principal\n");
-    SetaUpDown(2, 3, 6, 1);
+    SetaUpDown(2, 3, 6, 1, "->", "  ");
 
     switch (opcao){
         case 1:
@@ -134,7 +135,7 @@ void SelectFase() {
             printf("   Iniciando o Boss...\n");
             Sleep(1500);
             system("cls");
-            Boss();
+            BossEsfinge();
         case 6:
             main();
         default:
@@ -151,12 +152,19 @@ void Quit() {
     exit(0);
 }
 
+void Anubis() { // Em breve!!!
+    system("cls");
+    printf("Anúbis em construção, você será direcionado para o menu!\n");
+    system("pause");
+    main();
+}
+
 void GameOver() {
     char GameOver[] = "   Game Over";
     SlowText(GameOver);
     Sleep(2000);
     system("cls");
-    main();
+    Anubis();
 }
 
 void Player() {
@@ -271,7 +279,7 @@ void Fase1() {
     coordxy(6,15);
     printf("V\n      F");
     printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d", Fs, Vs);
-    SetaUpDown(15, 3, 2, 1);
+    SetaUpDown(15, 3, 2, 1, "->", "  ");
 
 switch (opcao){
     case 1:
@@ -289,7 +297,7 @@ switch (opcao){
             coordxy(2,22);
             printf("Você errou!");
             Sleep(2000);
-            main();
+            Anubis();
         }
     case 2:
         if (Acertos == 0) {
@@ -333,7 +341,7 @@ switch (opcao){
             coordxy(2,22);
             printf("Você errou!");
             Sleep(2000);
-            main();
+            Anubis();
         }
     }
 }
@@ -359,7 +367,7 @@ void Fase2() {
         if (Acertos == 3){coordxy(2,4);printf("Adicione um.              ");coordxy(49,7);printf("== Quarto Piso ==       \n");}
         coordxy(19,7);
         printf("\n\t\t\t\t\t\====================================\n\t\t\t\t\t|  1         2         3         4 |\n\t\t\t\t\t|        Posição do jogador        |\n\t\t\t\t\t====================================\n");
-        SetaLeftRight(41, 9, 4, 10);
+        SetaLeftRight(41, 9, 4, 10, ">", " ");
 
         switch (opcao){
             case 1:
@@ -402,115 +410,100 @@ void Fase2() {
         }
 }
 
+void cenario() {
+    system("cls");
+    char Texto1[] = "   Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala \n\n está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?,\n\n de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.\n\n Sem entender o que estava acontecendo você segue o caminho da voz.";
+    SlowText(Texto1);
+    Sleep(7000);
+    cenario1();
+}
+
+void cenario1() {
+    system("cls");
+    printf("Em Construção\n\n");
+    system("pause");
+    main();
+}
+
 void Fase3() {
-    char Text1Fase3[] = "   Você passa pela entrada da segunda fase e observa que há outra entrada, você anda até ela e de repente a entrada se \n\n fecha e você ouve uma voz.\n\n";
-    char Text2Fase3[] = "   \"Eu sou o Deus daquilo que traz a tristeza e o medo, mas sempre chego na hora certa, as vezes venho depois de \n\n uma doença, e outras, depois de um ato de violência e também sou guardião daquilo que você procura, me diga do que \n\n eu sou Deus e sua passagem será liberada.\"\n\n";
-    char Text3Fase3[] = "   Me diga, eu sou Deus da: ";
+    char Text1Fase3[] = "   Você passa pela entrada da segunda fase e observa que há outra passagem, você anda até ela e de repente a entrada \n\n se fecha e você ouve um barulho intenso, uma enorme esfinge feita de areia se ergue diante de você.\n\n";
+    char Text2Fase3[] = "   \"Esfinge: Eu sou a última porta para o seu destino, responda corretamente meu enigma e sua passagem será liberada.\"\n\n";
+    char Text3Fase3[] = "   Esfinge: Eu nunca fui e sempre poderei ser, ninguém jamais me viu ou verá, mas sou a certeza de todos os que vivem e que respiram, quem sou eu?: ";
     SlowText(Text1Fase3);
     SlowText(Text2Fase3);
     SlowText(Text3Fase3);
     fflush(stdin);
     gets(RespostaChar);
-    if (strcasecmp (RespostaChar, "MORTE")== 0) {
-        char Text4Fase3[] = "\n   Você descobriu do que eu sou Deus, agora me enfrente e verá o meu poder!\n";
+    if ((strcasecmp (RespostaChar, "amanha")== 0)||(strcasecmp (RespostaChar, "futuro")== 0)) {
+        char Text4Fase3[] = "\n   Você acertou o meu enigma, eu te concedo a passagem para a próxima sala!\n";
         SlowText(Text4Fase3);
+        fflush(stdin);
         Sleep(4000);
         system("cls");
-        Boss();
+        cenario();
+
     } else {
-        char Text5Fase3[] = "\n   Se você não sabe que tipo de Deus eu sou você não é digno de me enfrentar, saia da minha pirâmide!\n";
-        SlowText(Text5Fase3);
-        Sleep(6000);
-        system("cls");
-        main();
+       printf("\nVocê errou, agora meu enfrente!!!\n\n");
+       system("pause");
+       BossEsfinge();
     }
 }
 
-void Boss() {
-    PlaySound(TEXT("Boss.wav"), NULL, SND_ASYNC|SND_LOOP);
-    char Texto1[] = "   Anúbis: Você chegou até aqui, mas daqui você não passa!\n   Anúbis: Tente me vencer, você precisará de sorte, muita sorte!\n\n";
-    char Texto2[] = "   Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.\n\n";
-    SlowText(Texto1);
-    SlowText(Texto2);
-    Sleep(3000);
-    char Texto3[] = "   Você vai em busca de sua arma para derrotar Anúbis, mas derrepente você escuta sua voz.\n\n";
-    char Texto4[] = "   Anúbis: Você nunca saberá o que é (A->B)<->(B'->A').\n\n";
-    SlowText(Texto3);
-    SlowText(Texto4);
-    AnubisEnter1:
-    printf("\n   Aperte Enter se já tiver memorizado a espressão dita por Anúbis.");
-    fflush(stdin);
-    if (kbhit) {KeyPress=getch();}
-    if (KeyPress == 27) {Quit();}
-    if (KeyPress == 13) {
-        BossDoor:
-        system("cls");
-        char Texto5[] = "   Encontre pela sala o que é a expressão dita por Anúbis.\n\n";
-        char Texto6[] = "   Você vê duas peças, uma em sua direita e outra em sua esquerda.\n\n   O que você deseja fazer ?\n\n";
-        SlowText(Texto5);
-        SlowText(Texto6);
-        printf("\t\t\===================================================================================\n\t\t|   Virar para a esquerda       Seguir em frente            Virar para a direita  |\n\t\t===================================================================================\n");
-        SetaLeftRight(18, 7, 3, 28);
-
-        switch(opcao){
-            case 1:
-                    coordxy(2,0);
-                    system("cls");
-                    char Contradicao[] = "   Você encontrou uma peça escrita Contradição, o que você deseja fazer ?\n";
-                    SlowText(Contradicao);
-                    printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Essa não é a peça para a arma   |\n\t\t=================================================================\n");
-                    fflush(stdin);
-                    SetaLeftRight(18, 3, 2, 28);
-
-                    switch(opcao){
-                        case 1:
-                            system("cls");
-                            char Contradicao3[] = "   Você tentou usar a arma Contradição para derrotar Anúbis...\n\n   A arma não funcionou e Anúbis conseguiu chegar até você e te matou...\n\n";
-                            SlowText(Contradicao3);
-                            Sleep(5000);
-                            GameOver();
-                        case 2:
-                            coordxy(0,10);
-                            char Contradicao4[] = "   Você descartou a peça Contradição e voltou para o inicio.";
-                            SlowText(Contradicao4);
-                            Sleep(5000);
-                            system("cls");
-                            goto BossDoor;
-                    }
-            case 2:
-                system("cls");
-                char MidRoad[] = "   Esse não era o caminho correto! \n\n   Você não conseguiu reunir as peças necessárias para derrotar Anúbis.\n\n   Ele arrancou a sua cabeça!!\n\n";
-                SlowText(MidRoad);
-                Sleep(2000);
-                GameOver();
-            case 3:
-                    system("cls");
-                    coordxy(2,0);
-                    system("cls");
-                    char Tautologia[] = "   Você encontrou uma peça escrita Tautologia, o que você deseja fazer ?\n";
-                    SlowText(Tautologia);
-                    printf("\n\t\t\    =============================================================\n\t\t    |   Pegar a peça e usar                           Descartar |\n\t\t    =============================================================\n");
-                    fflush(stdin);
-                    SetaLeftRight(22, 3, 2, 46);
-
-                    switch(opcao){
-                        case 1:
-                            system("cls");
-                            char Text8[] = "   Você conseguiu a peça correta para a arma.\n\n   Você termina de montar a arma definitiva para derrotar Anúbis e usa contra ele.\n\n";
-                            SlowText(Text8);
-                            Sleep(2000);
-                            printf("   Parabéns %s, você venceu!!\n\n", NamePlayer);
-                            printf("   Obrigado por jogar o Beta.");
-                            Sleep(7000);
-                            system("cls");
-                            main();
-                        case 2:
-                            system("cls");
-                            char Text2[] = "   Você acaba de jogar a arma para derrotar Anúbis fora.\n\n   Você começa a correr pela sala de Anúbis, mas infelizmente ele consegue te pegar...\n\n";
-                            SlowText(Text2);
-                            Sleep(3500);
-                            GameOver();
-                    }
-        }
-    } else {goto AnubisEnter1;}
+void EsfingeImage() {
+    printf("\n\t\t......................................................................\n\t\t............................'',;;::::;,'..............................\n\t\t..................'',;::cllooooddodxxxdolllcc::;,''...................\n\t\t...............,coodxxxddxxddddxddxkkxxxxxxxxxxxxdlc:,'...............\n\t\t..........'',,:xOkddxxxxkkxxxxxxodkkkkxkkkOOkkxxxdllol:;,,'''.........\n\t\t.....'',,;;,;cxOkkkxdddxkkOOkkOkddxxkkOO00000Oxddoododdc;;;;;;,''.....\n\t\t..',,;;;;;;;lkOOkkkkxdddxO000OOOxolldkO0KKKK0kxdodddodddl::::;;::;,'..\n\t\t,;;;;;;;;;;lO0OOkkkkxddookOOOkkkkkOOOO000000kxdddxxdddddxl:::::::::::;\n\t\t::;;;;;;;:lk0OOOkOOOkxolldxkxdoodkOOkkxxkOOOkdddxkkxdoodxxoccccccccccc\n\t\t::;;;;:::lkOOOkkOOOOOkdocclol::;;okOko:;:ldxdxxxOkkkkxddxxxocllllccccc\n\t\t:;;;::::lxOOOkkkkkkddxdolcllllccclkOkxdlcloddxkkdodxxxxdxkOxolllllllll\n\t\t:;;:::clx00OkkkkkkdldxdodxxkkOOxlldxkO00Ok0000OxdlodxxddxxkOkoloooooll\n\t\t::::cccdO00Okkkxxxdx0OoclxkOOOOxlcccldk000KK0OkkOkooxxddxkkOOkoloooooo\n\t\t:::cccok00OOxxkxxxocoxo::coxxkkoloxxdodO000OOkxxl:coddxxkkOOOOxooooooo\n\t\t::ccclxOOOOkkxxxxxxdolc:;;cloddlloooddxkOkkkxxdoldxxdxxkkkOOOOkdlooooo\n\t\t:ccllokOOOOOkxxxxkkxkko:;;:coo:,,;;::cloxkxxddxxkxxxxxkkkkOOOOOxoooooo\n\t\tcccllok0000Okkkkkkkkkkxc;,,;cooccclooddkkxdoookOkkkkkkOOOOOOOOOxoloooo\n\t\tcccllldO00000OOkkkkkkkkd;,'';:ldxkOO00OOkoc:cdOOOOOOOO00000000kdlloooo\n\t\tccllooloxO000OOkkkkkkkkxl'...:odkkO00000x;.'ck0OOO0OO0000000Odlllloooo\n\t\tcllooodolox0OOOkkxkxxxxxdc,..:ddkO000K00d,;lxOOOOOOOO00O00Oocccllllooo\n\t\tlllooddddlldkOkkkxxxxxxxxo:;,cdxkO00KK00kodxOOOOOOO00OO00Odlcccclllllo\n\t\tlllooddddxxddkOkkxdddddddl:;;lxxkO000K00kdxkOOOOOOOOOO00OOOOdc:cclllll\n\t\tllloooooodkOkdkOOkxddooool:;:oxxkOO00K00OxkOkOOOOOOOOOOOO00Oxc:cccllll\n\t\tcllooooodxO00kxk0OOkxdollll::oddxkkOOOkO0kkkxkOOOOO0OOOO000Okl:::cccll\n\t\tcllooooodkO000kkO00Oxolllcll;''...''',;;lxkxdkOkkOOOOOO0000Okl:::cccll\n\t\tlloooooodkO000OkkO0Oxollc:coc.      ....ckOxxOkkkkOOOOO000OOko::::cccl\n\t\tllooollodkOO000kkOOOxoccc:cll:.       .ckOkdxOkkkkOOOO00OOOkxo::::cccl\n\t\tlllllllodkO0000OkkOOdlccc::lcc;.     .:kOkkdxOkkkOOOkO0OOkkxxdc::::ccc\n\t\tclllllloxkO00000kxkkdlccc::ccc:'.   .;dkOOxoxOkkkkkxxOOOOkxxxdc::::ccc\n\t\tclllllloxO0000000kddolccc:;:cc:,',codkkOOOxoxOkkxddxOOOOkkkkxdl:::cccc\n\t\tclllllloxO00000000Oxoollcc:llllldkOOOOOOO0kdoodddxkO00OOkkkkxdl::ccccc\n\t\tlllllcldkO00000K0000OOOkkkOOkkkkOOOOOOO0000OOOO000OO000Okkkxddl:::cccc");
 }
+
+void BossEsfinge() {
+    system("cls");
+    int VidaEsfinge = 500;
+    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|/////////////////////////|%d", VidaEsfinge);
+    EsfingeImage();
+    printf("\n Que animal anda pela manhã sobre quatro patas, a tarde sobre duas e a noite sobre três? \n\n   O Gato \n   O Chachorro \n   O Homem");
+    SetaUpDown(36, 0, 3, 1, "->", "  ");
+
+    if (opcao == 3) {
+        system("cls");
+        VidaEsfinge -= 100;
+        printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|////////////////////-----|%d", VidaEsfinge);
+        EsfingeImage();
+        printf("\n Por que seria o homem? \n\n   Porque o homem é um bípede \n   Porque o homem não quer mais viver uma mentira \n   Porque na infância o homem engatinha \n   Porque na infância o homem pensa muito");
+        SetaUpDown(36, 0, 4, 1, "->", "  ");
+
+        if (opcao == 3) {
+            system("cls");
+            VidaEsfinge -= 100;
+            printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|///////////////----------|%d", VidaEsfinge);
+            EsfingeImage();
+            printf("\n E o que mais? \n\n   Na idade adulta ele anda ereto \n   Essa é toda a resposta \n   Não tenho tempo para essas questões filosóficas, me deixe passar \n   Não idade adulta ele pensa muito, e pensar nos faz andar");
+            SetaUpDown(36, 0, 4, 1, "->", "  ");
+
+            if (opcao == 1) {
+                system("cls");
+                VidaEsfinge -= 100;
+                printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|//////////---------------|%d", VidaEsfinge);
+                EsfingeImage();
+                printf("\n Mais alguma coisa? \n   Sim, na velhice o homem necessita de uma bengala para andar \n   Não, é apenas essa a resposta", VidaEsfinge);
+                SetaUpDown(35, 0, 2, 1, "->", "  ");
+
+                if (opcao == 1) {
+                    system("cls");
+                    VidaEsfinge = 0;
+                    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|-------------------------|%d", VidaEsfinge);
+                    EsfingeImage();
+                    printf("\n\nVocê me venceu, como conseguiu?\n");
+                    system("pause");
+                    cenario();
+                } else {
+                    Anubis();
+                }
+            } else {
+                Anubis();
+            }
+       } else {
+            Anubis();
+        }
+    } else {
+        Anubis();
+    }
+}
+
