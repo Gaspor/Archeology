@@ -54,7 +54,7 @@ void main() {
     PlaySound(TEXT("menu.wav"), NULL,SND_ASYNC|SND_LOOP);
     setlocale(LC_ALL,"Portuguese");
     system("cls");
-    printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
+    printf("     \"Menu de opÃ§Ãµes\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
     SetaUpDown(2, 3, 4, 1);
 
     switch (opcao){
@@ -63,12 +63,12 @@ void main() {
             Player();
         case 2:
             system("cls");
-            printf("  Este é o menu do desenvolvedor, por favor digite sua senha: ");
+            printf("  Este Ã© o menu do desenvolvedor, por favor digite sua senha: ");
             gets(Password);
             if ((strcmp (Password, "1234")== 0)){
                 printf("  Verificando...\n");
                 Sleep(1000);
-                printf("  Você será direcionado para o menu de escolha de fase, por favor aguarde.");
+                printf("  VocÃª serÃ¡ direcionado para o menu de escolha de fase, por favor aguarde.");
                 Sleep(2000);
                 system("cls");
                 SelectFase();
@@ -82,7 +82,7 @@ void main() {
             }
         case 3:
             system("cls");
-            printf("  Você está sendo direcionado ao nosso projeto no GitHub...");
+            printf("  VocÃª estÃ¡ sendo direcionado ao nosso projeto no GitHub...");
             Sleep(2000);
             system("start https://github.com/Gaspor/Archeology");
             Sleep(2000);
@@ -90,7 +90,7 @@ void main() {
         case 4:
             Quit();
         default:
-            printf("  Essa opção não existe, por favor tente uma nova.\n");
+            printf("  Essa opÃ§Ã£o nÃ£o existe, por favor tente uma nova.\n");
             Sleep(1500);
     }
 }
@@ -103,7 +103,7 @@ void SelectFase() {
     switch (opcao){
         case 1:
             system("cls");
-            printf("   Você escolheu ir para a Fase 1.\n");
+            printf("   VocÃª escolheu ir para a Fase 1.\n");
             Sleep(1000);
             printf("   Iniciando a Fase 1...\n");
             Sleep(1500);
@@ -111,7 +111,7 @@ void SelectFase() {
             Fase1();
         case 2:
             system("cls");
-            printf("   Você escolheu ir para a Fase 2.\n");
+            printf("   VocÃª escolheu ir para a Fase 2.\n");
             Sleep(1000);
             printf("   Iniciando a Fase 2...\n");
             Sleep(1500);
@@ -120,7 +120,7 @@ void SelectFase() {
             Fase2();
         case 3:
             system("cls");
-            printf("   Você escolheu ir para a Fase 3.\n");
+            printf("   VocÃª escolheu ir para a Fase 3.\n");
             Sleep(1000);
             printf("   Iniciando a Fase 3...\n");
             Sleep(1500);
@@ -129,7 +129,7 @@ void SelectFase() {
             Fase3();
         case 4:
             system("cls");
-            printf("   Você escolheu ir para a Fase do Boss.\n");
+            printf("   VocÃª escolheu ir para a Fase do Boss.\n");
             Sleep(1000);
             printf("   Iniciando o Boss...\n");
             Sleep(1500);
@@ -138,7 +138,7 @@ void SelectFase() {
         case 6:
             main();
         default:
-            printf("  Opção inválida, tente outra");
+            printf("  OpÃ§Ã£o invÃ¡lida, tente outra");
             Sleep(1000);
             SelectFase();
     }
@@ -161,14 +161,14 @@ void GameOver() {
 
 void Player() {
     system("cls");
-    printf("  Por favor, não aperte nada enquanto o texto é digitado em sua tela.\n");
-    printf("  Por favor, não use caractere especial\n\n");
-    printf("  Digite o nome do Arqueólogo: ");
+    printf("  Por favor, nÃ£o aperte nada enquanto o texto Ã© digitado em sua tela.\n");
+    printf("  Por favor, nÃ£o use caractere especial\n\n");
+    printf("  Digite o nome do ArqueÃ³logo: ");
     fflush(stdin);
     gets(NamePlayer);
     KbLore:
         coordxy(0,5);
-        printf("\n\n Você deseja pular a História? \n   Aperte S para Sim.\n   Aperte N para Não.\n");
+        printf("\n\n VocÃª deseja pular a HistÃ³ria? \n   Aperte S para Sim.\n   Aperte N para NÃ£o.\n");
         if (kbhit) {KeyPress=getch();}
         if (KeyPress == 110) {Lore();}
         if (KeyPress == 115) {Fase1();}
@@ -177,10 +177,10 @@ void Player() {
 
 void Lore() {
     system("cls");
-    char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n   Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\n   Ninguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\n um guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\n tomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n\n";
-    char Texto2[] = "  Vocé é um arqueólogo conhecido como";
-    char Texto3[] = "ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \n\n desafios... \n\n";
-    char TextFase1[] = "  Você entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peças faltando, \n\n sem saber o que fazer você começa a andar pela sala.\n\n Andando pela sala você encontra uma sacola com 6 letras F's e duas letras V's, depois de encontrar está sacola você \n\n decide voltar para a porta, ao voltar você logo percebe o que terá que fazer, você terá que colocar essas letras da \n\n sacola na porta para passar \n\n";
+    char Texto1[2000] = "   HÃ¡ muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia nÃ£o ter fim. Em meio a todo aquele caos algo brilhava nos cÃ©us, e seu brilho ficava cada vez \n\n mais intenso e mais prÃ³ximo, atÃ© que esse misterioso brilho se depara com o chÃ£o, causando um grande alvoroÃ§o em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construÃ­ram uma enorme pirÃ¢mide em volta do amuleto com diversas armadilhas. \n\n   Depois de sÃ©culos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de OsÃ­ris. \n\n   NinguÃ©m se atrevia a entrar naquela pirÃ¢mide, pois alÃ©m das armadilhas, muitos diziam que os antigos designaram \n\n um guardiÃ£o para a proteÃ§Ã£o do amuleto, mas a ganancia humana Ã© grande demais, e em algum dia alguÃ©m tentara \n\n tomar posse desse poderoso artefato. Essa Ã© a lenda que Ã© contada atÃ© os dias de hoje.\n\n";
+    char Texto2[] = "  VocÃ© Ã© um arqueÃ³logo conhecido como";
+    char Texto3[] = "ao estudar estÃ¡ lenda vocÃª decide ir em busca deste artefato antigo...\n\n  Essa serÃ¡ um jornada tortuosa, e para enfim alcanÃ§ar o antigo artefato, vocÃª terÃ¡ que passar pelos mais difÃ­ceis \n\n desafios... \n\n";
+    char TextFase1[] = "  VocÃª entra na piramide e logo se depara com o primeiro desafio, uma porta com um tipo de tabela com peÃ§as faltando, \n\n sem saber o que fazer vocÃª comeÃ§a a andar pela sala.\n\n Andando pela sala vocÃª encontra uma sacola com 6 letras F's e duas letras V's, depois de encontrar estÃ¡ sacola vocÃª \n\n decide voltar para a porta, ao voltar vocÃª logo percebe o que terÃ¡ que fazer, vocÃª terÃ¡ que colocar essas letras da \n\n sacola na porta para passar \n\n";
 
     SlowText(Texto1);
     fflush(stdin);
@@ -204,7 +204,7 @@ void Fase1() {
     int Acertos = 0, Vs = 2, Fs = 6;
     Tabelas:
     system("cls");
-    printf(" Você então começa a completar a tabela...\n");
+    printf(" VocÃª entÃ£o comeÃ§a a completar a tabela...\n");
     coordxy(0,6);
     printf("\t\t\t\t  ========================================\n");
     printf("\t\t\t\t  |   A   B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
@@ -212,7 +212,7 @@ void Fase1() {
     printf("\t\t\t\t  |   F   V   F   F     F                |\n");
     printf("\t\t\t\t  |       F   F   V     V                |\n");
     printf("\t\t\t\t  |   V       V         F        F       |\n");
-    printf("\t\t\t\t  ========================================\n\n O que você deseja colocar nesta parte da tabela?");
+    printf("\t\t\t\t  ========================================\n\n O que vocÃª deseja colocar nesta parte da tabela?");
     if (Acertos == 0) {
         coordxy(36,8);
         printf(">");
@@ -270,7 +270,7 @@ void Fase1() {
     }
     coordxy(6,15);
     printf("V\n      F");
-    printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d", Fs, Vs);
+    printf("\n\n InventÃ¡rio\n  Total de F: %d\n  Total de V: %d", Fs, Vs);
     SetaUpDown(15, 3, 2, 1);
 
 switch (opcao){
@@ -287,7 +287,7 @@ switch (opcao){
             goto Tabelas;
         } else {
             coordxy(2,22);
-            printf("Você errou!");
+            printf("VocÃª errou!");
             Sleep(2000);
             main();
         }
@@ -322,7 +322,7 @@ switch (opcao){
             coordxy(50,11);
             printf("F");
             coordxy(1,22);
-            char NextFase[] = " A porta se abre e você consegue ir pra próxima sala.";
+            char NextFase[] = " A porta se abre e vocÃª consegue ir pra prÃ³xima sala.";
             SlowText(NextFase);
             fflush(stdin);
             Sleep(1000);
@@ -331,7 +331,7 @@ switch (opcao){
             Fase2();
         } else {
             coordxy(2,22);
-            printf("Você errou!");
+            printf("VocÃª errou!");
             Sleep(2000);
             main();
         }
@@ -339,7 +339,7 @@ switch (opcao){
 }
 
 void ErrorFase2() {
-    char ErroPiso[] ="   Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n";
+    char ErroPiso[] ="   VocÃª pisou em um lugar que nÃ£o era seguro, o chÃ£o desmoronou, e vocÃª morreu com a queda.\n";
     SlowText(ErroPiso);
     Sleep(2000);
     GameOver();
@@ -347,24 +347,24 @@ void ErrorFase2() {
 
 void Fase2() {
     int Acertos = 0;
-    char Text1[] = "   Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
+    char Text1[] = "   VocÃª se depara com uma entrada, anda atÃ© ela e quando estÃ¡ chegando, o chÃ£o comeÃ§a a tremer. De repente\nvocÃª percebe que alguns pisos nÃ£o tremem e eles serÃ£o o seu caminho atÃ© a entrada.\n";
     SlowText(Text1);
     Acerto:
         fflush(stdin);
         coordxy(2,3);
         printf("Passos: ");
-        if (Acertos == 0){coordxy(2,4);printf("Vá ao maxímo para esquerda.              ");coordxy(49,7);printf("== Primeiro Piso == \n");}
+        if (Acertos == 0){coordxy(2,4);printf("VÃ¡ ao maxÃ­mo para esquerda.              ");coordxy(49,7);printf("== Primeiro Piso == \n");}
         if (Acertos == 1){coordxy(2,4);printf("Quadruplique!!              ");coordxy(49,7);printf("== Segundo Piso == \n");}
         if (Acertos == 2){coordxy(2,4);printf("Divida por dois.              ");coordxy(49,7);printf("== Terceiro Piso == \n");}
         if (Acertos == 3){coordxy(2,4);printf("Adicione um.              ");coordxy(49,7);printf("== Quarto Piso ==       \n");}
         coordxy(19,7);
-        printf("\n\t\t\t\t\t\====================================\n\t\t\t\t\t|  1         2         3         4 |\n\t\t\t\t\t|        Posição do jogador        |\n\t\t\t\t\t====================================\n");
+        printf("\n\t\t\t\t\t\====================================\n\t\t\t\t\t|  1         2         3         4 |\n\t\t\t\t\t|        PosiÃ§Ã£o do jogador        |\n\t\t\t\t\t====================================\n");
         SetaLeftRight(41, 9, 4, 10);
 
         switch (opcao){
             case 1:
                 if (Acertos == 0) {
-                    char Acerto1[] ="   Você acertou e passou para o próximo piso           \n";
+                    char Acerto1[] ="   VocÃª acertou e passou para o prÃ³ximo piso           \n";
                     Acertos++;
                     SlowText(Acerto1);
                     goto Acerto;
@@ -373,7 +373,7 @@ void Fase2() {
                 }
             case 2:
                 if (Acertos == 2) {
-                    char Acerto3[] = "   Você acertou, por pouco!                            \n";
+                    char Acerto3[] = "   VocÃª acertou, por pouco!                            \n";
                     Acertos++;
                     SlowText(Acerto3);
                     goto Acerto;
@@ -382,7 +382,7 @@ void Fase2() {
                 }
             case 3:
                 if (Acertos == 3) {
-                    char Acerto4[] = "   Você finalmente passou sem cair em nenhuma armadilha\n";
+                    char Acerto4[] = "   VocÃª finalmente passou sem cair em nenhuma armadilha\n";
                     SlowText(Acerto4);
                     Sleep(3000);
                     system("cls");
@@ -392,7 +392,7 @@ void Fase2() {
                 }
             case 4:
                 if (Acertos == 1) {
-                    char Acerto2[] = "   Você acertou, tome cuidado com os pisos falsos      \n";
+                    char Acerto2[] = "   VocÃª acertou, tome cuidado com os pisos falsos      \n";
                     Acertos++;
                     SlowText(Acerto2);
                     goto Acerto;
@@ -403,50 +403,49 @@ void Fase2() {
 }
 
 void Fase3() {
-    char Text1Fase3[] = "   Você passa pela entrada da segunda fase e observa que há outra entrada, você anda até ela e de repente a entrada se \n\n fecha e você ouve uma voz.\n\n";
-    char Text2Fase3[] = "   \"Eu sou o Deus daquilo que traz a tristeza e o medo, mas sempre chego na hora certa, as vezes venho depois de \n\n uma doença, e outras, depois de um ato de violência e também sou guardião daquilo que você procura, me diga do que \n\n eu sou Deus e sua passagem será liberada.\"\n\n";
-    char Text3Fase3[] = "   Me diga, eu sou Deus da: ";
+    char Text1Fase3[] = "   VocÃª passa pela entrada da segunda fase e observa que hÃ¡ outra passagem, vocÃª anda atÃ© ela e de repente a entrada \n\n se fecha e vocÃª ouve um barulho intenso, uma enorme esfinge feita de areia se ergue diante de vocÃª.\n\n";
+    char Text2Fase3[] = "   \"Esfinge: Eu sou a Ãºltima porta para o seu destino, responda corretamente meu enigma e sua passagem serÃ¡ liberada.\"\n\n";
+    char Text3Fase3[] = "   Esfinge: Eu nunca fui e sempre poderei ser, ninguÃ©m jamais me viu ou verÃ¡, mas sou a certeza de todos os que vivem e que respiram, quem sou eu?: ";
     SlowText(Text1Fase3);
     SlowText(Text2Fase3);
     SlowText(Text3Fase3);
     fflush(stdin);
     gets(RespostaChar);
-    if (strcasecmp (RespostaChar, "MORTE")== 0) {
-        char Text4Fase3[] = "\n   Você descobriu do que eu sou Deus, agora me enfrente e verá o meu poder!\n";
+    if ((strcasecmp (RespostaChar, "amanha")== 0)||(strcasecmp (RespostaChar, "futuro")== 0)) {
+        char Text4Fase3[] = "\n   VocÃª acertou o meu enigma, eu te concedo a passagem para a prÃ³xima sala!\n";
         SlowText(Text4Fase3);
+        fflush(stdin);
         Sleep(4000);
         system("cls");
-        Boss();
+        cenario();
+
     } else {
-        char Text5Fase3[] = "\n   Se você não sabe que tipo de Deus eu sou você não é digno de me enfrentar, saia da minha pirâmide!\n";
-        SlowText(Text5Fase3);
-        Sleep(6000);
-        system("cls");
-        main();
+       system("cls");
+       Boss();
     }
 }
 
 void Boss() {
     PlaySound(TEXT("Boss.wav"), NULL, SND_ASYNC|SND_LOOP);
-    char Texto1[] = "   Anúbis: Você chegou até aqui, mas daqui você não passa!\n   Anúbis: Tente me vencer, você precisará de sorte, muita sorte!\n\n";
-    char Texto2[] = "   Anúbis é um inimigo extremamete poderoso, e para derrotá-lo você deve encontrar uma arma poderosa.\n\n";
+    char Texto1[] = "   AnÃºbis: VocÃª chegou atÃ© aqui, mas daqui vocÃª nÃ£o passa!\n   AnÃºbis: Tente me vencer, vocÃª precisarÃ¡ de sorte, muita sorte!\n\n";
+    char Texto2[] = "   AnÃºbis Ã© um inimigo extremamete poderoso, e para derrotÃ¡-lo vocÃª deve encontrar uma arma poderosa.\n\n";
     SlowText(Texto1);
     SlowText(Texto2);
     Sleep(3000);
-    char Texto3[] = "   Você vai em busca de sua arma para derrotar Anúbis, mas derrepente você escuta sua voz.\n\n";
-    char Texto4[] = "   Anúbis: Você nunca saberá o que é (A->B)<->(B'->A').\n\n";
+    char Texto3[] = "   VocÃª vai em busca de sua arma para derrotar AnÃºbis, mas derrepente vocÃª escuta sua voz.\n\n";
+    char Texto4[] = "   AnÃºbis: VocÃª nunca saberÃ¡ o que Ã© (A->B)<->(B'->A').\n\n";
     SlowText(Texto3);
     SlowText(Texto4);
     AnubisEnter1:
-    printf("\n   Aperte Enter se já tiver memorizado a espressão dita por Anúbis.");
+    printf("\n   Aperte Enter se jÃ¡ tiver memorizado a espressÃ£o dita por AnÃºbis.");
     fflush(stdin);
     if (kbhit) {KeyPress=getch();}
     if (KeyPress == 27) {Quit();}
     if (KeyPress == 13) {
         BossDoor:
         system("cls");
-        char Texto5[] = "   Encontre pela sala o que é a expressão dita por Anúbis.\n\n";
-        char Texto6[] = "   Você vê duas peças, uma em sua direita e outra em sua esquerda.\n\n   O que você deseja fazer ?\n\n";
+        char Texto5[] = "   Encontre pela sala o que Ã© a expressÃ£o dita por AnÃºbis.\n\n";
+        char Texto6[] = "   VocÃª vÃª duas peÃ§as, uma em sua direita e outra em sua esquerda.\n\n   O que vocÃª deseja fazer ?\n\n";
         SlowText(Texto5);
         SlowText(Texto6);
         printf("\t\t\===================================================================================\n\t\t|   Virar para a esquerda       Seguir em frente            Virar para a direita  |\n\t\t===================================================================================\n");
@@ -456,22 +455,22 @@ void Boss() {
             case 1:
                     coordxy(2,0);
                     system("cls");
-                    char Contradicao[] = "   Você encontrou uma peça escrita Contradição, o que você deseja fazer ?\n";
+                    char Contradicao[] = "   VocÃª encontrou uma peÃ§a escrita ContradiÃ§Ã£o, o que vocÃª deseja fazer ?\n";
                     SlowText(Contradicao);
-                    printf("\n\t\t\=================================================================\n\t\t|   Pegar a peça e usar         Essa não é a peça para a arma   |\n\t\t=================================================================\n");
+                    printf("\n\t\t\=================================================================\n\t\t|   Pegar a peÃ§a e usar         Essa nÃ£o Ã© a peÃ§a para a arma   |\n\t\t=================================================================\n");
                     fflush(stdin);
                     SetaLeftRight(18, 3, 2, 28);
 
                     switch(opcao){
                         case 1:
                             system("cls");
-                            char Contradicao3[] = "   Você tentou usar a arma Contradição para derrotar Anúbis...\n\n   A arma não funcionou e Anúbis conseguiu chegar até você e te matou...\n\n";
+                            char Contradicao3[] = "   VocÃª tentou usar a arma ContradiÃ§Ã£o para derrotar AnÃºbis...\n\n   A arma nÃ£o funcionou e AnÃºbis conseguiu chegar atÃ© vocÃª e te matou...\n\n";
                             SlowText(Contradicao3);
                             Sleep(5000);
                             GameOver();
                         case 2:
                             coordxy(0,10);
-                            char Contradicao4[] = "   Você descartou a peça Contradição e voltou para o inicio.";
+                            char Contradicao4[] = "   VocÃª descartou a peÃ§a ContradiÃ§Ã£o e voltou para o inicio.";
                             SlowText(Contradicao4);
                             Sleep(5000);
                             system("cls");
@@ -479,7 +478,7 @@ void Boss() {
                     }
             case 2:
                 system("cls");
-                char MidRoad[] = "   Esse não era o caminho correto! \n\n   Você não conseguiu reunir as peças necessárias para derrotar Anúbis.\n\n   Ele arrancou a sua cabeça!!\n\n";
+                char MidRoad[] = "   Esse nÃ£o era o caminho correto! \n\n   VocÃª nÃ£o conseguiu reunir as peÃ§as necessÃ¡rias para derrotar AnÃºbis.\n\n   Ele arrancou a sua cabeÃ§a!!\n\n";
                 SlowText(MidRoad);
                 Sleep(2000);
                 GameOver();
@@ -487,30 +486,44 @@ void Boss() {
                     system("cls");
                     coordxy(2,0);
                     system("cls");
-                    char Tautologia[] = "   Você encontrou uma peça escrita Tautologia, o que você deseja fazer ?\n";
+                    char Tautologia[] = "   VocÃª encontrou uma peÃ§a escrita Tautologia, o que vocÃª deseja fazer ?\n";
                     SlowText(Tautologia);
-                    printf("\n\t\t\    =============================================================\n\t\t    |   Pegar a peça e usar                           Descartar |\n\t\t    =============================================================\n");
+                    printf("\n\t\t\    =============================================================\n\t\t    |   Pegar a peÃ§a e usar                           Descartar |\n\t\t    =============================================================\n");
                     fflush(stdin);
                     SetaLeftRight(22, 3, 2, 46);
 
                     switch(opcao){
                         case 1:
                             system("cls");
-                            char Text8[] = "   Você conseguiu a peça correta para a arma.\n\n   Você termina de montar a arma definitiva para derrotar Anúbis e usa contra ele.\n\n";
+                            char Text8[] = "   VocÃª conseguiu a peÃ§a correta para a arma.\n\n   VocÃª termina de montar a arma definitiva para derrotar AnÃºbis e usa contra ele.\n\n";
                             SlowText(Text8);
                             Sleep(2000);
-                            printf("   Parabéns %s, você venceu!!\n\n", NamePlayer);
+                            printf("   ParabÃ©ns %s, vocÃª venceu!!\n\n", NamePlayer);
                             printf("   Obrigado por jogar o Beta.");
                             Sleep(7000);
                             system("cls");
                             main();
                         case 2:
                             system("cls");
-                            char Text2[] = "   Você acaba de jogar a arma para derrotar Anúbis fora.\n\n   Você começa a correr pela sala de Anúbis, mas infelizmente ele consegue te pegar...\n\n";
+                            char Text2[] = "   VocÃª acaba de jogar a arma para derrotar AnÃºbis fora.\n\n   VocÃª comeÃ§a a correr pela sala de AnÃºbis, mas infelizmente ele consegue te pegar...\n\n";
                             SlowText(Text2);
                             Sleep(3500);
                             GameOver();
                     }
         }
     } else {goto AnubisEnter1;}
+}
+void cenario(){
+    system("cls");
+    char Texto1[] = "   Depois de passar pela esfinge vocÃª chega a Ãºltima sala da pirÃ¢mide. Nota-se que a sala \n\n estÃ¡ vazia, vocÃª acha isso estranho, serÃ¡ que todo esse sacrifÃ­cio foi feito em vÃ£o?,\n\n de repente vocÃª escuta uma voz sussurrante dizendo: â€œO que vocÃª procura nÃ£o estÃ¡ aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, vocÃª nÃ£o tem muito tempoâ€.\n\n Sem entender o que estava acontecendo vocÃª segue o caminho da voz.";
+    SlowText(Texto1);
+    Sleep(7000);
+    cenario1();
+
+}
+void cenario1(){
+    system("cls");
+    printf("seu lixo\n\n");
+    system("pause");
+
 }
