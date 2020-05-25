@@ -126,7 +126,7 @@ void SelectFase() {
             printf("   Iniciando a Fase 3...\n");
             Sleep(1500);
             system("cls");
-            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC);
+            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
             Fase3();
         case 4:
             system("cls");
