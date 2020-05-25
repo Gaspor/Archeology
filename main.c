@@ -117,7 +117,7 @@ void SelectFase() {
             printf("   Iniciando a Fase 2...\n");
             Sleep(1500);
             system("cls");
-            PlaySound(TEXT("Fases.wav"), NULL,SND_ASYNC|SND_LOOP);
+            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
             Fase2();
         case 3:
             system("cls");
@@ -126,7 +126,7 @@ void SelectFase() {
             printf("   Iniciando a Fase 3...\n");
             Sleep(1500);
             system("cls");
-            PlaySound(TEXT("Fases.wav"), NULL,SND_ASYNC);
+            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC);
             Fase3();
         case 4:
             system("cls");
@@ -208,7 +208,7 @@ void Lore() {
 
 void Fase1() {
     system("cls");
-    PlaySound(TEXT("Fases.wav"), NULL,SND_ASYNC|SND_LOOP);
+    PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
     int Acertos = 0, Vs = 2, Fs = 6;
     Tabelas:
     system("cls");
@@ -414,7 +414,7 @@ void cenario() {
     system("cls");
     char Texto1[] = "   Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala \n\n está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?,\n\n de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.\n\n Sem entender o que estava acontecendo você segue o caminho da voz.";
     SlowText(Texto1);
-    Sleep(15000);
+    system("pause");
     cenario1();
 }
 
@@ -506,4 +506,3 @@ void BossEsfinge() {
         Anubis();
     }
 }
-
