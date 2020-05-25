@@ -456,7 +456,7 @@ void EsfingeImage() {
 void BossEsfinge() {
     system("cls");
     int VidaEsfinge = 500;
-    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|/////////////////////////|%d", VidaEsfinge);
+    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|/////////////////////////| %d", VidaEsfinge);
     EsfingeImage();
     printf("\n Que animal anda pela manhã sobre quatro patas, a tarde sobre duas e a noite sobre três? \n\n   O Gato \n   O Chachorro \n   O Homem");
     SetaUpDown(36, 0, 3, 1, "->", "  ");
@@ -464,7 +464,7 @@ void BossEsfinge() {
     if (opcao == 3) {
         system("cls");
         VidaEsfinge -= 100;
-        printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|////////////////////-----|%d", VidaEsfinge);
+        printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|////////////////////-----| %d", VidaEsfinge);
         EsfingeImage();
         printf("\n Por que seria o homem? \n\n   Porque o homem é um bípede \n   Porque o homem não quer mais viver uma mentira \n   Porque na infância o homem engatinha \n   Porque na infância o homem pensa muito");
         SetaUpDown(36, 0, 4, 1, "->", "  ");
@@ -472,7 +472,7 @@ void BossEsfinge() {
         if (opcao == 3) {
             system("cls");
             VidaEsfinge -= 100;
-            printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|///////////////----------|%d", VidaEsfinge);
+            printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|///////////////----------| %d", VidaEsfinge);
             EsfingeImage();
             printf("\n E o que mais? \n\n   Na idade adulta ele anda ereto \n   Essa é toda a resposta \n   Não tenho tempo para essas questões filosóficas, me deixe passar \n   Não idade adulta ele pensa muito, e pensar nos faz andar");
             SetaUpDown(36, 0, 4, 1, "->", "  ");
@@ -480,7 +480,7 @@ void BossEsfinge() {
             if (opcao == 1) {
                 system("cls");
                 VidaEsfinge -= 100;
-                printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|//////////---------------|%d", VidaEsfinge);
+                printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|//////////---------------| %d", VidaEsfinge);
                 EsfingeImage();
                 printf("\n Mais alguma coisa? \n   Sim, na velhice o homem necessita de uma bengala para andar \n   Não, é apenas essa a resposta", VidaEsfinge);
                 SetaUpDown(35, 0, 2, 1, "->", "  ");
@@ -488,7 +488,7 @@ void BossEsfinge() {
                 if (opcao == 1) {
                     system("cls");
                     VidaEsfinge = 0;
-                    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|-------------------------|%d", VidaEsfinge);
+                    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|-------------------------| %d", VidaEsfinge);
                     EsfingeImage();
                     printf("\n\nVocê me venceu, como conseguiu?\n");
                     system("pause");
