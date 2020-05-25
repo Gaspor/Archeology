@@ -414,7 +414,7 @@ void cenario() {
     system("cls");
     char Texto1[] = "   Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala \n\n está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?,\n\n de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.\n\n Sem entender o que estava acontecendo você segue o caminho da voz.";
     SlowText(Texto1);
-    Sleep(7000);
+    Sleep(15000);
     cenario1();
 }
 
