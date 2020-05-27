@@ -469,6 +469,8 @@ void cenario1() {
 void main() {
     Vidas = 1;
     setlocale(LC_ALL,"Portuguese");
+    SetConsoleTitle("Archeology Game");
+    system("MODE con cols=200 lines=60");
     PlaySound(TEXT("menu.wav"), NULL, SND_ASYNC|SND_LOOP);
     system("cls");
     printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
