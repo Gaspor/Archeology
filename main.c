@@ -3,9 +3,12 @@
 #include <conio.h>
 #include <windows.h>
 
+                         // Globais //
 char RespostaChar[20], NamePlayer[20], Password[20];
-int KeyPress,b,L,opcao,i,TimeText = 1;
+int KeyPress,b,L,opcao,i,TimeText = 1, Vidas = 1, FaseAtual;
 
+
+                          // Setas //
 void coordxy(int x,int y) {
     COORD Mouse;
     Mouse.X = x;
@@ -13,7 +16,7 @@ void coordxy(int x,int y) {
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Mouse);
 }
 
-void SetaUpDown(La, coordx, BLimite, LOper, SetaModel, SetaModelSpace) {
+void SetaUpDown(La, coordx, BLimite, LOper, SetaModel, SetaModelSpace) {   // Seta pra cima e pra baixo //
     opcao = 0;
     L=La; b=1;
     do{
@@ -28,7 +31,7 @@ void SetaUpDown(La, coordx, BLimite, LOper, SetaModel, SetaModelSpace) {
     }while(opcao == 0);
 }
 
-void SetaLeftRight(La, coordy, BLimite, LOper, SetaModel, SetaModelSpace) {
+void SetaLeftRight(La, coordy, BLimite, LOper, SetaModel, SetaModelSpace) {   // Seta pra direita e pra esquerda //
     opcao = 0;
     L=La; b=1;
     do{
@@ -43,6 +46,7 @@ void SetaLeftRight(La, coordy, BLimite, LOper, SetaModel, SetaModelSpace) {
     }while(opcao == 0);
 }
 
+      // Efeito Texto em Slow //
 char SlowText(char* Text) {
     for (i = 0; Text[i] != '\0'; i++) {
         printf("%c",Text[i]);
@@ -50,124 +54,49 @@ char SlowText(char* Text) {
     }
 }
 
-void main() {
-    setlocale(LC_ALL,"Portuguese");
-    PlaySound(TEXT("menu.wav"), NULL, SND_ASYNC|SND_LOOP);
-    system("cls");
-    printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
-    printf("\nPor Favor, coloque o jogo em tela cheia");
-    SetaUpDown(2, 3, 4, 1, "->", "  ");
-
-    switch (opcao){
-        case 1:
-            system("cls");
-            Player();
-        case 2:
-            system("cls");
-            printf("  Este é o menu do desenvolvedor, por favor digite sua senha: ");
-            gets(Password);
-            if (strcmp (Password, "1234")== 0) {
-                printf("  Verificando...\n");
-                Sleep(1000);
-                printf("  Você será direcionado para o menu de escolha de fase, por favor aguarde.");
-                Sleep(2000);
-                system("cls");
-                SelectFase();
-            } else {
-                printf("  Verificando...\n");
-                Sleep(1000);
-                printf("  Senha incorreta.");
-                Sleep(700);
-                system("cls");
-                main();
-            }
-        case 3:
-            system("cls");
-            printf("  Você está sendo direcionado ao nosso projeto no GitHub...");
-            Sleep(2000);
-            system("start https://github.com/Gaspor/Archeology");
-            Sleep(2000);
-            main();
-        case 4:
-            Quit();
-        default:
-            printf("  Essa opção não existe, por favor tente uma nova.\n");
-            Sleep(1500);
+                 // Utilitários do código //
+void Anubis(int Fase, int Vida) { // Anúbis (Controlador de Vidas do Player)
+    if (Vida == 1 && Fase == 1) {
+        system("cls");
+        printf("Anúbis: Não acredito que você errou algo tão fácil, mas não se preocupe, te darei uma segunda chance\n");
+        Vida--;
+        system("pause");
+        system("cls");
+        Vidas = Vida;
+        Fase1();
+    } if (Vida == 1 && Fase == 2) {
+        system("cls");
+        printf("Anúbis: Eu te darei mais uma chance de vida, mortal não a desperdice\n");
+        Vida--;
+        system("pause");
+        system("cls");
+        Vidas = Vida;
+        Fase2();
+    } if (Vida == 1 && Fase == 4) {
+        system("cls");
+        printf("Anúbis: Você morreu, irei te reviver apenas dessa vez, não cometa mais erros");
+        Vida--;
+        system("pause");
+        system("cls");
+        Vidas = Vida;
+        BossEsfinge();
+    } else {
+        system("cls");
+        printf("Você não tem vidas restantes\n");
+        system("pause");
+        GameOver();
     }
 }
 
-void SelectFase() {
-    system("cls");
-    printf("     \"Menu de Fases\"\n\n      Ir para a Fase 1\n      Ir para a Fase 2\n      Ir para a Fase 3\n      Ir para o Boss\n\n      Voltar ao Menu principal\n");
-    SetaUpDown(2, 3, 6, 1, "->", "  ");
-
-    switch (opcao){
-        case 1:
-            system("cls");
-            printf("   Você escolheu ir para a Fase 1.\n");
-            Sleep(1000);
-            printf("   Iniciando a Fase 1...\n");
-            Sleep(1500);
-            system("cls");
-            Fase1();
-        case 2:
-            system("cls");
-            printf("   Você escolheu ir para a Fase 2.\n");
-            Sleep(1000);
-            printf("   Iniciando a Fase 2...\n");
-            Sleep(1500);
-            system("cls");
-            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
-            Fase2();
-        case 3:
-            system("cls");
-            printf("   Você escolheu ir para a Fase 3.\n");
-            Sleep(1000);
-            printf("   Iniciando a Fase 3...\n");
-            Sleep(1500);
-            system("cls");
-            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
-            Fase3();
-        case 4:
-            system("cls");
-            printf("   Você escolheu ir para a Fase do Boss.\n");
-            Sleep(1000);
-            printf("   Iniciando o Boss...\n");
-            Sleep(1500);
-            system("cls");
-            BossEsfinge();
-        case 6:
-            main();
-        default:
-            printf("  Opção inválida, tente outra");
-            Sleep(1000);
-            SelectFase();
-    }
-}
-
-void Quit() {
-    system("cls");
-    printf("\aSaindo...\n");
-    Sleep(800);
-    exit(0);
-}
-
-void Anubis() { // Em breve!!!
-    system("cls");
-    printf("Anúbis em construção, você será direcionado para o menu!\n");
-    system("pause");
-    main();
-}
-
-void GameOver() {
+void GameOver() {  // Função de GameOver //
     char GameOver[] = "   Game Over";
     SlowText(GameOver);
     Sleep(2000);
     system("cls");
-    Anubis();
+    main();
 }
 
-void Player() {
+void Player() {    // Nome do Player //
     system("cls");
     printf("  Por favor, não aperte nada enquanto o texto é digitado em sua tela.\n");
     printf("  Por favor, não use caractere especial\n\n");
@@ -183,7 +112,8 @@ void Player() {
         else {goto KbLore;}
 }
 
-void Lore() {
+                  // História do Jogo //
+void Lore() {  // História primeiro Cenário
     system("cls");
     char Texto1[2000] = "   Há muitas eras, no ano 51 A.C, em algum lugar do Egito antigo acontecia uma grande batalha, uma guerra \n\n civil que parecia não ter fim. Em meio a todo aquele caos algo brilhava nos céus, e seu brilho ficava cada vez \n\n mais intenso e mais próximo, até que esse misterioso brilho se depara com o chão, causando um grande alvoroço em \n\n meio aquelas terras. Todos se esquecem por um minuto daquela guerra e decidem ir ver o que era aquilo. \n\n Depois de um tempo alguns dos soldados descobrem que aquilo era um amuleto ainda intacto, mesmo depois daquela \n\n enorme queda, e sem saber dos seus efeitos acidentalmente um dos soldados aciona esse amuleto, fazendo com que ele \n\n revelasse um poder desconhecido que era capaz de mudar toda a natureza humana. O medo assolava a todos que ali \n\n estavam presentes, muitos fugiram e os que ficaram decidiram que aquele amuleto era perigoso demais para a posse de \n\n qualquer pessoa, e em um ato de desespero construíram uma enorme pirâmide em volta do amuleto com diversas armadilhas. \n\n   Depois de séculos, lendas foram criadas e todos chamavam aquele amuleto desconhecido de O olho de Osíris. \n\n   Ninguém se atrevia a entrar naquela pirâmide, pois além das armadilhas, muitos diziam que os antigos designaram \n\n um guardião para a proteção do amuleto, mas a ganancia humana é grande demais, e em algum dia alguém tentara \n\n tomar posse desse poderoso artefato. Essa é a lenda que é contada até os dias de hoje.\n\n";
     char Texto2[] = "  Vocé é um arqueólogo conhecido como";
@@ -206,7 +136,9 @@ void Lore() {
     Fase1();
 }
 
+                      // Fase 1 //
 void Fase1() {
+    FaseAtual = 1;
     system("cls");
     PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
     int Acertos = 0, Vs = 2, Fs = 6;
@@ -297,7 +229,8 @@ switch (opcao){
             coordxy(2,22);
             printf("Você errou!");
             Sleep(2000);
-            Anubis();
+            Anubis(FaseAtual, Vidas);
+            Fase1();
         }
     case 2:
         if (Acertos == 0) {
@@ -341,19 +274,15 @@ switch (opcao){
             coordxy(2,22);
             printf("Você errou!");
             Sleep(2000);
-            Anubis();
+            Anubis(FaseAtual, Vidas);
+            Fase1();
         }
     }
 }
 
-void ErrorFase2() {
-    char ErroPiso[] ="   Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n";
-    SlowText(ErroPiso);
-    Sleep(2000);
-    GameOver();
-}
-
+                   // Fase 2 //
 void Fase2() {
+    FaseAtual = 2;
     int Acertos = 0;
     char Text1[] = "   Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
     SlowText(Text1);
@@ -369,63 +298,58 @@ void Fase2() {
         printf("\n\t\t\t\t\t\====================================\n\t\t\t\t\t|  1         2         3         4 |\n\t\t\t\t\t|        Posição do jogador        |\n\t\t\t\t\t====================================\n");
         SetaLeftRight(41, 9, 4, 10, ">", " ");
 
-        switch (opcao){
-            case 1:
-                if (Acertos == 0) {
-                    char Acerto1[] ="   Você acertou e passou para o próximo piso           \n";
-                    Acertos++;
-                    SlowText(Acerto1);
-                    goto Acerto;
-                } else {
-                    ErrorFase2();
-                }
-            case 2:
-                if (Acertos == 2) {
-                    char Acerto3[] = "   Você acertou, por pouco!                            \n";
-                    Acertos++;
-                    SlowText(Acerto3);
-                    goto Acerto;
-                } else {
-                    ErrorFase2();
-                }
-            case 3:
-                if (Acertos == 3) {
-                    char Acerto4[] = "   Você finalmente passou sem cair em nenhuma armadilha\n";
-                    SlowText(Acerto4);
-                    Sleep(3000);
-                    system("cls");
-                    Fase3();
-                } else {
-                    ErrorFase2();
-                }
-            case 4:
-                if (Acertos == 1) {
-                    char Acerto2[] = "   Você acertou, tome cuidado com os pisos falsos      \n";
-                    Acertos++;
-                    SlowText(Acerto2);
-                    goto Acerto;
-                } else {
-                    ErrorFase2();
-                }
-        }
+    switch (opcao){
+        case 1:
+            if (Acertos == 0) {
+                char Acerto1[] ="   Você acertou e passou para o próximo piso           \n";
+                Acertos++;
+                SlowText(Acerto1);
+                goto Acerto;
+            } else {
+                ErrorFase2();
+            }
+        case 2:
+            if (Acertos == 2) {
+                char Acerto3[] = "   Você acertou, por pouco!                            \n";
+                Acertos++;
+                SlowText(Acerto3);
+                goto Acerto;
+            } else {
+                ErrorFase2();
+            }
+        case 3:
+            if (Acertos == 3) {
+                char Acerto4[] = "   Você finalmente passou sem cair em nenhuma armadilha\n";
+                SlowText(Acerto4);
+                Sleep(3000);
+                system("cls");
+                Fase3();
+            } else {
+                ErrorFase2();
+            }
+        case 4:
+            if (Acertos == 1) {
+                char Acerto2[] = "   Você acertou, tome cuidado com os pisos falsos      \n";
+                Acertos++;
+                SlowText(Acerto2);
+                goto Acerto;
+            } else {
+                ErrorFase2();
+            }
+    }
 }
 
-void cenario() {
-    system("cls");
-    char Texto1[] = "   Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala \n\n está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?,\n\n de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.\n\n Sem entender o que estava acontecendo você segue o caminho da voz.";
-    SlowText(Texto1);
-    system("pause");
-    cenario1();
+void ErrorFase2() {   // Função que é chamada quando o usuário erra o piso da Fase 2  //
+    char ErroPiso[] ="   Você pisou em um lugar que não era seguro, o chão desmoronou, e você morreu com a queda.\n";
+    SlowText(ErroPiso);
+    Sleep(2000);
+    Anubis(FaseAtual, Vidas);
+    Fase2();
 }
 
-void cenario1() {
-    system("cls");
-    printf("Em Construção\n\n");
-    system("pause");
-    main();
-}
-
+                // Fase 3 //
 void Fase3() {
+    FaseAtual = 3;
     char Text1Fase3[] = "   Você passa pela entrada da segunda fase e observa que há outra passagem, você anda até ela e de repente a entrada \n\n se fecha e você ouve um barulho intenso, uma enorme esfinge feita de areia se ergue diante de você.\n\n";
     char Text2Fase3[] = "   \"Esfinge: Eu sou a última porta para o seu destino, responda corretamente meu enigma e sua passagem será liberada.\"\n\n";
     char Text3Fase3[] = "   Esfinge: Eu nunca fui e sempre poderei ser, ninguém jamais me viu ou verá, mas sou a certeza de todos os que vivem e que respiram, quem sou eu?: ";
@@ -441,7 +365,6 @@ void Fase3() {
         Sleep(4000);
         system("cls");
         cenario();
-
     } else {
        printf("\nVocê errou, agora meu enfrente!!!\n\n");
        system("pause");
@@ -449,11 +372,13 @@ void Fase3() {
     }
 }
 
-void EsfingeImage() {
+            // Comandos da Esfinge //
+void EsfingeImage() {    // Aparecer a Imagem da Esfinge
     printf("\n\t\t......................................................................\n\t\t............................'',;;::::;,'..............................\n\t\t..................'',;::cllooooddodxxxdolllcc::;,''...................\n\t\t...............,coodxxxddxxddddxddxkkxxxxxxxxxxxxdlc:,'...............\n\t\t..........'',,:xOkddxxxxkkxxxxxxodkkkkxkkkOOkkxxxdllol:;,,'''.........\n\t\t.....'',,;;,;cxOkkkxdddxkkOOkkOkddxxkkOO00000Oxddoododdc;;;;;;,''.....\n\t\t..',,;;;;;;;lkOOkkkkxdddxO000OOOxolldkO0KKKK0kxdodddodddl::::;;::;,'..\n\t\t,;;;;;;;;;;lO0OOkkkkxddookOOOkkkkkOOOO000000kxdddxxdddddxl:::::::::::;\n\t\t::;;;;;;;:lk0OOOkOOOkxolldxkxdoodkOOkkxxkOOOkdddxkkxdoodxxoccccccccccc\n\t\t::;;;;:::lkOOOkkOOOOOkdocclol::;;okOko:;:ldxdxxxOkkkkxddxxxocllllccccc\n\t\t:;;;::::lxOOOkkkkkkddxdolcllllccclkOkxdlcloddxkkdodxxxxdxkOxolllllllll\n\t\t:;;:::clx00OkkkkkkdldxdodxxkkOOxlldxkO00Ok0000OxdlodxxddxxkOkoloooooll\n\t\t::::cccdO00Okkkxxxdx0OoclxkOOOOxlcccldk000KK0OkkOkooxxddxkkOOkoloooooo\n\t\t:::cccok00OOxxkxxxocoxo::coxxkkoloxxdodO000OOkxxl:coddxxkkOOOOxooooooo\n\t\t::ccclxOOOOkkxxxxxxdolc:;;cloddlloooddxkOkkkxxdoldxxdxxkkkOOOOkdlooooo\n\t\t:ccllokOOOOOkxxxxkkxkko:;;:coo:,,;;::cloxkxxddxxkxxxxxkkkkOOOOOxoooooo\n\t\tcccllok0000Okkkkkkkkkkxc;,,;cooccclooddkkxdoookOkkkkkkOOOOOOOOOxoloooo\n\t\tcccllldO00000OOkkkkkkkkd;,'';:ldxkOO00OOkoc:cdOOOOOOOO00000000kdlloooo\n\t\tccllooloxO000OOkkkkkkkkxl'...:odkkO00000x;.'ck0OOO0OO0000000Odlllloooo\n\t\tcllooodolox0OOOkkxkxxxxxdc,..:ddkO000K00d,;lxOOOOOOOO00O00Oocccllllooo\n\t\tlllooddddlldkOkkkxxxxxxxxo:;,cdxkO00KK00kodxOOOOOOO00OO00Odlcccclllllo\n\t\tlllooddddxxddkOkkxdddddddl:;;lxxkO000K00kdxkOOOOOOOOOO00OOOOdc:cclllll\n\t\tllloooooodkOkdkOOkxddooool:;:oxxkOO00K00OxkOkOOOOOOOOOOOO00Oxc:cccllll\n\t\tcllooooodxO00kxk0OOkxdollll::oddxkkOOOkO0kkkxkOOOOO0OOOO000Okl:::cccll\n\t\tcllooooodkO000kkO00Oxolllcll;''...''',;;lxkxdkOkkOOOOOO0000Okl:::cccll\n\t\tlloooooodkO000OkkO0Oxollc:coc.      ....ckOxxOkkkkOOOOO000OOko::::cccl\n\t\tllooollodkOO000kkOOOxoccc:cll:.       .ckOkdxOkkkkOOOO00OOOkxo::::cccl\n\t\tlllllllodkO0000OkkOOdlccc::lcc;.     .:kOkkdxOkkkOOOkO0OOkkxxdc::::ccc\n\t\tclllllloxkO00000kxkkdlccc::ccc:'.   .;dkOOxoxOkkkkkxxOOOOkxxxdc::::ccc\n\t\tclllllloxO0000000kddolccc:;:cc:,',codkkOOOxoxOkkxddxOOOOkkkkxdl:::cccc\n\t\tclllllloxO00000000Oxoollcc:llllldkOOOOOOO0kdoodddxkO00OOkkkkxdl::ccccc\n\t\tlllllcldkO00000K0000OOOkkkOOkkkkOOOOOOO0000OOOO000OO000Okkkxddl:::cccc");
 }
 
-void BossEsfinge() {
+void BossEsfinge() { // Inicio da luta com a Esfinge //
+    FaseAtual = 4;
     system("cls");
     int VidaEsfinge = 500;
     printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|/////////////////////////| %d", VidaEsfinge);
@@ -494,15 +419,136 @@ void BossEsfinge() {
                     system("pause");
                     cenario();
                 } else {
-                    Anubis();
+                    Anubis(FaseAtual, Vidas);
                 }
             } else {
-                Anubis();
+                Anubis(FaseAtual, Vidas);
             }
        } else {
-            Anubis();
+           Anubis(FaseAtual, Vidas);
         }
     } else {
-        Anubis();
+        Anubis(FaseAtual, Vidas);
     }
+}
+
+                    // Mudança de Cenário  //
+void cenario() {
+    system("cls");
+    char Texto1[] = "   Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala \n\n está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?,\n\n de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.\n\n Sem entender o que estava acontecendo você segue o caminho da voz.";
+    SlowText(Texto1);
+    system("pause");
+    cenario1();
+}
+
+void cenario1() {
+    system("cls");
+    printf("Em Construção\n\n");
+    system("pause");
+    main();
+}
+
+                      // Menu //
+void main() {
+    Vidas = 1;
+    setlocale(LC_ALL,"Portuguese");
+    PlaySound(TEXT("menu.wav"), NULL, SND_ASYNC|SND_LOOP);
+    system("cls");
+    printf("     \"Menu de opções\"\n\n      Novo Jogo \n      Escolher Fase\n      GitHub\n      Sair \n");
+    printf("\nPor Favor, coloque o jogo em tela cheia");
+    SetaUpDown(2, 3, 4, 1, "->", "  ");
+
+    switch (opcao){
+        case 1:
+            system("cls");
+            Player();
+        case 2:
+            system("cls");
+            printf("  Este é o menu do desenvolvedor, por favor digite sua senha: ");
+            gets(Password);
+            if (strcmp (Password, "1234")== 0) {
+                printf("  Verificando...\n");
+                Sleep(1000);
+                printf("  Você será direcionado para o menu de escolha de fase, por favor aguarde.");
+                Sleep(2000);
+                system("cls");
+                SelectFase();
+            } else {
+                printf("  Verificando...\n");
+                Sleep(1000);
+                printf("  Senha incorreta.");
+                Sleep(700);
+                system("cls");
+                main();
+            }
+        case 3:
+            system("cls");
+            printf("  Você está sendo direcionado ao nosso projeto no GitHub...");
+            Sleep(2000);
+            system("start https://github.com/Gaspor/Archeology");
+            Sleep(2000);
+            main();
+        case 4:
+            Quit();
+        default:
+            printf("  Essa opção não existe, por favor tente uma nova.\n");
+            Sleep(1500);
+    }
+}
+
+void SelectFase() {  // Função para desenvolvedores para selecionar Fase //
+    system("cls");
+    printf("     \"Menu de Fases\"\n\n      Ir para a Fase 1\n      Ir para a Fase 2\n      Ir para a Fase 3\n      Ir para o Boss\n\n      Voltar ao Menu principal\n");
+    SetaUpDown(2, 3, 6, 1, "->", "  ");
+
+    switch (opcao){
+        case 1:
+            system("cls");
+            printf("   Você escolheu ir para a Fase 1.\n");
+            Sleep(1000);
+            printf("   Iniciando a Fase 1...\n");
+            Sleep(1500);
+            system("cls");
+            Fase1();
+        case 2:
+            system("cls");
+            printf("   Você escolheu ir para a Fase 2.\n");
+            Sleep(1000);
+            printf("   Iniciando a Fase 2...\n");
+            Sleep(1500);
+            system("cls");
+            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
+            Fase2();
+        case 3:
+            system("cls");
+            printf("   Você escolheu ir para a Fase 3.\n");
+            Sleep(1000);
+            printf("   Iniciando a Fase 3...\n");
+            Sleep(1500);
+            system("cls");
+            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
+            Fase3();
+        case 4:
+            system("cls");
+            printf("   Você escolheu ir para a Fase do Boss.\n");
+            Sleep(1000);
+            printf("   Iniciando o Boss...\n");
+            Sleep(1500);
+            system("cls");
+            BossEsfinge();
+        case 6:
+            main();
+        default:
+            printf("  Opção inválida, tente outra");
+            Sleep(1000);
+            SelectFase();
+    }
+}
+
+     // Saída do Jogo //
+void Quit() {
+    system("cls");
+    printf("\aSaindo...\n");
+    Sleep(800);
+    exit(0);
 }
