@@ -144,6 +144,8 @@ void Fase1() {
     int Acertos = 0, Vs = 2, Fs = 6;
     Tabelas:
     system("cls");
+    coordxy(0, 0);
+    printf("Vidas: %d \n", Vidas);
     printf(" Você então começa a completar a tabela...\n");
     coordxy(0,6);
     printf("\t\t\t\t  ========================================\n");
@@ -211,6 +213,7 @@ void Fase1() {
     coordxy(6,15);
     printf("V\n      F");
     printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d", Fs, Vs);
+
     SetaUpDown(15, 3, 2, 1, "->", "  ");
 
 switch (opcao){
@@ -284,6 +287,8 @@ switch (opcao){
 void Fase2() {
     FaseAtual = 2;
     int Acertos = 0;
+    coordxy(0, 0);
+    printf("Vidas: %d \n", Vidas);
     char Text1[] = "   Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
     SlowText(Text1);
     Acerto:
@@ -350,6 +355,8 @@ void ErrorFase2() {   // Função que é chamada quando o usuário erra o piso da Fa
                 // Fase 3 //
 void Fase3() {
     FaseAtual = 3;
+    coordxy(0, 0);
+    printf("Vidas: %d \n", Vidas);
     char Text1Fase3[] = "   Você passa pela entrada da segunda fase e observa que há outra passagem, você anda até ela e de repente a entrada \n\n se fecha e você ouve um barulho intenso, uma enorme esfinge feita de areia se ergue diante de você.\n\n";
     char Text2Fase3[] = "   \"Esfinge: Eu sou a última porta para o seu destino, responda corretamente meu enigma e sua passagem será liberada.\"\n\n";
     char Text3Fase3[] = "   Esfinge: Eu nunca fui e sempre poderei ser, ninguém jamais me viu ou verá, mas sou a certeza de todos os que vivem e que respiram, quem sou eu?: ";
@@ -381,7 +388,9 @@ void BossEsfinge() { // Inicio da luta com a Esfinge //
     FaseAtual = 4;
     system("cls");
     int VidaEsfinge = 500;
-    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|/////////////////////////| %d", VidaEsfinge);
+    coordxy(0, 0);
+    printf("Vidas: %d ", Vidas);
+    printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|/////////////////////////| %d", VidaEsfinge);
     EsfingeImage();
     printf("\n Que animal anda pela manhã sobre quatro patas, a tarde sobre duas e a noite sobre três? \n\n   O Gato \n   O Chachorro \n   O Homem");
     SetaUpDown(36, 0, 3, 1, "->", "  ");
@@ -389,7 +398,9 @@ void BossEsfinge() { // Inicio da luta com a Esfinge //
     if (opcao == 3) {
         system("cls");
         VidaEsfinge -= 100;
-        printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|////////////////////-----| %d", VidaEsfinge);
+        coordxy(0, 0);
+        printf("Vidas: %d ", Vidas);
+        printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|////////////////////-----| %d", VidaEsfinge);
         EsfingeImage();
         printf("\n Por que seria o homem? \n\n   Porque o homem é um bípede \n   Porque o homem não quer mais viver uma mentira \n   Porque na infância o homem engatinha \n   Porque na infância o homem pensa muito");
         SetaUpDown(36, 0, 4, 1, "->", "  ");
@@ -397,7 +408,9 @@ void BossEsfinge() { // Inicio da luta com a Esfinge //
         if (opcao == 3) {
             system("cls");
             VidaEsfinge -= 100;
-            printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|///////////////----------| %d", VidaEsfinge);
+            coordxy(0, 0);
+            printf("Vidas: %d ", Vidas);
+            printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|///////////////----------| %d", VidaEsfinge);
             EsfingeImage();
             printf("\n E o que mais? \n\n   Na idade adulta ele anda ereto \n   Essa é toda a resposta \n   Não tenho tempo para essas questões filosóficas, me deixe passar \n   Não idade adulta ele pensa muito, e pensar nos faz andar");
             SetaUpDown(36, 0, 4, 1, "->", "  ");
@@ -405,7 +418,9 @@ void BossEsfinge() { // Inicio da luta com a Esfinge //
             if (opcao == 1) {
                 system("cls");
                 VidaEsfinge -= 100;
-                printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|//////////---------------| %d", VidaEsfinge);
+                coordxy(0, 0);
+                printf("Vidas: %d ", Vidas);
+                printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|//////////---------------| %d", VidaEsfinge);
                 EsfingeImage();
                 printf("\n Mais alguma coisa? \n   Sim, na velhice o homem necessita de uma bengala para andar \n   Não, é apenas essa a resposta", VidaEsfinge);
                 SetaUpDown(35, 0, 2, 1, "->", "  ");
@@ -413,7 +428,9 @@ void BossEsfinge() { // Inicio da luta com a Esfinge //
                 if (opcao == 1) {
                     system("cls");
                     VidaEsfinge = 0;
-                    printf("\t\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|-------------------------| %d", VidaEsfinge);
+                    coordxy(0, 0);
+                    printf("Vidas: %d ", Vidas);
+                    printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|-------------------------| %d", VidaEsfinge);
                     EsfingeImage();
                     printf("\n\nVocê me venceu, como conseguiu?\n");
                     system("pause");
@@ -435,7 +452,7 @@ void BossEsfinge() { // Inicio da luta com a Esfinge //
                     // Mudança de Cenário  //
 void cenario() {
     system("cls");
-    char Texto1[] = "   Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala \n\n está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?,\n\n de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.\n\n Sem entender o que estava acontecendo você segue o caminho da voz.";
+    char Texto1[] = "   Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala \n\n está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?,\n\n de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,\n\n mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.\n\n Sem entender o que estava acontecendo você segue o caminho da voz.\n";
     SlowText(Texto1);
     system("pause");
     cenario1();
