@@ -623,7 +623,7 @@ void Fase1Cenario2() {
     printf("Vidas : %d\n", Vidas);
     char Text1Fase1[] = "  Você sai da pirâmide e ouve a mesma voz: O templo de Hórus emergiu no deserto, resolva este anagrama e te \n darei uma pista de como encontrá-lo\n\n  Resolva o anagrama: \n";
     SlowText(Text1Fase1);
-    printf("   =======================\n   |  N C E O T E R N A  |\n   |   N A N O M H T A   |\n   |      L S O O D      |\n   =======================\n\n Resposta do anagrama: ");
+    printf("   ======================= \n   |  N C E O T E R N A  |\n   |   N A N O M H T A   |\n   |      L S O O D      |\n   =======================\n\n Resposta do anagrama: ");
     fflush(stdin);
     gets(RespostaChar);
     if (strcasecmp (RespostaChar, "ENCONTRE A MONTANHA DO SOL")== 0) {
