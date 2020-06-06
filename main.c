@@ -296,148 +296,29 @@ void Lore() {  // História primeiro Cenário
 
                       // Fase 1 //
 void Fase1() {
+    int Resposta;
     FaseAtual = 1;
     system("cls");
     PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
-    int Acertos = 0, Vs = 2, Fs = 6;
-    Tabelas:
-    system("cls");
-    coordxy(0, 0);
-    printf("Vidas: %d \n", Vidas);
-    printf(" Você então começa a completar a tabela...\n");
-    coordxy(0,6);
-    printf("\t\t\t\t  ========================================\n");
-    printf("\t\t\t\t  |   A   B (A^B) B' (B'^A) (A^B)^(B'^A) |\n");
-    printf("\t\t\t\t  |       F       V              F       |\n");
-    printf("\t\t\t\t  |   F   V   F   F     F                |\n");
-    printf("\t\t\t\t  |       F   F   V     V                |\n");
-    printf("\t\t\t\t  |   V       V         F        F       |\n");
-    printf("\t\t\t\t  ========================================\n\n O que você deseja colocar nesta parte da tabela?");
-    if (Acertos == 0) {
-        coordxy(36,8);
-        printf(">");
-    } if (Acertos == 1) {
-        coordxy(38,8);
-        printf("F");
-        coordxy(44,8);
-        printf(">");
-    } if (Acertos == 2) {
-        coordxy(38,8);
-        printf("F   F   F");
-        coordxy(54,8);
-        printf(">");
-    } if (Acertos == 3) {
-        coordxy(38,8);
-        printf("F   F   F   V     F");
-        coordxy(63,9);
-        printf(">");
-    } if (Acertos == 4) {
-        coordxy(38,8);
-        printf("F   F   F   V     F");
-        coordxy(38,9);
-        printf("F   V   F   F     F        F");
-        coordxy(36,10);
-        printf(">");
-    } if (Acertos == 5) {
-        coordxy(38,8);
-        printf("F   F   F   V     F");
-        coordxy(38,9);
-        printf("F   V   F   F     F        F");
-        coordxy(38,10);
-        printf("V");
-        coordxy(63,10);
-        printf(">");
-    } if (Acertos == 6) {
-        coordxy(38,8);
-        printf("F   F   F   V     F");
-        coordxy(38,9);
-        printf("F   V   F   F     F        F");
-        coordxy(38,10);
-        printf("V   F   F   V     V        F");
-        coordxy(40,11);
-        printf(">");
-    } if (Acertos == 7) {
-        coordxy(38,8);
-        printf("F   F   F   V     F");
-        coordxy(38,9);
-        printf("F   V   F   F     F        F");
-        coordxy(38,10);
-        printf("V   F   F   V     V        F");
-        coordxy(38,11);
-        printf("V   V   V");
-        coordxy(48,11);
-        printf(">");
-    }
-    coordxy(6,15);
-    printf("V\n      F");
-    printf("\n\n Inventário\n  Total de F: %d\n  Total de V: %d", Fs, Vs);
+    char Texto1[] = "  Você se depara com uma porta com “peças” faltando, olha para o lado e observa que há: 3 peças com símbolos de Anúbis, 3 peças \n\n com símbolos de Hórus, e 4 peças com símbolos de Seth.\n\n";
+    char Texto2[] = "  Enquanto olha para as peças você ouve algo, quando olha para a porta se depara com a seguinte frase sendo construída: Me diga \n\n quantas combinações pode-se fazer com as peças e liberarei a sua passagem\n\n";
+    char Texto3[] = "  Quantas combinações podem ser feitas? ";
 
-    SetaUpDown(15, 3, 2, 1, "->", "  ");
-
-switch (opcao){
-    case 1:
-        if (Acertos == 4) {
-            Vs--;
-            system("cls");
-            Acertos++;
-            goto Tabelas;
-        } if (Acertos == 6) {
-            Vs--;
-            system("cls");
-            Acertos++;
-            goto Tabelas;
-        } else {
-            coordxy(2,22);
-            printf("Você errou!");
-            Sleep(2000);
-            Anubis(FaseAtual, Vidas);
-            Fase1();
-        }
-    case 2:
-        if (Acertos == 0) {
-            Fs--;
-            system("cls");
-            Acertos++;
-            goto Tabelas;
-        } if (Acertos == 1) {
-            Fs--;
-            system("cls");
-            Acertos++;
-            goto Tabelas;
-        } if (Acertos == 2) {
-            Fs--;
-            system("cls");
-            Acertos++;
-            goto Tabelas;
-        } if (Acertos == 3) {
-            Fs--;
-            system("cls");
-            Acertos++;
-            goto Tabelas;
-        } if (Acertos == 5) {
-            Fs--;
-            system("cls");
-            Acertos++;
-            goto Tabelas;
-        } if (Acertos == 7) {
-            Fs--;
-            coordxy(50,11);
-            printf("F");
-            coordxy(1,22);
-            char NextFase[] = " A porta se abre e você consegue ir pra próxima sala.";
-            SlowText(NextFase);
-            fflush(stdin);
-            Sleep(1000);
-            system("cls");
-            Acertos++;
-            Fase2();
-        } else {
-            coordxy(2,22);
-            printf("Você errou!");
-            Sleep(2000);
-            Anubis(FaseAtual, Vidas);
-            Fase1();
-        }
+    SlowText(Texto1);
+    SlowText(Texto2);
+    SlowText(Texto3);
+    scanf("%d", &Resposta);
+    if (Resposta == 36){
+        char Texto4[] = "\n\n  Você acertou o número de combinações\n";
+        SlowText(Texto4);
+        Sleep(3000);
+        system("cls");
+        Fase2();
+    } else {
+        printf("\n\n  Você errou e ativou uma armadilha, toda pirâmide tremia, você provocou um deslizamento e foi esmagado por uma rocha.\n\n");
+        system("pause");
+        system("cls");
+        Anubis(FaseAtual, Vidas);
     }
 }
 
