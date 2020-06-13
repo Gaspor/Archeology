@@ -2,7 +2,7 @@
 
                          // Globais //
 char Password[20];
-int KeyPress,b,L,opcao,i,TimeText = 1;
+int KeyPress, b, L, opcao;
 
                           // Setas //
 void coordxy(int x,int y) {
@@ -40,15 +40,6 @@ void SetaLeftRight (int La,int coordy,int BLimite,int LOper,char *SetaModel,char
         if (KeyPress == 27) {Quit();}
         if(KeyPress == 13){opcao=b;}
     }while(opcao == 0);
-}
-
-      // Efeito Texto em Slow //
-char SlowText(char *Text) {
-    int i, TimeText = 1;
-    for (i = 0; Text[i] != '\0'; i++) {
-        printf("%c",Text[i]);
-        Sleep(TimeText);
-    }
 }
 
 void Menu() {
@@ -196,10 +187,10 @@ void Fase2(int Vida) {
         fflush(stdin);
         coordxy(2,3);
         printf("Passos: ");
-        if (Acertos == 0){coordxy(2,4);printf("%d Vá ao maxímo para esquerda.              ", Acertos);coordxy(49,7);printf("== Primeiro Piso == \n");}
-        if (Acertos == 1){coordxy(2,4);printf("%d Quadruplique!!              ", Acertos);coordxy(49,7);printf("== Segundo Piso == \n");}
-        if (Acertos == 2){coordxy(2,4);printf("%d Divida por dois.              ", Acertos);coordxy(49,7);printf("== Terceiro Piso == \n");}
-        if (Acertos == 3){coordxy(2,4);printf("%d Adicione um.              ", Acertos);coordxy(49,7);printf("== Quarto Piso ==       \n");}
+        if (Acertos == 0){coordxy(2,4);printf("Vá ao maxímo para esquerda.              ");coordxy(49,7);printf("== Primeiro Piso == \n");}
+        if (Acertos == 1){coordxy(2,4);printf("Quadruplique!!              ");coordxy(49,7);printf("== Segundo Piso == \n");}
+        if (Acertos == 2){coordxy(2,4);printf("Divida por dois.              ");coordxy(49,7);printf("== Terceiro Piso == \n");}
+        if (Acertos == 3){coordxy(2,4);printf("Adicione um.              ");coordxy(49,7);printf("== Quarto Piso ==       \n");}
         coordxy(19,7);
         printf("\n\t\t\t\t\t====================================\n\t\t\t\t\t|  1         2         3         4 |\n\t\t\t\t\t|        Posição do jogador        |\n\t\t\t\t\t====================================\n");
         SetaLeftRight(41, 9, 4, 10, ">", " ");

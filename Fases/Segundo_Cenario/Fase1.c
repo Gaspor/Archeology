@@ -31,6 +31,7 @@ void Fase1Cenario2(int Vida) {
         char Text3Fase1[] = "  Você decifrou o anagrama de forma errada, você segue a pista do seu anagrama, \n porém ele estava incorreto, eventualmente você não encontra o templo e morre de fome e sede\n\n";
         SlowText(Text3Fase1);
         system("pause");
+        system("cls");
         Anubis(FaseAtual, Vidas);
     }
 }

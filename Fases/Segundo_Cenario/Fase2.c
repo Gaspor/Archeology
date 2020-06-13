@@ -21,6 +21,7 @@ void Fase2Cenario2(int Vida) {
         char Text3Fase1[] = "\n\n  Uma escada surge por toda a montanha, você tenta subi-lá, mas quando você estava no \n\n  meio do caminha ela começa a se desfazer, você morreu!\n\n";
         SlowText(Text3Fase1);
         system("pause");
+        system("cls");
         Anubis(FaseAtual, Vidas);
     }
 }

@@ -22,6 +22,7 @@ void Fase3(int Vida) {
     } else {
        printf("\nVocê errou, agora meu enfrente!!!\n\n");
        system("pause");
+       system("cls");
        BossEsfinge(Vidas);
     }
 }
