@@ -1,7 +1,7 @@
 #include "../../Includes.h"
 
-void Fase3(int Vida) {
-    int FaseAtual = 3, Vidas = Vida;
+void Fase3(int Vida, int MusicOn) {
+    int FaseAtual = 3, Vidas = Vida, o = MusicOn;
     char RespostaChar[200];
     printf("Vidas: %d \n", Vidas);
     char Text1Fase3[] = "   Você passa pela entrada da segunda fase e observa que há outra passagem, você anda até ela e de repente a entrada \n\n se fecha e você ouve um barulho intenso, uma enorme esfinge feita de areia se ergue diante de você.\n\n";
@@ -18,11 +18,10 @@ void Fase3(int Vida) {
         fflush(stdin);
         Sleep(4000);
         system("cls");
-        cenario();
+        cenario(Vidas, o);
     } else {
        printf("\nVocê errou, agora meu enfrente!!!\n\n");
        system("pause");
-       system("cls");
-       BossEsfinge(Vidas);
+       BossEsfinge(Vidas, o);
     }
 }

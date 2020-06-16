@@ -1,9 +1,8 @@
 #include "../../Includes.h"
 
-void BossSeth(int Vida) {
-    int Vidas = Vida;
+void BossSeth(int MusicOn) {
+    int o = MusicOn;
     printf("Fase Boss Segundo cenário Rodando\n\n");
     system("pause");
-    system("cls");
-    main();
+    Menu(o);
 }

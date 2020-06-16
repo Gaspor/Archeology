@@ -27,41 +27,41 @@
 	<conio.h>
 	<windows.h>
 
-1591734822 source:d:\gaspor\c programs\archeology game\main.c
+1592338066 source:d:\gaspor\c programs\archeology game\main.c
 	"Includes.h"
 
 1589045371 source:d:\gaspor\c programs\archeology game\resources\resources.rc
 
 1589045470 source:d:\gaspor\c programs\archeology game\resouces.rc
 
-1591734822 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase1.c
+1592270854 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase1.c
 	"../../Includes.h"
 
-1591737532 d:\gaspor\c programs\archeology game\includes.h
+1592351556 d:\gaspor\c programs\archeology game\includes.h
 	<stdlib.h>
 	<stdio.h>
 	<locale.h>
 	<conio.h>
 	<windows.h>
 
-1592077602 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase3.c
+1592270857 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase3.c
 	"../../Includes.h"
 
-1592077602 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase1.c
+1592349897 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase1.c
 	"../../Includes.h"
 
-1592077602 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase2.c
+1592350005 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase2.c
 	"../../Includes.h"
 
-1592077602 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase3.c
+1592351394 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase3.c
 	"../../Includes.h"
 
-1592077602 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\finalboss.c
+1592270917 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\finalboss.c
 	"../../Includes.h"
 
-1591756701 source:d:\gaspor\c programs\archeology game\menu.c
+1592348962 source:d:\gaspor\c programs\archeology game\menu.c
 	"Includes.h"
 
-1591756792 source:d:\gaspor\c programs\archeology game\utilities.c
+1592348840 source:d:\gaspor\c programs\archeology game\utilities.c
 	"Includes.h"
 
