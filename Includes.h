@@ -6,6 +6,7 @@
 #include <locale.h>
 #include <conio.h>
 #include <windows.h>
+#include <time.h>
 
 #define Parede 1
 #define Piso 2

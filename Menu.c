@@ -104,6 +104,7 @@ char SlowText(char *Text)
 
 void Menu(int MusicOn)
 {
+    BossSeth(0);
     Fase3Cenario2(1, 0);
     int Vidas = 1, o = MusicOn;
 
@@ -457,6 +458,59 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
     else
     {
         Anubis(FaseAtual, Vidas, o);
+    }
+}
+
+void BossSeth(int MusicOn, int argc, char *argv[])    //Boss final
+{
+    int o = MusicOn, VidaSeth = 10, VidaArqueologo = 3, Random;
+    system("cls");
+    char Texto1[] = "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha. Hórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa\nera de Seth (Deus do Caos). Após ouvir isso Seth se manifesta e contradiz Horús.\n";
+    SlowText(Texto1);
+
+    printf("\n    Acreditar em Horús.\n    Acreditar em Seth.");
+    SetaUpDown(4, 1, 2, 1, "->", "  ");
+
+    switch(opcao)
+    {
+    case 1:
+        system("cls");
+        char Texto2[] = "Hórus: Rapido mortal, pegue o amuleto e obtenha o poder de um Deus, eu lhe darei o resto do meu poder, derrote Seth e traga a paz.\n\n";
+        char Texto3[] = "Você pega o amuleto com o poder de Horús e entra em uma batalha mortal contra Seth\n";
+        char Texto4[] = "Você tem três opções de ataques, saiba que o dano dos ataques causados em Seth sera escolhido randomicamente.\n\n";
+        SlowText(Texto2);
+        SlowText(Texto3);
+        SlowText(Texto4);
+        system("pause");
+
+        printf("\n    Lamina de Hórus. \n    Olhos de Águia    \n    Raio Solar");
+        SetaUpDown(7, 1, 3, 1, "->", "  ");
+
+        switch(opcao)
+        {
+        case 1:
+            system("cls");
+            printf("Vida Seth %d", VidaSeth);
+            char Texto5[] = "Você foi na direção de Seth e desferiu um ataque com sua lamina.";
+            SlowText(Texto5);
+
+            srand(time(NULL));
+            Random = rand()%6;
+            printf("Você causou %d de dano a Seth.\n", Random);
+            VidaSeth -= Random;
+            char Texto6[] = "Seth revidou e te tirou 1 de dano";
+            SlowText(Texto6);
+            VidaArqueologo--;
+            system("pause");
+        }
+    case 2:
+        system("cls");
+        char Texto6[] = "Seth: Como pôde ser tão ingênuo mortal, agora com esse poder finalmente poderei conquistar todo o Egito e acabarei com os 7 reinos.\n\n";
+        char Texto7[] = "Seth aniquilou você e lançou o caos sobre todos os reinos.\n\n";
+        SlowText(Texto6);
+        SlowText(Texto7);
+        Sleep(10000);
+        GameOver(o);
     }
 }
 
