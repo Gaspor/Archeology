@@ -140,7 +140,7 @@ void cenario(int Vida, int MusicOn) {
 void Vencedor(int MusicOn)  // Função caso o jogador vença o jogo
 {
     int o = MusicOn;
-    Sleep(5000);
+    Pause("Pressione qualquer tecla para continuar...");
     system("cls");
     char Texto1[] = "A batalha foi longa mas enfim Seth foi derrotado, com sua morte o mundo viverá em paz novamente. Porém a paz nunca é duradoura...\n\n";
     char Texto2[] = "Sistema: Parabéns ";
@@ -150,7 +150,7 @@ void Vencedor(int MusicOn)  // Função caso o jogador vença o jogo
     SlowText(NamePlayer);
     SlowText(Texto3);
     printf("Obrigado por jogar, aperte qualquer tecla para retornar ao menu.");
-    getchar();
+    getch();
     Menu(o);
 }
 
@@ -166,7 +166,7 @@ void GameOver(int MusicOn)    // Função de GameOver //
 
 void Pause(char *Text){
     printf(Text);
-    getchar();
+    getch();
 }
 
 void Quit()

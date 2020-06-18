@@ -104,9 +104,7 @@ char SlowText(char *Text)
 
 void Menu(int MusicOn)
 {
-    Fase2Cenario2(1, 0);
-    Pause("Batata");
-    BossSeth(0);
+    BossSeth(1, 0);
     int Vidas = 1, o = MusicOn;
 
     if (o == 0)
@@ -479,13 +477,13 @@ void Fase1Cenario2(int Vida, int MusicOn)
         system("cls");
         char Texto2[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
         SlowText(Texto2);
-        system("pause");
+        Pause("\nPressione qualquer tecla para continuar...\n");
         Anubis(FaseAtual, Vidas, o);
     case 2:
         system("cls");
         char Texto3[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
         SlowText(Texto3);
-        system("pause");
+        Pause("\nPressione qualquer tecla para continuar...\n");
         Anubis(FaseAtual, Vidas, o);
     case 3:
         system("cls");
@@ -502,13 +500,13 @@ void Fase1Cenario2(int Vida, int MusicOn)
             system("cls");
             char Texto7[] = "Muito bem, você encontrou o Templo de Hórus, agora você terá que encontrar um modo de subir a montanha.\n\n";
             SlowText(Texto7);
-            system("pause");
+            Pause("\nPressione qualquer tecla para continuar...\n");
             Fase2Cenario2(Vidas, o);
         default:
             system("cls");
             char Texto8[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
             SlowText(Texto8);
-            system("pause");
+            Pause("\nPressione qualquer tecla para continuar...\n");
             Anubis(FaseAtual, Vidas, o);
 
         }
@@ -516,7 +514,7 @@ void Fase1Cenario2(int Vida, int MusicOn)
         system("cls");
         char Texto6[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
         SlowText(Texto6);
-        system("pause");
+        Pause("\nPressione qualquer tecla para continuar...\n");
         Anubis(FaseAtual, Vidas, o);
 
     }
@@ -527,7 +525,7 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
 {
     int CoolDown = 0, Vidas = Vida, FaseAtual = 8, o = MusicOn, VidaSeth = 10, VidaArqueologo = 4, Random;
     system("cls");
-    char Texto1[] = "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha. Hórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa\nera de Seth (Deus do Caos). Após ouvir isso Seth se manifesta e contradiz Horús.\n";
+    char Texto1[] = "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha. \nHórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa era de Seth (Deus do Caos). \nApós ouvir isso Seth se manifesta e contradiz Horús.\n";
     SlowText(Texto1);
 
     printf("\n    Acreditar em Horús.\n    Acreditar em Seth.");
@@ -542,12 +540,12 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
         char Texto4[] = "Você tem três opções de ataques, saiba que o dano dos ataques causados em Seth sera escolhido randomicamente.\n\n";
         SlowText(Texto2);
         SlowText(Texto3);
-        Sleep(8000);
+        Pause("\nPressione qualquer tecla para continuar...\n");
         while (VidaArqueologo > 0 || VidaSeth > 0)
         {
             system("cls");
             SlowText(Texto4);
-            system("pause");
+            Pause("Pressione qualquer tecla para continuar...\n");
             printf("\n    Lamina de Hórus. \n    Olhos de Águia    \n    Raio Solar");
             SetaUpDown(4, 1, 3, 1, "->", "  ");
 
@@ -561,14 +559,14 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 SlowText(Texto5);
                 srand(time(NULL));
                 Random = rand()%6;
-                printf("Você causou %d de dano a Seth.\n", Random);
+                printf("\n\nVocê causou %d de dano a Seth.\n", Random);
                 VidaSeth -= Random;
                 if (VidaSeth > 0 && VidaArqueologo > 0)
                 {
-                    char Texto6[] = "Seth revidou e te arrancou uma vida";
+                    char Texto6[] = "\nSeth revidou e te arrancou uma vida\n";
                     SlowText(Texto6);
                     VidaArqueologo--;
-                    system("pause");
+                    Pause("\nPressione qualquer tecla para continuar...\n");
                 }
                 else if (VidaSeth <= 0 && VidaArqueologo > 0)
                 {
@@ -576,8 +574,8 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 }
                 else
                 {
-                    printf("voce morreu");
-                    system ("pause");
+                    printf("\nVoce morreu\n");
+                    Pause("\nPressione qualquer tecla para continuar...\n");
                     Anubis(FaseAtual, Vidas, o);
                 }
                 CoolDown--;
@@ -591,14 +589,14 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 SlowText(Texto7);
                 srand(time(NULL));
                 Random = rand()%6 + 2; //Maior probabilidade de dar dano alto
-                printf("Você causou %d de dano a Seth.\n", Random);
+                printf("\n\nVocê causou %d de dano a Seth.\n", Random);
                 VidaSeth -= Random;
                 if (VidaSeth > 0 && VidaArqueologo > 0)
                 {
-                    char Texto6[] = "Seth revidou e te arrancou uma vida";
+                    char Texto6[] = "\nSeth revidou e te arrancou uma vida\n";
                     SlowText(Texto6);
                     VidaArqueologo--;
-                    system("pause");
+                    Pause("\nPressione qualquer tecla para continuar...\n");
                 }
                 else if (VidaSeth <= 0 && VidaArqueologo > 0)
                 {
@@ -606,8 +604,8 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 }
                 else
                 {
-                    printf("voce morreu");
-                    system ("pause");
+                    printf("\nVoce morreu\n");
+                    Pause("\nPressione qualquer tecla para continuar...\n");
                     Anubis(FaseAtual, Vidas, o);
                 }
                 CoolDown--;
@@ -616,8 +614,8 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 system("cls");
                 if (CoolDown > 0)
                 {
-                    printf("Você não pode usar este poder agora.");
-                    system("pause");
+                    printf("Você não pode usar este poder agora.\n");
+                    Pause("\nPressione qualquer tecla para continuar...\n");
                 }
                 else
                 {
@@ -627,13 +625,13 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                     SlowText(Texto9);
                     srand(time(NULL));
                     Random = rand()%6;
-                    printf("Você causou %d de dano a Seth.\n", Random);
+                    printf("\n\nVocê causou %d de dano a Seth.\n", Random);
                     VidaSeth -= Random;
                     if (VidaSeth > 0 && VidaArqueologo > 0)
                     {
-                        char Texto10[] = "Seth estava sego e nao conseguiu te atacar.";
+                        char Texto10[] = "\nSeth estava cego e nao conseguiu te atacar.\n";
                         SlowText(Texto10);
-                        system("pause");
+                        Pause("\nPressione qualquer tecla para continuar...\n");
                     }
                     else if (VidaSeth <= 0 && VidaArqueologo > 0)
                     {
@@ -641,8 +639,8 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                     }
                     else
                     {
-                        printf("voce morreu");
-                        system ("pause");
+                        printf("\nVoce morreu\n");
+                        Pause("\nPressione qualquer tecla para continuar...\n");
                         Anubis(FaseAtual, Vidas, o);
                     }
                     CoolDown = 2;
