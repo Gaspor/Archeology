@@ -113,7 +113,7 @@ void LimpaLab(){
 
 void PrintarLegenda(){
     coordxy(0, 0);
-    printf("\n  Após subir o as escadas você se vê dentro de um labirinto, seu objetivo é chegar até a entrada do templo de Hórus.");
+    printf("\n  Após subir as escadas você se vê dentro de um labirinto, seu objetivo é chegar até a entrada do templo de Hórus.");
     coordxy(85, 5);
     printf("===== Legenda =====\n");
     coordxy(85, 6);

@@ -104,8 +104,9 @@ char SlowText(char *Text)
 
 void Menu(int MusicOn)
 {
+    Fase2Cenario2(1, 0);
+    Pause("Batata");
     BossSeth(0);
-    Fase3Cenario2(1, 0);
     int Vidas = 1, o = MusicOn;
 
     if (o == 0)
@@ -214,7 +215,7 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         printf("   Iniciando a Fase 2...\n");
         Sleep(1500);
         system("cls");
-       //PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
+        //PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
         Fase2(Vidas, o);
     case 3:
         system("cls");
@@ -255,7 +256,7 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         system("cls");
         printf("   Você escolheu ir para a Fase 3 do Segundo cenário.\n");
         Sleep(1000);
-        printf("   Fase em construção, selecione outra!\n");
+        printf("   Iniciando a Fase 3 (Segundo cenário)...\n");
         system("pause");
         system("cls");
         Fase3Cenario2(Vidas, o);
@@ -263,10 +264,10 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         system("cls");
         printf("   Você escolheu ir para a Fase do Boss do Segundo cenário.\n");
         Sleep(1000);
-        printf("   Fase em construção, selecione outra!\n");
+        printf("   Iniciando a Fase Boss Seth...\n");
         system("pause");
         system("cls");
-        SelectFase(Vidas, o);
+        BossSeth(Vidas, o);
     case 10:
         Menu(o);
     default:
@@ -461,9 +462,70 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
     }
 }
 
-void BossSeth(int MusicOn, int argc, char *argv[])    //Boss final
+void Fase1Cenario2(int Vida, int MusicOn)
 {
-    int o = MusicOn, VidaSeth = 10, VidaArqueologo = 3, Random;
+    int FaseAtual = 5, Vidas = Vida, o = MusicOn;
+    char RespostaChar[200];
+    system("cls");
+    printf("Vidas: %d \n", Vidas);
+    char Text1Fase1[] = "  Primeiramente, você deve se perguntar onde nasce o sol.\n\n";
+    SlowText(Text1Fase1);
+    printf("    N (norte) \n    S (sul) \n    L (leste) \n    O (oeste) \n");
+    SetaUpDown(3, 1, 4, 1, "->", "  ");
+
+    switch (opcao)
+    {
+    case 1:
+        system("cls");
+        char Texto2[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
+        SlowText(Texto2);
+        system("pause");
+        Anubis(FaseAtual, Vidas, o);
+    case 2:
+        system("cls");
+        char Texto3[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
+        SlowText(Texto3);
+        system("pause");
+        Anubis(FaseAtual, Vidas, o);
+    case 3:
+        system("cls");
+        char Texto4[] = "Correto, mas não é apenas isso, o Templo de Hórus não é tão fácil de encontrar, então me responda novamente.\n\n";
+        SlowText(Texto4);
+        char Texto5[] = "Se você olhar na direção em que o sol nasce, qual é a direção que fica à sua direita?\n\n";
+        SlowText(Texto5);
+        printf ("    N (norte) \n    S (sul) \n    L (leste) \n    O (oeste) \n");
+        SetaUpDown(4, 1, 4, 1, "->", "  ");
+
+        switch (opcao)
+        {
+        case 2:
+            system("cls");
+            char Texto7[] = "Muito bem, você encontrou o Templo de Hórus, agora você terá que encontrar um modo de subir a montanha.\n\n";
+            SlowText(Texto7);
+            system("pause");
+            Fase2Cenario2(Vidas, o);
+        default:
+            system("cls");
+            char Texto8[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
+            SlowText(Texto8);
+            system("pause");
+            Anubis(FaseAtual, Vidas, o);
+
+        }
+    case 4:
+        system("cls");
+        char Texto6[] = "Bom, parece que você não tem o necessário para derrotar Seth, mas não se preocupe, você terá um segunda chance.\n\n";
+        SlowText(Texto6);
+        system("pause");
+        Anubis(FaseAtual, Vidas, o);
+
+    }
+
+}
+
+void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
+{
+    int CoolDown = 0, Vidas = Vida, FaseAtual = 8, o = MusicOn, VidaSeth = 10, VidaArqueologo = 4, Random;
     system("cls");
     char Texto1[] = "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha. Hórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa\nera de Seth (Deus do Caos). Após ouvir isso Seth se manifesta e contradiz Horús.\n";
     SlowText(Texto1);
@@ -480,44 +542,124 @@ void BossSeth(int MusicOn, int argc, char *argv[])    //Boss final
         char Texto4[] = "Você tem três opções de ataques, saiba que o dano dos ataques causados em Seth sera escolhido randomicamente.\n\n";
         SlowText(Texto2);
         SlowText(Texto3);
-        SlowText(Texto4);
-        system("pause");
-
-        printf("\n    Lamina de Hórus. \n    Olhos de Águia    \n    Raio Solar");
-        SetaUpDown(7, 1, 3, 1, "->", "  ");
-
-        switch(opcao)
+        Sleep(8000);
+        while (VidaArqueologo > 0 || VidaSeth > 0)
         {
-        case 1:
             system("cls");
-            printf("Vida Seth %d", VidaSeth);
-            char Texto5[] = "Você foi na direção de Seth e desferiu um ataque com sua lamina.";
-            SlowText(Texto5);
-
-            srand(time(NULL));
-            Random = rand()%6;
-            printf("Você causou %d de dano a Seth.\n", Random);
-            VidaSeth -= Random;
-            char Texto6[] = "Seth revidou e te tirou 1 de dano";
-            SlowText(Texto6);
-            VidaArqueologo--;
+            SlowText(Texto4);
             system("pause");
+            printf("\n    Lamina de Hórus. \n    Olhos de Águia    \n    Raio Solar");
+            SetaUpDown(4, 1, 3, 1, "->", "  ");
+
+            switch(opcao)
+            {
+            case 1:
+                system("cls");
+                printf("Vida Seth: %d\n\n", VidaSeth);
+                printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
+                char Texto5[] = "Você foi na direção de Seth e desferiu um ataque com sua lamina.";
+                SlowText(Texto5);
+                srand(time(NULL));
+                Random = rand()%6;
+                printf("Você causou %d de dano a Seth.\n", Random);
+                VidaSeth -= Random;
+                if (VidaSeth > 0 && VidaArqueologo > 0)
+                {
+                    char Texto6[] = "Seth revidou e te arrancou uma vida";
+                    SlowText(Texto6);
+                    VidaArqueologo--;
+                    system("pause");
+                }
+                else if (VidaSeth <= 0 && VidaArqueologo > 0)
+                {
+                    Vencedor(o);
+                }
+                else
+                {
+                    printf("voce morreu");
+                    system ("pause");
+                    Anubis(FaseAtual, Vidas, o);
+                }
+                CoolDown--;
+                break;
+
+            case 2:
+                system("cls");
+                printf("Vida Seth: %d\n\n", VidaSeth);
+                printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
+                char Texto7[] = "Você usa uma visão ampliada e descobre uma vulnerabilidade em Seth.";
+                SlowText(Texto7);
+                srand(time(NULL));
+                Random = rand()%6 + 2; //Maior probabilidade de dar dano alto
+                printf("Você causou %d de dano a Seth.\n", Random);
+                VidaSeth -= Random;
+                if (VidaSeth > 0 && VidaArqueologo > 0)
+                {
+                    char Texto6[] = "Seth revidou e te arrancou uma vida";
+                    SlowText(Texto6);
+                    VidaArqueologo--;
+                    system("pause");
+                }
+                else if (VidaSeth <= 0 && VidaArqueologo > 0)
+                {
+                    Vencedor(o);
+                }
+                else
+                {
+                    printf("voce morreu");
+                    system ("pause");
+                    Anubis(FaseAtual, Vidas, o);
+                }
+                CoolDown--;
+                break;
+            case 3:
+                system("cls");
+                if (CoolDown > 0)
+                {
+                    printf("Você não pode usar este poder agora.");
+                    system("pause");
+                }
+                else
+                {
+                    printf("Vida Seth: %d\n\n", VidaSeth);
+                    printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
+                    char Texto9[] = "Você utiliza o raio solar e deixa Seth sego por alguns segundos, você aproveita e desfere um ataque.";
+                    SlowText(Texto9);
+                    srand(time(NULL));
+                    Random = rand()%6;
+                    printf("Você causou %d de dano a Seth.\n", Random);
+                    VidaSeth -= Random;
+                    if (VidaSeth > 0 && VidaArqueologo > 0)
+                    {
+                        char Texto10[] = "Seth estava sego e nao conseguiu te atacar.";
+                        SlowText(Texto10);
+                        system("pause");
+                    }
+                    else if (VidaSeth <= 0 && VidaArqueologo > 0)
+                    {
+                       Vencedor(o);
+                    }
+                    else
+                    {
+                        printf("voce morreu");
+                        system ("pause");
+                        Anubis(FaseAtual, Vidas, o);
+                    }
+                    CoolDown = 2;
+                }
+                break;
+            }
         }
+
     case 2:
         system("cls");
-        char Texto6[] = "Seth: Como pôde ser tão ingênuo mortal, agora com esse poder finalmente poderei conquistar todo o Egito e acabarei com os 7 reinos.\n\n";
-        char Texto7[] = "Seth aniquilou você e lançou o caos sobre todos os reinos.\n\n";
-        SlowText(Texto6);
-        SlowText(Texto7);
-        Sleep(10000);
+        char Texto12[] = "Seth: Como pôde ser tão ingênuo mortal, agora com esse poder finalmente poderei conquistar todo o Egito e acabarei com os 7 reinos.\n\n";
+        char Texto13[] = "Horús: Como pôde ser tão Idiota ao confiar nele mortal, agora o destino do mundo e o dos 7 reinos estao nas maos de Seth.\n\n";
+        char Texto14[] = "Seth aniquilou você e lançou o caos sobre todos os reinos.\n\n";
+        SlowText(Texto12);
+        SlowText(Texto13);
+        SlowText(Texto14);
+        Sleep(8000);
         GameOver(o);
     }
-}
-
-void Quit()
-{
-    system("cls");
-    printf("\aSaindo...\n");
-    Sleep(800);
-    exit(0);
 }
