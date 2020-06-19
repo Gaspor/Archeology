@@ -104,6 +104,7 @@ char SlowText(char *Text)
 
 void Menu(int MusicOn)
 {
+    Fase1(1, 0);
     BossSeth(1, 0);
     int Vidas = 1, o = MusicOn;
 
@@ -280,7 +281,7 @@ void Fase2(int Vida, int MusicOn)
     system("cls");
     int FaseAtual = 2, Acertos = 0, Vidas = Vida, o = MusicOn;
     coordxy(0, 0);
-    printf("Vidas: %d \n", Vidas);
+    printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
     char Text1[] = "  Você se depara com uma entrada, anda até ela e quando está chegando, o chão começa a tremer. De repente\nvocê percebe que alguns pisos não tremem e eles serão o seu caminho até a entrada.\n";
     SlowText(Text1);
 Acerto:
@@ -392,7 +393,7 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
 {
     int FaseAtual = 4, Vidas = Vida, VidaEsfinge = 500, o = MusicOn;
     system("cls");
-    printf("Vidas: %d ", Vidas);
+    printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
     printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|/////////////////////////| %d", VidaEsfinge);
     EsfingeImage();
     printf("\n Que animal anda pela manhã sobre quatro patas, a tarde sobre duas e a noite sobre três? \n\n   O Gato \n   O Chachorro \n   O Homem");
@@ -402,7 +403,7 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
     {
         system("cls");
         VidaEsfinge -= 100;
-        printf("Vidas: %d ", Vidas);
+        printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
         printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|////////////////////-----| %d", VidaEsfinge);
         EsfingeImage();
         printf("\n Por que seria o homem? \n\n   Porque o homem é um bípede \n   Porque o homem não quer mais viver uma mentira \n   Porque na infância o homem engatinha \n   Porque na infância o homem pensa muito");
@@ -412,7 +413,7 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
         {
             system("cls");
             VidaEsfinge -= 100;
-            printf("Vidas: %d ", Vidas);
+            printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
             printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|///////////////----------| %d", VidaEsfinge);
             EsfingeImage();
             printf("\n E o que mais? \n\n   Na idade adulta ele anda ereto \n   Essa é toda a resposta \n   Não tenho tempo para essas questões filosóficas, me deixe passar \n   Não idade adulta ele pensa muito, e pensar nos faz andar");
@@ -422,7 +423,7 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
             {
                 system("cls");
                 VidaEsfinge -= 100;
-                printf("Vidas: %d ", Vidas);
+                printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
                 printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|//////////---------------| %d", VidaEsfinge);
                 EsfingeImage();
                 printf("\n Mais alguma coisa? \n   Sim, na velhice o homem necessita de uma bengala para andar \n   Não, é apenas essa a resposta");
@@ -432,7 +433,7 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
                 {
                     system("cls");
                     VidaEsfinge = 0;
-                    printf("Vidas: %d ", Vidas);
+                    printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
                     printf("\t\t\t\t\tVida da Esfinge\n\t\t\t\t\t|-------------------------| %d", VidaEsfinge);
                     EsfingeImage();
                     printf("\n\nVocê me venceu, como conseguiu?\n");
@@ -465,7 +466,7 @@ void Fase1Cenario2(int Vida, int MusicOn)
     int FaseAtual = 5, Vidas = Vida, o = MusicOn;
     char RespostaChar[200];
     system("cls");
-    printf("Vidas: %d \n", Vidas);
+    printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
     char Text1Fase1[] = "  Primeiramente, você deve se perguntar onde nasce o sol.\n\n";
     SlowText(Text1Fase1);
     printf("    N (norte) \n    S (sul) \n    L (leste) \n    O (oeste) \n");
@@ -523,7 +524,7 @@ void Fase1Cenario2(int Vida, int MusicOn)
 
 void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
 {
-    int CoolDown = 0, Vidas = Vida, FaseAtual = 8, o = MusicOn, VidaSeth = 10, VidaArqueologo = 4, Random;
+    int CoolDown = 0, Vidas = Vida, o = MusicOn, VidaSeth = 100, VidaArqueologo = 7, Random, RandomSeth, CoolDownOlhosdeAguia;
     system("cls");
     char Texto1[] = "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha. \nHórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa era de Seth (Deus do Caos). \nApós ouvir isso Seth se manifesta e contradiz Horús.\n";
     SlowText(Texto1);
@@ -541,7 +542,7 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
         SlowText(Texto2);
         SlowText(Texto3);
         Pause("\nPressione qualquer tecla para continuar...\n");
-        while (VidaArqueologo > 0 || VidaSeth > 0)
+        while (VidaArqueologo > 1 || VidaSeth > 1 )
         {
             system("cls");
             SlowText(Texto4);
@@ -559,89 +560,95 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 SlowText(Texto5);
                 srand(time(NULL));
                 Random = rand()%6;
+                RandomSeth = rand()%7 + 1;
                 printf("\n\nVocê causou %d de dano a Seth.\n", Random);
                 VidaSeth -= Random;
                 if (VidaSeth > 0 && VidaArqueologo > 0)
                 {
-                    char Texto6[] = "\nSeth revidou e te arrancou uma vida\n";
-                    SlowText(Texto6);
-                    VidaArqueologo--;
+                    printf("Seth revidou o ataque e lhe causou %d de dano.\n\n", RandomSeth);
+                    VidaArqueologo -= RandomSeth;
                     Pause("\nPressione qualquer tecla para continuar...\n");
+
                 }
-                else if (VidaSeth <= 0 && VidaArqueologo > 0)
+                if (VidaSeth <= 0 && VidaArqueologo > 0)
                 {
                     Vencedor(o);
                 }
-                else
+                if (VidaArqueologo < 1)
                 {
-                    printf("\nVoce morreu\n");
-                    Pause("\nPressione qualquer tecla para continuar...\n");
-                    Anubis(FaseAtual, Vidas, o);
+                    Perdedor(Vidas, o, VidaSeth);
                 }
                 CoolDown--;
                 break;
 
             case 2:
                 system("cls");
-                printf("Vida Seth: %d\n\n", VidaSeth);
-                printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
-                char Texto7[] = "Você usa uma visão ampliada e descobre uma vulnerabilidade em Seth.";
-                SlowText(Texto7);
-                srand(time(NULL));
-                Random = rand()%6 + 2; //Maior probabilidade de dar dano alto
-                printf("\n\nVocê causou %d de dano a Seth.\n", Random);
-                VidaSeth -= Random;
-                if (VidaSeth > 0 && VidaArqueologo > 0)
+                if (CoolDownOlhosdeAguia != 1)
                 {
-                    char Texto6[] = "\nSeth revidou e te arrancou uma vida\n";
-                    SlowText(Texto6);
-                    VidaArqueologo--;
-                    Pause("\nPressione qualquer tecla para continuar...\n");
-                }
-                else if (VidaSeth <= 0 && VidaArqueologo > 0)
-                {
-                    Vencedor(o);
+                    printf("Vida Seth: %d\n\n", VidaSeth);
+                    printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
+                    char Texto8[] = "Você usa uma visão ampliada e descobre uma vulnerabilidade em Seth.";
+                    SlowText(Texto8);
+                    srand(time(NULL));
+                    Random = rand()%6 + 2; //Maior probabilidade de dar dano alto
+                    RandomSeth = rand()%7 + 1;
+                    printf("\n\nVocê causou %d de dano a Seth.\n", Random);
+                    VidaSeth -= Random;
+                    if (VidaSeth > 0 && VidaArqueologo > 0)
+                    {
+                        printf("Seth revidou o ataque e lhe causou %d de dano.\n\n", RandomSeth);
+                        VidaArqueologo -= RandomSeth;
+                        Pause("\nPressione qualquer tecla para continuar...\n");
+                    }
+                    if(VidaSeth <= 0 && VidaArqueologo > 0)
+                    {
+                        Vencedor(o);
+                    }
+                    if(VidaArqueologo < 1)
+                    {
+                        Perdedor(Vidas, o, VidaSeth);
+                    }
+                    CoolDownOlhosdeAguia = 1;
+                    CoolDown--;
+                    break;
                 }
                 else
                 {
-                    printf("\nVoce morreu\n");
-                    Pause("\nPressione qualquer tecla para continuar...\n");
-                    Anubis(FaseAtual, Vidas, o);
+                    char Texto1[] = "Essa habilidade não pode ser usada novamente.\n\n";
+                    SlowText(Texto1);
+                    Pause("Pressione qualquer tecla para continuar...");
+                    break;
                 }
-                CoolDown--;
-                break;
             case 3:
                 system("cls");
                 if (CoolDown > 0)
                 {
-                    printf("Você não pode usar este poder agora.\n");
+                    printf("Você não pode usar este poder agora.\n\n");
                     Pause("\nPressione qualquer tecla para continuar...\n");
                 }
                 else
                 {
                     printf("Vida Seth: %d\n\n", VidaSeth);
                     printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
-                    char Texto9[] = "Você utiliza o raio solar e deixa Seth sego por alguns segundos, você aproveita e desfere um ataque.";
-                    SlowText(Texto9);
+                    char Texto10[] = "Você utiliza o raio solar e deixa Seth cego por alguns segundos, você aproveita e desfere um ataque.";
+                    SlowText(Texto10);
                     srand(time(NULL));
                     Random = rand()%6;
                     printf("\n\nVocê causou %d de dano a Seth.\n", Random);
                     VidaSeth -= Random;
                     if (VidaSeth > 0 && VidaArqueologo > 0)
                     {
-                        char Texto10[] = "\nSeth estava cego e nao conseguiu te atacar.\n";
-                        SlowText(Texto10);
+                        char Texto11[] = "\nSeth estava cego e nao conseguiu te atacar.\n";
+                        SlowText(Texto11);
                         Pause("\nPressione qualquer tecla para continuar...\n");
                     }
-                    else if (VidaSeth <= 0 && VidaArqueologo > 0)
+                    if (VidaSeth <= 0 && VidaArqueologo > 0)
                     {
-                       Vencedor(o);
+                        Vencedor(o);
                     }
-                    else
+                    if(VidaArqueologo < 1)
                     {
-                        printf("\nVoce morreu\n");
-                        Pause("\nPressione qualquer tecla para continuar...\n");
-                        Anubis(FaseAtual, Vidas, o);
+                        Perdedor(Vidas, o, VidaSeth);
                     }
                     CoolDown = 2;
                 }

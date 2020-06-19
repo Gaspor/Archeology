@@ -77,12 +77,12 @@ void Fase3Cenario2(int Vida, int MusicOn) {
 
 void desenharMapa(int Vida){
     int linha, coluna, Vidas = Vida;
-    printf("Vidas: %d \n\n\n\n", Vidas);
+    printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
     for (linha = 0; linha < 15; linha++){
         printf("\t\t\t\t\t\t");
         for (coluna = 0; coluna < 30; coluna++){
             if ((linha == linha_atual) && (coluna == coluna_atual)){
-                printf(ANSI_COLOR_RED "P" ANSI_COLOR_RESET);
+                printf(ANSI_COLOR_DARK_RED "P" ANSI_COLOR_RESET);
                 continue;
             }
             if (mapa[linha][coluna] == Piso){
