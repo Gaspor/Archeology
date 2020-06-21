@@ -10,7 +10,7 @@ void Fase1(int Vida, int MusicOn)
     else
         PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
 
-    printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
+    PrintVida(Vidas);
     char Texto1[] = ANSI_COLOR_DARK_CYAN "  Você se depara com uma porta com “peças” faltando, olha para o lado e observa que há: 3 peças com símbolos de Anúbis, 3 peças \n\n" ANSI_COLOR_RESET;
     char Texto2[] = ANSI_COLOR_DARK_CYAN " com símbolos de Hórus, e 4 peças com símbolos de Seth.\n\n";
     char Texto3[] = ANSI_COLOR_DARK_CYAN "  Enquanto olha para as peças você ouve algo, quando olha para a porta se depara com a seguinte frase sendo construída: Me diga \n\n";
@@ -36,15 +36,13 @@ void Fase1(int Vida, int MusicOn)
     if (Resposta == 36)
     {
         char Texto6[] = "\n\n            Você acertou o número de combinações\n" ANSI_COLOR_RESET;
-        SlowText(Texto6);
-        Sleep(3000);
+        Pause(SlowText(Texto6));
         system("cls");
         Fase2(Vidas, o);
     }
     else
     {
-        printf("\n\n            Você errou e ativou uma armadilha, toda pirâmide tremia, você provocou um deslizamento e foi esmagado por uma rocha.\n\n" ANSI_COLOR_RESET);
-        system("pause");
+        Pause("\n\n            Você errou e ativou uma armadilha, toda pirâmide tremia, você provocou um deslizamento e foi esmagado por uma rocha.\n\n" ANSI_COLOR_RESET);
         system("cls");
         Anubis(FaseAtual, Vidas, o);
     }

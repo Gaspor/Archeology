@@ -34,7 +34,7 @@
 
 1589045470 source:d:\gaspor\c programs\archeology game\resouces.rc
 
-1592606273 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase1.c
+1592692183 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase1.c
 	"../../Includes.h"
 
 1592605161 d:\gaspor\c programs\archeology game\includes.h
@@ -45,24 +45,24 @@
 	<windows.h>
 	<time.h>
 
-1592598303 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase3.c
+1592699012 source:d:\gaspor\c programs\archeology game\fases\primeiro_cenario\fase3.c
 	"../../Includes.h"
 
 1592349897 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase1.c
 	"../../Includes.h"
 
-1592598303 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase2.c
+1592698559 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase2.c
 	"../../Includes.h"
 
-1592603098 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase3.c
+1592685442 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\fase3.c
 	"../../Includes.h"
 
 1592270917 source:d:\gaspor\c programs\archeology game\fases\segundo_cenario\finalboss.c
 	"../../Includes.h"
 
-1592603791 source:d:\gaspor\c programs\archeology game\menu.c
+1592698900 source:d:\gaspor\c programs\archeology game\menu.c
 	"Includes.h"
 
-1592605161 source:d:\gaspor\c programs\archeology game\utilities.c
+1592693940 source:d:\gaspor\c programs\archeology game\utilities.c
 	"Includes.h"
 
