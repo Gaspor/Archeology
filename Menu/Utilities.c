@@ -3,6 +3,104 @@
 int KeyPress;
 char NamePlayer[200];
 
+// Setas //
+void coordxy(int x,int y)
+{
+    COORD Mouse;
+    Mouse.X = x;
+    Mouse.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), Mouse);
+}
+
+int SetaUpDown (int La,int coordx,int BLimite,int LOper,char *SetaModel,char *SetaModelSpace)     // Seta pra cima e pra baixo //
+{
+    int opcao = 0, L = La, b = 1;
+    do
+    {
+        coordxy(coordx, L);
+        printf(SetaModel);
+        coordxy(0,20);
+        if(kbhit)
+        {
+            KeyPress=getch();
+        }
+        if(KeyPress == 80 && b < BLimite)
+        {
+            coordxy(coordx, L);
+            printf(SetaModelSpace);
+            L+=LOper;
+            b++;
+        }
+        if(KeyPress == 72 && b > 1)
+        {
+            coordxy(coordx, L);
+            printf(SetaModelSpace);
+            L-=LOper;
+            b--;
+        }
+        if (KeyPress == 27)
+        {
+            Quit();
+        }
+        if(KeyPress == 13)
+        {
+            opcao=b;
+        }
+    }
+    while(opcao == 0);
+    return opcao;
+}
+
+void SetaLeftRight (int La,int coordy,int BLimite,int LOper,char *SetaModel,char *SetaModelSpace)     // Seta pra direita e pra esquerda //
+{
+    int opcao = 0, L = La, b = 1;
+    do
+    {
+        coordxy(L, coordy);
+        printf(SetaModel);
+        coordxy(0,20);
+        if(kbhit)
+        {
+            KeyPress=getch();
+        }
+        if (KeyPress == 77 && b < BLimite)
+        {
+            coordxy(L, coordy);
+            printf(SetaModelSpace);
+            L+=LOper;
+            b++;
+        }
+        if (KeyPress == 75 && b > 1)
+        {
+            coordxy(L, coordy);
+            printf(SetaModelSpace);
+            L-=LOper;
+            b--;
+        }
+        if (KeyPress == 27)
+        {
+            Quit();
+        }
+        if(KeyPress == 13)
+        {
+            opcao=b;
+        }
+    }
+    while(opcao == 0);
+    return opcao;
+}
+
+// Efeito Texto em Slow //
+char SlowText(char *Text)
+{
+    int i, TimeText = 0;
+    for (i = 0; Text[i] != '\0'; i++)
+    {
+        printf("%c",Text[i]);
+        Sleep(TimeText);
+    }
+}
+
 void Player(int Vida, int MusicOn)      // Nome do Player //
 {
     int Vidas = Vida, o = MusicOn;
@@ -51,6 +149,14 @@ void Lore(int Vida, int MusicOn)    // História primeiro Cenário
     Fase1(Vidas, o);
 }
 
+void Pause(char *Text)
+{
+    printf(Text);
+    getch();
+}
+
+
+// Game Utilities //
 void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas do Player)
 {
     int Vidas = Vida, o = MusicOn;
@@ -166,6 +272,7 @@ void Vencedor(int MusicOn)  // Função caso o jogador vença o jogo
     Pause("Obrigado por jogar, aperte qualquer tecla para retornar ao menu.");
     Menu(o);
 }
+
 void Perdedor(int Vida, int MusicOn, int VidaSeth)
 {
     int o = MusicOn, RandomSeth = VidaSeth, FaseAtual = 8, Vidas = Vida;
@@ -184,18 +291,4 @@ void GameOver(int MusicOn)    // Função de GameOver //
     Pause(" ");
     system("cls");
     Menu(o);
-}
-
-void Pause(char *Text)
-{
-    printf(Text);
-    getch();
-}
-
-void Quit()
-{
-    system("cls");
-    printf("\aSaindo...\n");
-    Sleep(800);
-    exit(0);
 }

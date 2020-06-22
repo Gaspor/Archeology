@@ -34,7 +34,16 @@
 		<Unit filename="Fases/Primeiro_Cenario/Fase1.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Fases/Primeiro_Cenario/Fase2.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="Fases/Primeiro_Cenario/Fase3.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fases/Primeiro_Cenario/FaseBoss.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Fases/Segundo_Cenario/Fase1.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Fases/Segundo_Cenario/Fase2.c">
@@ -43,11 +52,17 @@
 		<Unit filename="Fases/Segundo_Cenario/Fase3.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Includes.h" />
-		<Unit filename="Menu.c">
+		<Unit filename="Fases/Segundo_Cenario/FaseBoss.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Utilities.c">
+		<Unit filename="Menu/Dev.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Menu/Includes.h" />
+		<Unit filename="Menu/Menu.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Menu/Utilities.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="main.c">

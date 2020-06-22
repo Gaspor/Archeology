@@ -1,4 +1,4 @@
-#include "../../Includes.h"
+#include "../../Menu/Includes.h"
 
 void Fase3(int Vida, int MusicOn) {
     int FaseAtual = 3, Vidas = Vida, o = MusicOn;
@@ -8,7 +8,7 @@ void Fase3(int Vida, int MusicOn) {
     char Text1[] = " se fecha e você ouve um barulho intenso, uma enorme esfinge feita de areia se ergue diante de você.\n\n";
     char Text2Fase3[] = " \"Esfinge: Eu sou a última porta para o seu destino, responda corretamente meu enigma e sua passagem será liberada.\"\n\n";
     char Text3Fase3[] = " Esfinge: Eu nunca fui e sempre poderei ser, ninguém jamais me viu ou verá, mas sou a certeza de todos os que vivem e que respiram.";
-    char TextEsfinge[] = ANSI_COLOR_DARK_CYAN " Quem sou eu? " ANSI_COLOR_RESET;
+    char TextEsfinge[] = ANSI_COLOR_DARK_CYAN " Quem sou eu? ";
     coordxy(11, 4);
     printf(ANSI_COLOR_CYAN "=== Caixa de Dialógo ==================================================================================================================\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           |                                                                                                                                     |\n           =======================================================================================================================================" ANSI_COLOR_RESET);
     coordxy(13, 6);

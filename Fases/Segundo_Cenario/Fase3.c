@@ -1,4 +1,4 @@
-#include "../../Includes.h"
+#include "../../Menu/Includes.h"
 
 int coluna_atual = 1, linha_atual = 1;
 
@@ -223,7 +223,7 @@ void MensagemMovimento(int DirecaoPlayer, int ParedeOnOff, int MusicOn){
         coordxy(38, 30);
         printf("===================================================");
         coordxy(47, 28);
-        printf("Você se movimentou para: \e[0;36mEsquerda" ANSI_COLOR_RESET);
+        printf("Você se movimentou para: \e[0;36mDireita");
         if (ParedeOnOff == 1){
             coordxy(38, 30);
             printf(ANSI_COLOR_CYAN "|                                                 |");
@@ -247,7 +247,7 @@ void MensagemMovimento(int DirecaoPlayer, int ParedeOnOff, int MusicOn){
         coordxy(38, 30);
         printf("===================================================");
         coordxy(47, 28);
-        printf("Você se movimentou para: \e[0;36mDireita");
+        printf("Você se movimentou para: \e[0;36mEsquerda" ANSI_COLOR_RESET);
         if (ParedeOnOff == 1){
             coordxy(38, 30);
             printf(ANSI_COLOR_CYAN "|                                                 |");
