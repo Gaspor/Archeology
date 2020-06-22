@@ -101,18 +101,45 @@ char SlowText(char *Text)
     }
 }
 
+// Game Utilities //
 void Player(int Vida, int MusicOn)      // Nome do Player //
 {
-    int Vidas = Vida, o = MusicOn;
+    int Vidas = Vida, o = MusicOn, x = 45, y = 10, i = y;
     system("cls");
-    printf("  Por favor, não aperte nada enquanto o texto é digitado em sua tela.\n");
-    printf("  Por favor, não use caractere especial\n\n");
-    printf("  Digite o nome do Arqueólogo: ");
+    coordxy(x, y-4);
+    printf(ANSI_COLOR_CYAN "=========================================================================");
+    for (y = 0; y < 6; y++){
+        coordxy(x, y+7);
+        printf("|                                                                       |");
+    }
+    coordxy(x, y+7);
+    printf("=========================================================================" ANSI_COLOR_RESET);
+    coordxy(x+3, y+6);
+    printf(ANSI_COLOR_CYAN "Por favor, não aperte nada enquanto o texto é digitado em sua tela.");
+    coordxy(x+18, y+5);
+    printf("Por favor, não use caractere especial");
+    coordxy(x+23, y+2);
+    printf("Digite o nome do Arqueólogo:" ANSI_COLOR_DARK_CYAN);
+    coordxy(x+25, y+4);
+    printf("_______________________");
     fflush(stdin);
+    coordxy(x+25,y+4);
     gets(NamePlayer);
 KbLore:
-    coordxy(0,5);
-    printf("\n\n Você deseja pular a História? \n   Aperte S para Sim.\n   Aperte N para Não.\n");
+    coordxy(x+20, y+9);
+    printf(ANSI_COLOR_CYAN "=================================");
+    for (y = 0; y < 6; y++){
+        coordxy(x+20,y+16);
+        printf("|                               |");
+    }
+    coordxy(x+20, y+16);
+    printf("=================================" ANSI_COLOR_RESET);
+    coordxy(x+22, y+11);
+    printf(ANSI_COLOR_CYAN "Você deseja pular a História? \n");
+    coordxy(x+28, y+13);
+    printf("Aperte S para Sim");
+    coordxy(x+28, y+14);
+    printf("Aperte N para Não" ANSI_COLOR_RESET);
     if (kbhit)
     {
         KeyPress=getch();
@@ -133,19 +160,78 @@ KbLore:
 
 void Lore(int Vida, int MusicOn)    // História primeiro Cenário
 {
-    int Vidas = Vida, o = MusicOn;
+    int Vidas = Vida, o = MusicOn, x = 5, y = 1;
     system("cls");
-    char Texto1[20000] = "  No Egito antigo, há muitas eras, antes da humanidade nascer, acontecia uma imensa batalha, algo que nenhum mortal poderia presenciar. Os Deuses antigos travaram uma batalha\n\n mortal pelo poder de um amuleto, aquele que possuísse tal amuleto ampliaria seus poderes e reinaria sobre o mundo. Os Deuses lutaram por séculos para obter tal poder, mas no\n\n meio desta grande batalha, Osíris o Deus do julgamento interveio, e com seu imenso poder amaldiçoou o amuleto, permitindo apenas o uso para aqueles que não possuem o poder\n\n divino. Com o passar das eras o amuleto se perdeu e o grande Deus Rá criou a humanidade. Os Deuses se dispersaram e pareciam ter se esquecido do amuleto, até que no ano 51 A.C\n\n um soldado percebeu que algo brilhava em meio a terra, tomado pela curiosidade ele decide vasculhar o chão, e finalmente encontra um amuleto até então desconhecido, tudo o que\n\n ele via era seu formato peculiar. Com o amuleto desenterrado um enorme poder surgia dele, humanos não podiam perceber, mas os Deuses perceberam na hora que o amuleto havia sido\n\n encontrado, mas sem saber o que era, o soldado coloca o amuleto em volta do pescoço, e sem perceber o poder flui pelo seu corpo, os soldados aliados que estavam em volta\n\n perceberam o comportamento estranho de seu companheiro, mas quando se aproximam dele o portador do amuleto simplesmente se torna cinzas, assustados com a cena os soldados em\n\n volta reparam que vinha um brilho do artefato desconhecido e ligam a morte de seu amigo diretamente ao amuleto. Assustados com a presença de algo tão poderoso os soldados\n\n informam ao faraó sobre o ocorrido, e sem acreditar no que ouvia e totalmente aterrorizado o faraó ordena aos seus súditos que construam uma enorme pirâmide em volta do\n\n amuleto, e que o enterrem o mais fundo possível nas catacumbas da nova pirâmide. Os Deuses não tinham muita influência no mundo mortal, mas o que eles não sabiam era que Seth\n\n tentaria manipular um mortal para obter o \“Olho de Hórus\” e retirar sua maldição. Com a maldição desfeita, Seth reinará sobre todos os Deuses e seus respectivos reinos, Seth\n\n libertará toda a escuridão sobre o mundo e o assim governará por toda eternidade.\n\n\n";
-    char Texto2[] = "  Vocé é um arqueólogo conhecido como ";
-    char Texto3[] = ", ao estudar está lenda você decide ir em busca deste artefato antigo...\n\n  Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis \n\n desafios... \n\n\n";
+    char History1[] = ANSI_COLOR_DARK_CYAN "  No Egito antigo, há muitas eras, antes da humanidade nascer, acontecia uma imensa batalha, algo que nenhum mortal poderia presenciar.";
+    char History2[] = "  Os Deuses antigos travaram uma batalha mortal pelo poder de um amuleto, aquele que possuísse tal amuleto ampliaria seus poderes e reinaria sobre o mundo.";
+    char History3[] = "  Os Deuses lutaram por séculos para obter tal poder, mas no meio desta grande batalha, Osíris o Deus do julgamento interveio, e com seu imenso poder";
+    char History4[] = " amaldiçoou o amuleto, permitindo apenas o uso para aqueles que não possuem o poder divino. Com o passar das eras o amuleto se perdeu e o grande";
+    char History5[] = " Deus Rá criou a humanidade. Os Deuses se dispersaram e pareciam ter se esquecido do amuleto, até que no ano 51 A.C um soldado percebeu que algo";
+    char History6[] = " brilhava em meio a terra, tomado pela curiosidade ele decide vasculhar o chão, e finalmente encontra um amuleto até então desconhecido, tudo o que";
+    char History7[] = " ele via era seu formato peculiar. Com o amuleto desenterrado um enorme poder surgia dele, humanos não podiam perceber, mas os Deuses perceberam";
+    char History8[] = " na hora que o amuleto havia sido encontrado, mas sem saber o que era, o soldado coloca o amuleto em volta do pescoço, e sem perceber o poder";
+    char History9[] = " flui pelo seu corpo, os soldados aliados que estavam em volta perceberam o comportamento estranho de seu companheiro, mas quando se";
+    char History10[] = " aproximam dele o portador do amuleto simplesmente se torna cinzas, assustados com a cena os soldados em volta reparam que vinha um brilho";
+    char History11[] = " do artefato desconhecido e ligam a morte de seu amigo diretamente ao amuleto. Assustados com a presença de algo tão poderoso os soldados";
+    char History12[] = " informam ao faraó sobre o ocorrido, e sem acreditar no que ouvia e totalmente aterrorizado o faraó ordena aos seus súditos que construam uma enorme";
+    char History13[] = " pirâmide em volta do amuleto, e que o enterrem o mais fundo possível nas catacumbas da nova pirâmide. Os Deuses não tinham muita influência no";
+    char History14[] = " mundo mortal, mas o que eles não sabiam era que Seth tentaria manipular um mortal para obter o \“Olho de Hórus\” e retirar sua maldição.";
+    char History15[] = "  Com a maldição desfeita, Seth reinará sobre todos os Deuses e seus respectivos reinos, Seth libertará toda a escuridão sobre o mundo e o assim";
+    char History16[] = " governará por toda eternidade." ANSI_COLOR_RESET;
 
-    SlowText(Texto1);
-    fflush(stdin);
-    system("pause");
-    system("cls");
+    char Texto2[] = ANSI_COLOR_DARK_CYAN "  Vocé é um arqueólogo conhecido como " ANSI_COLOR_CYAN;
+    char Texto3[] = ANSI_COLOR_DARK_CYAN ", ao estudar está lenda você decide ir em busca deste artefato antigo...";
+    char Texto4[] = " Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis desafios..." ANSI_COLOR_RESET;
+
+    coordxy(x, y);
+    printf(ANSI_COLOR_CYAN "=== História ==================================================================================================================================================\n");
+    while (y <= 38){
+        coordxy(x, y+1);
+        printf("|                                                                                                                                                             |");
+        y++;
+    }
+    coordxy(x, y);
+    printf("===============================================================================================================================================================");
+
+    coordxy(x+2, 3);
+    SlowText(History1);
+    coordxy(x+2, 5);
+    SlowText(History2);
+    coordxy(x+2, 7);
+    SlowText(History3);
+    coordxy(x+2, 9);
+    SlowText(History4);
+    coordxy(x+2, 11);
+    SlowText(History5);
+    coordxy(x+2, 13);
+    SlowText(History6);
+    coordxy(x+2, 15);
+    SlowText(History7);
+    coordxy(x+2, 17);
+    SlowText(History8);
+    coordxy(x+2, 19);
+    SlowText(History9);
+    coordxy(x+2, 21);
+    SlowText(History10);
+    coordxy(x+2, 23);
+    SlowText(History11);
+    coordxy(x+2, 25);
+    SlowText(History12);
+    coordxy(x+2, 27);
+    SlowText(History13);
+    coordxy(x+2, 29);
+    SlowText(History14);
+    coordxy(x+2, 31);
+    SlowText(History15);
+    coordxy(x+2, 33);
+    SlowText(History16);
+
+    coordxy(x+2, 35);
     SlowText(Texto2);
     SlowText(NamePlayer);
-    Pause(SlowText(Texto3));
+    SlowText(Texto3);
+    coordxy(x+2, 37);
+    Pause(SlowText(Texto4));
     Fase1(Vidas, o);
 }
 
@@ -155,8 +241,6 @@ void Pause(char *Text)
     getch();
 }
 
-
-// Game Utilities //
 void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas do Player)
 {
     int Vidas = Vida, o = MusicOn;
@@ -280,7 +364,6 @@ void Perdedor(int Vida, int MusicOn, int VidaSeth)
     printf("Vida Seth: %d\n\n", VidaSeth);
     Pause("\nVoce morreu\n");
     Anubis(FaseAtual, Vidas, o);
-
 }
 
 void GameOver(int MusicOn)    // Função de GameOver //
@@ -291,4 +374,9 @@ void GameOver(int MusicOn)    // Função de GameOver //
     Pause(" ");
     system("cls");
     Menu(o);
+}
+
+void Archeology(){
+    coordxy(70, 15);
+    printf(ANSI_COLOR_RED "Archeology Game" ANSI_COLOR_RESET);
 }

@@ -27,8 +27,8 @@
 	<conio.h>
 	<windows.h>
 
-1592838374 source:d:\gaspor\c programs\archeology game\main.c
-	"Includes.h"
+1592839005 source:d:\gaspor\c programs\archeology game\main.c
+	"Menu/Includes.h"
 
 1589045371 source:d:\gaspor\c programs\archeology game\resources\resources.rc
 
@@ -78,7 +78,7 @@
 1592836899 source:d:\gaspor\c programs\archeology game\dev.c
 	"Includes.h"
 
-1592838401 source:d:\gaspor\c programs\archeology game\menu\menu.c
+1592862227 source:d:\gaspor\c programs\archeology game\menu\menu.c
 	"Includes.h"
 
 1592838374 d:\gaspor\c programs\archeology game\menu\includes.h
@@ -89,9 +89,9 @@
 	<windows.h>
 	<time.h>
 
-1592838374 source:d:\gaspor\c programs\archeology game\menu\utilities.c
+1592862286 source:d:\gaspor\c programs\archeology game\menu\utilities.c
 	"Includes.h"
 
-1592837737 source:d:\gaspor\c programs\archeology game\menu\dev.c
+1592862228 source:d:\gaspor\c programs\archeology game\menu\dev.c
 	"Includes.h"
 
