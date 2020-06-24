@@ -246,12 +246,16 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
     int Vidas = Vida, o = MusicOn;
 
     system("cls");
+    coordxy(0, 4);
+    printf(ANSI_COLOR_CYAN "=== Caixa de dialogo ========================================================================================\n|                                                                                                           |\n|                                                                                                           |\n|                                                                                                           |\n=============================================================================================================" ANSI_COLOR_RESET);
+    coordxy(0, 0);
     if (Vida >= 1 && Fase == 1)
     {
         Vida--;
         Vidas = Vida;
         PrintVida(Vidas);
-        Pause("\n  Anúbis: Não acredito que você errou algo tão fácil, mas não se preocupe, te darei uma segunda chance");
+        coordxy(3, 6);
+        Pause("Anúbis: Não acredito que você errou algo tão fácil, mas não se preocupe, te darei uma segunda chance.");
         system("cls");
         Fase1(Vidas, o);
     }
@@ -260,7 +264,8 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vida--;
         Vidas = Vida;
         PrintVida(Vidas);
-        Pause("\n  Anúbis: Eu te darei mais uma chance de vida, mortal não a desperdice");
+        coordxy(3, 6);
+        Pause("Anúbis: Eu te darei mais uma chance de vida, mortal não a desperdice");
         system("cls");
         Fase2(Vidas, o);
     }
@@ -269,7 +274,8 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vida--;
         Vidas = Vida;
         PrintVida(Vidas);
-        Pause("\n  Anúbis: Você morreu, irei te reviver apenas dessa vez, não cometa mais erros");
+        coordxy(3, 6);
+        Pause("Anúbis: Você morreu, irei te reviver apenas dessa vez, não cometa mais erros");
         system("cls");
         BossEsfinge(Vidas, o);
     }
@@ -278,7 +284,8 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vida--;
         Vidas = Vida;
         PrintVida(Vidas);
-        Pause("\n  Anúbis: Só tenho poder suficiente pra te reviver desta vez, então não erre novamente!");
+        coordxy(3, 6);
+        Pause("Anúbis: Só tenho poder suficiente pra te reviver desta vez, então não erre novamente!");
         system("cls");
         Fase1Cenario2(Vidas, o);
     }
@@ -287,7 +294,8 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vida--;
         Vidas = Vida;
         PrintVida(Vidas);
-        Pause("\n  Anúbis: Você morreu, não cometa mais erros, pois, não irei te ajudar da próxima vez!\n\n");
+        coordxy(3, 6);
+        Pause("Anúbis: Você morreu, não cometa mais erros, pois, não irei te ajudar da próxima vez!\n\n");
         system("cls");
         Fase2Cenario2(Vidas, o);
     }
@@ -296,7 +304,8 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vida--;
         Vidas = Vida;
         PrintVida(Vidas);
-        Pause("\n  Anúbis: Você morreu no labirinto, espero que tenha aprendido com o seu erro, pois só te darei uma chance!\n\n");
+        coordxy(3, 6);
+        Pause("Anúbis: Você morreu no labirinto, espero que tenha aprendido com o seu erro, pois só te darei uma chance!\n\n");
         system("cls");
         Fase3Cenario2(Vidas, o);
     }
@@ -305,14 +314,16 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vida--;
         Vidas = Vida;
         PrintVida(Vidas);
-        Pause("\n  Anúbis: Você não obteve sorte nessa batalha, mas serei benevolente e te darei outra chance!\n\n");
+        coordxy(3, 6);
+        Pause("Anúbis: Você não obteve sorte nessa batalha, mas serei benevolente e te darei outra chance!\n\n");
         system("cls");
         BossSeth(Vidas, o);
     }
     else
     {
         PrintVida(Vidas);
-        Pause("\n  Você não tem vidas restantes\n\n");
+        coordxy(3, 6);
+        Pause("Você não tem vidas restantes\n\n");
         GameOver(o);
     }
 }

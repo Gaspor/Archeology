@@ -2,9 +2,9 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="Menu\Dev.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="Fases\Segundo_Cenario\FaseBoss.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2205" topLine="27" />
+			<Cursor1 position="2155" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fases\Segundo_Cenario\Fase2.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
@@ -17,9 +17,24 @@
 			<Cursor1 position="297" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="main.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="Menu\Utilities.c" open="1" top="1" tabpos="13" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="216" topLine="0" />
+			<Cursor1 position="9056" topLine="233" />
+		</Cursor>
+	</File>
+	<File name="Menu\Menu.c" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="297" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Fases\Segundo_Cenario\Fase1.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="325" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Menu\Dev.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2205" topLine="27" />
 		</Cursor>
 	</File>
 	<File name="Fases\Primeiro_Cenario\FaseBoss.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
@@ -32,29 +47,9 @@
 			<Cursor1 position="1337" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Fases\Segundo_Cenario\FaseBoss.c" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="main.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2155" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Fases\Segundo_Cenario\Fase3.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="32" topLine="27" />
-		</Cursor>
-	</File>
-	<File name="Menu\Utilities.c" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="12445" topLine="330" />
-		</Cursor>
-	</File>
-	<File name="Fases\Segundo_Cenario\Fase1.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="325" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="Menu\Menu.c" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="297" topLine="0" />
+			<Cursor1 position="216" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="Fases\Primeiro_Cenario\Fase3.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
@@ -62,14 +57,19 @@
 			<Cursor1 position="32" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Fases\Primeiro_Cenario\Fase1.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+	<File name="Fases\Segundo_Cenario\Fase3.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-3" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="161" topLine="0" />
+			<Cursor1 position="32" topLine="27" />
 		</Cursor>
 	</File>
 	<File name="resouces.rc" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="28" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Fases\Primeiro_Cenario\Fase1.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="161" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
