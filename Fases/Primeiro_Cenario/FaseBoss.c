@@ -79,7 +79,7 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
     coordxy(100, 14);
     printf(ANSI_COLOR_DARK_CYAN "O Gato");
     coordxy(100, 15);
-    printf("O Chachorro");
+    printf("O Cachorro");
     coordxy(100, 16);
     printf("O Homem" ANSI_COLOR_RESET);
     opcao = SetaUpDown(14, 97, 3, 1, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");

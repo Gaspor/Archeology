@@ -2,60 +2,127 @@
 
 void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
 {
-    int opcao = 0, CoolDown = 0, Vidas = Vida, o = MusicOn, VidaSeth = 10, VidaArqueologo = 7, Random, RandomSeth, CoolDownOlhosdeAguia;
+    int opcao = 0, CoolDown = 0, Vidas = Vida, o = MusicOn, VidaSeth = 10, VidaArqueologo = 7, Random, RandomSeth, CoolDownOlhosdeAguia, i = 0;
     system("cls");
-    char Texto1[] = "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha. \nHórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa era de Seth (Deus do Caos). \nApós ouvir isso Seth se manifesta e contradiz Horús.\n";
-    SlowText(Texto1);
+    char Texto1[] = ANSI_COLOR_DARK_CYAN "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha.";
+    char Texto2[] = "Hórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa era de Seth (Deus do Caos).";
+    char Texto3[] = "Após ouvir isso Seth se manifesta e contradiz Horús." ANSI_COLOR_RESET;
 
-    printf("\n    Acreditar em Horús.\n    Acreditar em Seth.");
-    opcao = SetaUpDown(4, 1, 2, 1, "->", "  ");
+    coordxy(2, 0);
+    printf(ANSI_COLOR_CYAN "=== Caixa de Diálogo ===============================================================================================================\n  |                                                                                                                                  |\n  |                                                                                                                                  |\n  |                                                                                                                                  |\n  |                                                                                                                                  |\n  |                                                                                                                                  |\n  |                                                                                                                                  |\n  |                                                                                                                                  |\n  ====================================================================================================================================" ANSI_COLOR_RESET);
+    coordxy(5, 2);
+    SlowText(Texto1);
+    coordxy(5, 4);
+    SlowText(Texto2);
+    coordxy(5, 6);
+    SlowText(Texto3);
+
+    coordxy(2, 11);
+    printf(ANSI_COLOR_CYAN "========================");
+    coordxy(2, 12);
+    printf("|                      |");
+    coordxy(2, 13);
+    printf("|                      |");
+    coordxy(2, 14);
+    printf("|                      |");
+    coordxy(2, 15);
+    printf("========================" ANSI_COLOR_RESET);
+    coordxy(6, 12);
+    printf(ANSI_COLOR_DARK_CYAN "Acreditar em Horús");
+    coordxy(6, 14);
+    printf("Acreditar em Seth" ANSI_COLOR_RESET);
+    opcao = SetaUpDown(12, 3, 2, 2, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
 
     switch(opcao)
     {
     case 1:
         system("cls");
-        char Texto2[] = "Hórus: Rapido mortal, pegue o amuleto e obtenha o poder de um Deus, eu lhe darei o resto do meu poder, derrote Seth e traga a paz.\n\n";
-        char Texto3[] = "Você pega o amuleto com o poder de Horús e entra em uma batalha mortal contra Seth\n";
-        char Texto4[] = "Você tem três opções de ataques, saiba que o dano dos ataques causados em Seth sera escolhido randomicamente.\n\n";
+        char Texto2[] = ANSI_COLOR_DARK_CYAN "Hórus: Rapido mortal, pegue o amuleto e obtenha o poder de um Deus, eu lhe darei o resto do meu poder, derrote Seth e traga a paz.";
+        char Texto3[] = "Você pega o amuleto com o poder de Horús e entra em uma batalha mortal contra Seth";
+        char Texto4[] = ANSI_COLOR_DARK_CYAN "Você tem três opções de ataques, saiba que o dano dos ataques causados em Seth sera escolhido randomicamente." ANSI_COLOR_RESET;
+        coordxy(2, 0);
+        printf(ANSI_COLOR_CYAN "=== Caixa de Diálogo ==================================================================================================================\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  =======================================================================================================================================" ANSI_COLOR_RESET);
+        coordxy(4, 2);
         SlowText(Texto2);
+        coordxy(4, 4);
         Pause(SlowText(Texto3));
         while (VidaArqueologo > 1 || VidaSeth > 1 )
         {
             system("cls");
-            if (VidaArqueologo != 7 || VidaSeth != 10){
+            if (VidaArqueologo != 7 || VidaSeth != 10)
+            {
+                coordxy(2, 0);
+                printf(ANSI_COLOR_CYAN "=== Caixa de Diálogo ============================================================================================\n  |                                                                                                               |\n  |                                                                                                               |\n  |                                                                                                               |\n  =================================================================================================================" ANSI_COLOR_RESET);
+                coordxy(4, 2);
                 printf(Texto4);
             }
-            else {
+            else
+            {
+                coordxy(2, 0);
+                printf(ANSI_COLOR_CYAN "=== Caixa de Diálogo ============================================================================================\n  |                                                                                                               |\n  |                                                                                                               |\n  |                                                                                                               |\n  =================================================================================================================" ANSI_COLOR_RESET);
+                coordxy(4, 2);
                 Pause(SlowText(Texto4));
             }
-            printf("\n\n    Lamina de Hórus. \n    Olhos de Águia    \n");
-            if (CoolDown <= 0){
-                printf(ANSI_COLOR_YELLOW "    Raio Solar" ANSI_COLOR_RESET);
+            coordxy(2, 6);
+            printf(ANSI_COLOR_CYAN "=====================");
+            coordxy(2, 7);
+            printf("|                   |");
+            coordxy(2, 8);
+            printf("|                   |");
+            coordxy(2, 9);
+            printf("|                   |");
+            coordxy(2, 10);
+            printf("|                   |");
+            coordxy(2, 11);
+            printf("|                   |");
+            coordxy(2, 12);
+            printf("=====================" ANSI_COLOR_RESET);
+            coordxy(6, 7);
+            printf(ANSI_COLOR_DARK_CYAN "Lamina de Hórus");
+            coordxy(6, 9);
+            printf("Olhos de Águia" ANSI_COLOR_RESET);
+            coordxy(6, 11);
+            if (CoolDown <= 0)
+            {
+                printf(ANSI_COLOR_YELLOW "Raio Solar" ANSI_COLOR_RESET);
             }
-            else {
-                printf(ANSI_COLOR_DARK_YELLOW "    Raio Solar" ANSI_COLOR_RESET);
+            else
+            {
+                printf(ANSI_COLOR_DARK_YELLOW "Raio Solar" ANSI_COLOR_RESET);
             }
-            opcao = SetaUpDown(4, 1, 3, 1, "->", "  ");
+            opcao = SetaUpDown(7, 3, 3, 2, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
 
             switch(opcao)
             {
             case 1:
                 system("cls");
-                printf("Vida Seth: %d\n\n", VidaSeth);
-                printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
+                coordxy(53, 10);
+                printf(ANSI_COLOR_CYAN "=== Log de Batalha =================================================");
+                for (i = 0; i < 11; i++)
+                {
+                    coordxy(53, 11 + i);
+                    printf("|                                                                  |");
+                }
+                coordxy(53, 22);
+                printf("====================================================================" ANSI_COLOR_RESET);
+                coordxy(55, 12);
+                printf(ANSI_COLOR_DARK_CYAN "Vida Seth: %d", VidaSeth);
+                coordxy(55, 14);
+                printf("Vida Arqueologo: %d", VidaArqueologo);
                 char Texto5[] = "Você foi na direção de Seth e desferiu um ataque com sua lamina.";
+                coordxy(55, 16);
                 SlowText(Texto5);
                 srand(time(NULL));
                 Random = rand()%6;
                 RandomSeth = rand()%7 + 1;
-                printf("\n\nVocê causou %d de dano a Seth.\n", Random);
+                coordxy(55, 18);
+                printf("Você causou %d de dano a Seth." ANSI_COLOR_RESET, Random);
                 VidaSeth -= Random;
                 if (VidaSeth > 0 && VidaArqueologo > 0)
                 {
-                    printf("\nSeth revidou o ataque e lhe causou %d de dano.\n\n", RandomSeth);
+                    coordxy(55, 20);
+                    Pause(ANSI_COLOR_DARK_CYAN "Seth revidou o ataque e lhe causou %d de dano." ANSI_COLOR_RESET, RandomSeth);
                     VidaArqueologo -= RandomSeth;
-                    Pause(" ");
-
                 }
                 if (VidaSeth <= 0 && VidaArqueologo > 0)
                 {
@@ -69,22 +136,36 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 break;
             case 2:
                 system("cls");
+
                 if (CoolDownOlhosdeAguia != 1)
                 {
-                    printf("Vida Seth: %d\n\n", VidaSeth);
-                    printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
+                    coordxy(53, 10);
+                    printf(ANSI_COLOR_CYAN "=== Log de Batalha ====================================================");
+                    for (i = 0; i < 11; i++)
+                    {
+                        coordxy(53, 11 + i);
+                        printf("|                                                                     |");
+                    }
+                    coordxy(53, 22);
+                    printf("=======================================================================" ANSI_COLOR_RESET );
+                    coordxy(55, 12);
+                    printf(ANSI_COLOR_DARK_CYAN "Vida Seth: %d", VidaSeth);
+                    coordxy(55, 14);
+                    printf("Vida Arqueologo: %d", VidaArqueologo);
                     char Texto8[] = "Você usa uma visão ampliada e descobre uma vulnerabilidade em Seth.";
+                    coordxy(55, 16);
                     SlowText(Texto8);
                     srand(time(NULL));
                     Random = rand()%6 + 2; //Maior probabilidade de dar dano alto
                     RandomSeth = rand()%7 + 1;
-                    printf("\n\nVocê causou %d de dano a Seth.\n", Random);
+                    coordxy(55, 18);
+                    printf("Você causou %d de dano a Seth." ANSI_COLOR_RESET, Random);
                     VidaSeth -= Random;
                     if (VidaSeth > 0 && VidaArqueologo > 0)
                     {
-                        printf("Seth revidou o ataque e lhe causou %d de dano.\n\n", RandomSeth);
+                        coordxy(55, 20);
+                        Pause(ANSI_COLOR_DARK_CYAN "Seth revidou o ataque e lhe causou %d de dano." ANSI_COLOR_RESET, RandomSeth);
                         VidaArqueologo -= RandomSeth;
-                        Pause(" ");
                     }
                     if(VidaSeth <= 0 && VidaArqueologo > 0)
                     {
@@ -100,7 +181,10 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 }
                 else
                 {
-                    char Texto1[] = "Essa habilidade não pode ser usada novamente.\n\n";
+                    char Texto1[] = ANSI_COLOR_RED "Essa habilidade não pode ser usada novamente." ANSI_COLOR_RESET;
+                    coordxy(2, 0);
+                    printf(ANSI_COLOR_CYAN "=== Caixa de Diálogo ============================\n  |                                               |\n  |                                               |\n  |                                               |\n  =================================================" ANSI_COLOR_RESET);
+                    coordxy(4, 2);
                     Pause(SlowText(Texto1));
                     break;
                 }
@@ -108,21 +192,41 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 system("cls");
                 if (CoolDown > 0)
                 {
-                    Pause("Você não pode usar este poder agora.\n\n");
+                    coordxy(2, 0);
+                    printf(ANSI_COLOR_CYAN "=== Caixa de Diálogo ===================\n  |                                      |\n  |                                      |\n  |                                      |\n  ========================================" ANSI_COLOR_RESET);
+                    coordxy(4, 2);
+                    Pause(ANSI_COLOR_RED "Você não pode usar este poder agora." ANSI_COLOR_RESET);
                 }
                 else
                 {
-                    printf("Vida Seth: %d\n\n", VidaSeth);
-                    printf("Vida Arqueologo: %d\n\n", VidaArqueologo);
-                    char Texto10[] = "Você utiliza o raio solar e deixa Seth cego por alguns segundos, você aproveita e desfere um ataque.";
+                    coordxy(53, 10);
+                    printf(ANSI_COLOR_CYAN "=== Log de Batalha =================================================");
+                    for (i = 0; i < 13; i++)
+                    {
+                        coordxy(53, 11 + i);
+                        printf("|                                                                  |");
+                    }
+                    coordxy(53, 24);
+                    printf("====================================================================" ANSI_COLOR_RESET);
+                    coordxy(55, 12);
+                    printf(ANSI_COLOR_DARK_CYAN "Vida Seth: %d", VidaSeth);
+                    coordxy(55, 14);
+                    printf("Vida Arqueologo: %d", VidaArqueologo);
+                    char Texto10[] = "Você utiliza o raio solar e deixa Seth cego por alguns segundos,";
+                    char TextoA[] = "você aproveita e desfere um ataque.";
+                    coordxy(55, 16);
                     SlowText(Texto10);
+                    coordxy(55, 18);
+                    SlowText(TextoA);
                     srand(time(NULL));
                     Random = rand()%6;
-                    printf("\n\nVocê causou %d de dano a Seth.\n", Random);
+                    coordxy(55, 20);
+                    printf("Você causou %d de dano a Seth.", Random);
                     VidaSeth -= Random;
                     if (VidaSeth > 0 && VidaArqueologo > 0)
                     {
-                        char Texto11[] = "\nSeth ficou cego e nao conseguiu te atacar.\n";
+                        coordxy(55, 22);
+                        char Texto11[] = ANSI_COLOR_CYAN "Seth ficou cego e nao conseguiu te atacar." ANSI_COLOR_RESET;
                         Pause(SlowText(Texto11));
                     }
                     if (VidaSeth <= 0 && VidaArqueologo > 0)
@@ -140,12 +244,19 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
         }
     case 2:
         system("cls");
-        char Texto12[] = "Seth: Como pôde ser tão ingênuo mortal, agora com esse poder finalmente poderei conquistar todo o Egito e acabarei com os 7 reinos.\n\n";
+        char Texto12[] = ANSI_COLOR_DARK_CYAN "Seth: Como pôde ser tão ingênuo mortal, agora com esse poder finalmente poderei conquistar todo o Egito e acabarei com os 7 reinos.";
         char Texto13[] = "Horús: Como pôde ser tão Idiota ao confiar nele mortal, agora o destino do mundo e o dos 7 reinos estao nas maos de Seth.\n\n";
-        char Texto14[] = "Seth aniquilou você e lançou o caos sobre todos os reinos.\n\n";
+        char Texto14[] = "Seth aniquilou você e lançou o caos sobre todos os reinos." ANSI_COLOR_RESET;
+
+        coordxy(2, 0);
+        printf(ANSI_COLOR_CYAN "=== Caixa de Diálogo ==================================================================================================================\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  =======================================================================================================================================" ANSI_COLOR_RESET);
+        coordxy(4, 2);
         SlowText(Texto12);
+        coordxy(4, 4);
         SlowText(Texto13);
+        coordxy(4, 6);
         Pause(SlowText(Texto14));
+        coordxy(4, 8);
         GameOver(o);
     }
 }

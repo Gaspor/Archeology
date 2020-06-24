@@ -37,7 +37,7 @@ void Menu(int MusicOn)
     printf(ANSI_COLOR_DARK_RED "Sair");
     coordxy(60, 32);
     printf(ANSI_COLOR_RED "Por Favor, deixe o jogo em tela cheia" ANSI_COLOR_RESET);
-    opcao = SetaUpDown(26, 67, 5, 1, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
+    opcao = SetaUpDown(26, 67, 6, 1, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
 
     switch (opcao)
     {
@@ -46,22 +46,50 @@ void Menu(int MusicOn)
         Player(Vidas, o);
     case 2:
         system("cls");
-        printf("  Para ter acesso ao menu do desenvolvedor, por favor digite sua senha: ");
+        coordxy(45, 9);
+        printf(ANSI_COLOR_CYAN "=========================================================================");
+        for (i = 0; i < 6; i++){
+            coordxy(45, 10+i);
+            printf("|                                                                       |");
+        }
+        coordxy(45, 16);
+        printf("=========================================================================" ANSI_COLOR_RESET);
+        coordxy(47, 11);
+        printf(ANSI_COLOR_CYAN "Para ter acesso ao menu do desenvolvedor, por favor digite sua senha:");
+        coordxy(70, 13);
+        printf(ANSI_COLOR_DARK_CYAN "______________________");
+        coordxy(70, 13);
         gets(Password);
         if (strcasecmp (Password, "1234")== 0)
         {
-            printf("  Verificando...\n");
+            for (i = 0; i < 5; i++){
+                coordxy(45, 15+i);
+                printf(ANSI_COLOR_CYAN "|                                                                       |");
+            }
+            coordxy(45, 20);
+            printf("=========================================================================" ANSI_COLOR_RESET);
+            coordxy(47, 16);
+            printf(ANSI_COLOR_CYAN "Verificando...");
             Sleep(1000);
-            printf("  Você será direcionado para o menu de escolha de fase, por favor aguarde.");
+            coordxy(47, 18);
+            printf("Você será direcionado para o menu do desenvolvedor, por favor aguarde." ANSI_COLOR_RESET);
             Sleep(2000);
             system("cls");
-            MenuDeDesenvolvedor(Vidas);
+            MenuDeDesenvolvedor(Vidas, o);
         }
         else
         {
-            printf("  Verificando...\n");
+            for (i = 0; i < 5; i++){
+                coordxy(45, 15+i);
+                printf(ANSI_COLOR_CYAN "|                                                                       |");
+            }
+            coordxy(45, 20);
+            printf("=========================================================================" ANSI_COLOR_RESET);
+            coordxy(47, 16);
+            printf(ANSI_COLOR_CYAN "Verificando...");
             Sleep(1000);
-            Pause("  Senha incorreta.");
+            coordxy(47, 18);
+            Pause(ANSI_COLOR_RED "Senha incorreta." ANSI_COLOR_RESET);
             system("cls");
             Menu(o);
         }
@@ -79,7 +107,6 @@ void Menu(int MusicOn)
         printf(ANSI_COLOR_DARK_CYAN "Você está sendo direcionado ao nosso projeto no GitHub..." ANSI_COLOR_RESET);
         Sleep(2000);
         system("start https://github.com/Gaspor/Archeology");
-        Sleep(2000);
         Menu(o);
     case 4:
         Audio(o);
@@ -88,8 +115,18 @@ void Menu(int MusicOn)
         Quit();
 
     default:
-        printf("  Essa opção não existe, por favor tente uma nova.\n");
-        Sleep(1500);
+        system("cls");
+        coordxy(58, 18);
+        printf(ANSI_COLOR_CYAN "=== Mensagem do sistema ============================");
+        for (i = 0; i < 3; i++){
+            coordxy(58, 19+i);
+            printf("|                                                  |");
+        }
+        coordxy(58, 22);
+        printf("====================================================" ANSI_COLOR_RESET);
+        coordxy(60, 20);
+        Pause(ANSI_COLOR_RED "Essa opção não existe, por favor tente uma nova." ANSI_COLOR_RESET);
+        Menu(o);
     }
 }
 
@@ -97,20 +134,51 @@ void Audio(int MusicOn)// Controle de audio
 {
     int o = MusicOn, opcao = 0;
     system("cls");
-    printf(" == Som == \n\n    Off \n    On");
-    opcao = SetaUpDown(2, 1, 2, 1, "->", "  ");
+    coordxy(70, 18);
+    printf(ANSI_COLOR_CYAN "=== Som ===");
+    coordxy(70, 19);
+    printf("|         |");
+    coordxy(70, 20);
+    printf("|   \e[0;36mOff\e[1;36m   |");
+    coordxy(70, 21);
+    printf("|   \e[0;36mOn\e[1;36m    |");
+    coordxy(70, 22);
+    printf("===========" ANSI_COLOR_RESET);
+    opcao = SetaUpDown(20, 71, 2, 1, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
 
     switch (opcao)
     {
     case 1:
         system("cls");
-        Pause("Som retirado com sucesso...");
+        coordxy(65, 18);
+        printf(ANSI_COLOR_CYAN "=== Mensagem do sitema ========");
+        coordxy(65, 19);
+        printf("|                             |");
+        coordxy(65, 20);
+        printf("|                             |");
+        coordxy(65, 21);
+        printf("|                             |");
+        coordxy(65, 22);
+        printf("===============================");
+        coordxy(67, 20);
+        Pause("Som retirado com sucesso..." ANSI_COLOR_RESET);
         o--;
         Menu(o);
 
     case 2:
         system("cls");
-        Pause("Pressione qualquer tecla para retornar ao menu...");
+        coordxy(65, 18);
+        printf(ANSI_COLOR_CYAN "=== Mensagem do sitema ========");
+        coordxy(65, 19);
+        printf("|                             |");
+        coordxy(65, 20);
+        printf("|                             |");
+        coordxy(65, 21);
+        printf("|                             |");
+        coordxy(65, 22);
+        printf("===============================");
+        coordxy(67, 20);
+        Pause("Som colocado com sucesso..." ANSI_COLOR_RESET);
         o = 1;
         Menu(o);
     }
@@ -119,7 +187,19 @@ void Audio(int MusicOn)// Controle de audio
 void Quit()
 {
     system("cls");
-    printf("\aSaindo...\n");
+    coordxy(65, 18);
+    printf(ANSI_COLOR_CYAN "=== Mensagem do sitema ========");
+    coordxy(65, 19);
+    printf("|                             |");
+    coordxy(65, 20);
+    printf("|                             |");
+    coordxy(65, 21);
+    printf("|                             |");
+    coordxy(65, 22);
+    printf("===============================");
+    coordxy(70, 20);
+    printf(ANSI_COLOR_RED "\aSaindo..." ANSI_COLOR_RESET);
     Sleep(800);
+    system("cls");
     exit(0);
 }

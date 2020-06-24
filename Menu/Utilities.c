@@ -344,16 +344,22 @@ void PrintVida(Vida)
 void Vencedor(int MusicOn)  // Função caso o jogador vença o jogo
 {
     int o = MusicOn;
-    Pause("Pressione qualquer tecla para continuar...");
+    coordxy(55, 20);
+    Pause(ANSI_COLOR_CYAN "Pressione qualquer tecla para continuar..." ANSI_COLOR_RESET);
     system("cls");
-    char Texto1[] = "A batalha foi longa mas enfim Seth foi derrotado, com sua morte o mundo viverá em paz novamente. Porém a paz nunca é duradoura...\n\n";
-    char Texto2[] = "Sistema: Parabéns ";
-    char Texto3[] = ", você venceu Seth e restaurou a ordem.\n\n";
+    char Texto1[] = ANSI_COLOR_DARK_CYAN "A batalha foi longa mas enfim Seth foi derrotado, com sua morte o mundo viverá em paz novamente. Porém a paz nunca é duradoura...";
+    char Texto2[] = "Sistema: Parabéns " ANSI_COLOR_RED;
+    char Texto3[] = ANSI_COLOR_DARK_CYAN ", você venceu Seth e restaurou a ordem.";
+    printf(ANSI_COLOR_CYAN "  === Caixa de Diálogo ==================================================================================================================\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  =======================================================================================================================================" ANSI_COLOR_RESET);
+
+    coordxy(4, 2);
     SlowText(Texto1);
+    coordxy(4, 4);
     SlowText(Texto2);
     SlowText(NamePlayer);
     SlowText(Texto3);
-    Pause("Obrigado por jogar, aperte qualquer tecla para retornar ao menu.");
+    coordxy(4, 6);
+    Pause(ANSI_COLOR_YELLOW "Obrigado por jogar, aperte qualquer tecla para retornar ao menu." ANSI_COLOR_RESET);
     Menu(o);
 }
 
@@ -361,17 +367,33 @@ void Perdedor(int Vida, int MusicOn, int VidaSeth)
 {
     int o = MusicOn, RandomSeth = VidaSeth, FaseAtual = 8, Vidas = Vida;
     system("cls");
-    printf("Vida Seth: %d\n\n", VidaSeth);
-    Pause("\nVoce morreu\n");
+    coordxy(0, 0);
+    printf(ANSI_COLOR_CYAN "=== Log de batalha ===");
+    coordxy(0, 1);
+    printf("|                    |");
+    coordxy(0, 2);
+    printf("|                    |");
+    coordxy(0, 3);
+    printf("|                    |");
+    coordxy(0, 4);
+    printf("|                    |");
+    coordxy(0, 5);
+    printf("|                    |");
+    coordxy(0, 6);
+    printf("======================" ANSI_COLOR_RESET);
+    coordxy(2, 2);
+    printf(ANSI_COLOR_DARK_CYAN "Vida Seth: %d", VidaSeth);
+    coordxy(2, 4);
+    Pause(ANSI_COLOR_RED "Voce morreu!" ANSI_COLOR_RESET);
     Anubis(FaseAtual, Vidas, o);
 }
 
 void GameOver(int MusicOn)    // Função de GameOver //
 {
     int o = MusicOn;
-    char GameOver[] = "  Game Over";
-    SlowText(GameOver);
-    Pause(" ");
+    system("cls");
+    char GameOver[] = ANSI_COLOR_RED "Game Over" ANSI_COLOR_RESET;
+    Pause(SlowText(GameOver));
     system("cls");
     Menu(o);
 }
