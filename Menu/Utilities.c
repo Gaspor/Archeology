@@ -247,7 +247,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
 
     system("cls");
     coordxy(0, 4);
-    printf(ANSI_COLOR_CYAN "=== Caixa de dialogo ========================================================================================\n|                                                                                                           |\n|                                                                                                           |\n|                                                                                                           |\n=============================================================================================================" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_CYAN "=== Caixa de dialogo ========================================================================================\n|                                                                                                           |\n|                                                                                                           |\n|                                                                                                           |\n=============================================================================================================" ANSI_COLOR_DARK_RED);
     coordxy(0, 0);
     if (Vida >= 1 && Fase == 1)
     {
@@ -255,7 +255,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vidas = Vida;
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Anúbis: Não acredito que você errou algo tão fácil, mas não se preocupe, te darei uma segunda chance.");
+        Pause(ANSI_COLOR_DARK_RED "Anúbis: Não acredito que você errou algo tão fácil, mas não se preocupe, te darei uma segunda chance." ANSI_COLOR_RESET);
         system("cls");
         Fase1(Vidas, o);
     }
@@ -265,7 +265,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vidas = Vida;
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Anúbis: Eu te darei mais uma chance de vida, mortal não a desperdice");
+        Pause(ANSI_COLOR_DARK_RED "Anúbis: Eu te darei mais uma chance de vida, mortal não a desperdice" ANSI_COLOR_RESET);
         system("cls");
         Fase2(Vidas, o);
     }
@@ -275,7 +275,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vidas = Vida;
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Anúbis: Você morreu, irei te reviver apenas dessa vez, não cometa mais erros");
+        Pause(ANSI_COLOR_DARK_RED "Anúbis: Você morreu, irei te reviver apenas dessa vez, não cometa mais erros" ANSI_COLOR_RESET);
         system("cls");
         BossEsfinge(Vidas, o);
     }
@@ -285,7 +285,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vidas = Vida;
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Anúbis: Só tenho poder suficiente pra te reviver desta vez, então não erre novamente!");
+        Pause(ANSI_COLOR_DARK_RED "Anúbis: Só tenho poder suficiente pra te reviver desta vez, então não erre novamente!" ANSI_COLOR_RESET);
         system("cls");
         Fase1Cenario2(Vidas, o);
     }
@@ -295,7 +295,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vidas = Vida;
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Anúbis: Você morreu, não cometa mais erros, pois, não irei te ajudar da próxima vez!\n\n");
+        Pause(ANSI_COLOR_DARK_RED "Anúbis: Você morreu, não cometa mais erros, pois, não irei te ajudar da próxima vez!" ANSI_COLOR_RESET);
         system("cls");
         Fase2Cenario2(Vidas, o);
     }
@@ -305,7 +305,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vidas = Vida;
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Anúbis: Você morreu no labirinto, espero que tenha aprendido com o seu erro, pois só te darei uma chance!\n\n");
+        Pause(ANSI_COLOR_DARK_RED "Anúbis: Você morreu no labirinto, espero que tenha aprendido com o seu erro, pois só te darei uma chance!" ANSI_COLOR_RESET);
         system("cls");
         Fase3Cenario2(Vidas, o);
     }
@@ -315,7 +315,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
         Vidas = Vida;
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Anúbis: Você não obteve sorte nessa batalha, mas serei benevolente e te darei outra chance!\n\n");
+        Pause(ANSI_COLOR_DARK_RED "Anúbis: Você não obteve sorte nessa batalha, mas serei benevolente e te darei outra chance!" ANSI_COLOR_RESET);
         system("cls");
         BossSeth(Vidas, o);
     }
@@ -323,7 +323,7 @@ void Anubis(int Fase, int Vida, int MusicOn)   // Anúbis (Controlador de Vidas d
     {
         PrintVida(Vidas);
         coordxy(3, 6);
-        Pause("Você não tem vidas restantes\n\n");
+        Pause(ANSI_COLOR_RED "Você não tem vidas restantes!" ANSI_COLOR_RESET);
         GameOver(o);
     }
 }

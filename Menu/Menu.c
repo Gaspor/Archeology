@@ -37,7 +37,7 @@ void Menu(int MusicOn)
     printf(ANSI_COLOR_DARK_RED "Sair");
     coordxy(60, 32);
     printf(ANSI_COLOR_RED "Por Favor, deixe o jogo em tela cheia" ANSI_COLOR_RESET);
-    opcao = SetaUpDown(26, 67, 6, 1, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
+    opcao = SetaUpDown(26, 67, 5, 1, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
 
     switch (opcao)
     {
@@ -162,7 +162,7 @@ void Audio(int MusicOn)// Controle de audio
         printf("===============================");
         coordxy(67, 20);
         Pause("Som retirado com sucesso..." ANSI_COLOR_RESET);
-        o--;
+        o = 0;
         Menu(o);
 
     case 2:

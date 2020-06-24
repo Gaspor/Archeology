@@ -78,7 +78,7 @@
 1592836899 source:d:\gaspor\c programs\archeology game\dev.c
 	"Includes.h"
 
-1593036938 source:d:\gaspor\c programs\archeology game\menu\menu.c
+1593040871 source:d:\gaspor\c programs\archeology game\menu\menu.c
 	"Includes.h"
 
 1592838374 d:\gaspor\c programs\archeology game\menu\includes.h
@@ -89,7 +89,7 @@
 	<windows.h>
 	<time.h>
 
-1593036900 source:d:\gaspor\c programs\archeology game\menu\utilities.c
+1593040590 source:d:\gaspor\c programs\archeology game\menu\utilities.c
 	"Includes.h"
 
 1593031594 source:d:\gaspor\c programs\archeology game\menu\dev.c
