@@ -4,6 +4,12 @@ void Fase1Cenario2(int Vida, int MusicOn)
 {
     int opcao = 0, FaseAtual = 5, Vidas = Vida, o = MusicOn;
     char RespostaChar[200];
+
+    if (o == 0)
+        PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+    else
+        PlaySound(TEXT("Cenario2.wav"), NULL, SND_ASYNC|SND_LOOP);
+
     system("cls");
     PrintVida(Vidas);
     char Text1Fase1[] = ANSI_COLOR_DARK_CYAN "Primeiramente, você deve se perguntar onde nasce o sol." ANSI_COLOR_RESET;

@@ -3,6 +3,12 @@
 void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
 {
     int opcao = 0, CoolDown = 0, Vidas = Vida, o = MusicOn, VidaSeth = 10, VidaArqueologo = 7, Random, RandomSeth, CoolDownOlhosdeAguia, i = 0;
+
+    if (o == 0)
+        PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+    else
+        PlaySound(TEXT("Boss.wav"), NULL, SND_ASYNC|SND_LOOP);
+
     system("cls");
     char Texto1[] = ANSI_COLOR_DARK_CYAN "Após ter entrado no templo você se depara com o próprio Deus Hórus, porém ele se encontra com ferimentos de sua última batalha.";
     char Texto2[] = "Hórus conta a verdade sobre quem lhe guia, logo você descobre que a voz misteriosa era de Seth (Deus do Caos).";
