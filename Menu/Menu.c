@@ -2,6 +2,7 @@
 
 void Menu(int MusicOn)
 {
+    Fase3(100, 0);
     char Password[20];
     int opcao = 0, Vidas = 1, o = MusicOn, i = 0;
 

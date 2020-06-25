@@ -2,7 +2,7 @@
 
 void EsfingeImage()      // Aparecer a Imagem da Esfinge
 {
-    printf("\n\t\t......................................................................");
+    printf(ANSI_COLOR_DARK_CYAN "\n\t\t......................................................................");
     printf("\n\t\t............................\'\',;;::::;,\'..............................");
     printf("\n\t\t..................'',;::cllooooddodxxxdolllcc::;,''...................");
     printf("\n\t\t...............,coodxxxddxxddddxddxkkxxxxxxxxxxxxdlc:,'...............");
@@ -33,7 +33,7 @@ void EsfingeImage()      // Aparecer a Imagem da Esfinge
     printf("\n\t\tclllllloxkO00000kxkkdlccc::ccc:'.   .;dkOOxoxOkkkkkxxOOOOkxxxdc::::ccc");
     printf("\n\t\tclllllloxO0000000kddolccc:;:cc:,',codkkOOOxoxOkkxddxOOOOkkkkxdl:::cccc");
     printf("\n\t\tclllllloxO00000000Oxoollcc:llllldkOOOOOOO0kdoodddxkO00OOkkkkxdl::ccccc");
-    printf("\n\t\tlllllcldkO00000K0000OOOkkkOOkkkkOOOOOOO0000OOOO000OO000Okkkxddl:::cccc");
+    printf("\n\t\tlllllcldkO00000K0000OOOkkkOOkkkkOOOOOOO0000OOOO000OO000Okkkxddl:::cccc" ANSI_COLOR_RESET);
 }
 
 void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
