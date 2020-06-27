@@ -42,7 +42,7 @@ void Fase1(int Vida, int MusicOn)
     }
     else
     {
-        Pause("\n\n            Você errou e ativou uma armadilha, toda pirâmide tremia, você provocou um deslizamento e foi esmagado por uma rocha.\n\n" ANSI_COLOR_RESET);
+        Pause("\n\n            Você ativou uma armadilha, toda pirâmide começa a tremer.\n\n            Você provocou um deslizamento e foi esmagado por uma rocha.\n\n" ANSI_COLOR_RESET);
         system("cls");
         Anubis(FaseAtual, Vidas, o);
     }

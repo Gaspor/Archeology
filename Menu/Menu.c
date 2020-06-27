@@ -59,6 +59,7 @@ void Menu(int MusicOn)
         coordxy(70, 13);
         printf(ANSI_COLOR_DARK_CYAN "______________________");
         coordxy(70, 13);
+        fflush(stdin);
         gets(Password);
         if (strcasecmp (Password, "1234")== 0)
         {

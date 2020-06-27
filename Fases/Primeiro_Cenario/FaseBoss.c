@@ -40,6 +40,14 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
 {
     int opcao = 0, FaseAtual = 4, Vidas = Vida, VidaEsfinge = 500, o = MusicOn;
     system("cls");
+    if (o == 0)
+    {
+        PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+    }
+    else
+    {
+        PlaySound(TEXT("Boss.wav"), NULL, SND_ASYNC|SND_LOOP);
+    }
     PrintVida(Vidas);
     coordxy(48, 0);
     printf(ANSI_COLOR_RED "Vida da Esfinge\n\t\t\t\t\t|/////////////////////////| %d " ANSI_COLOR_RESET, VidaEsfinge);
@@ -262,12 +270,18 @@ void cenario(int Vida, int MusicOn)
 {
     int Vidas = Vida, o = MusicOn;
     system("cls");
+
+    if (o == 0)
+        PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+    else
+        PlaySound(TEXT("Cenario2.wav"), NULL, SND_ASYNC|SND_LOOP);
+
     PrintVida(Vidas);
-    char Texto1[] = "Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala";
+    char Texto1[] = ANSI_COLOR_DARK_CYAN "Depois de passar pela esfinge você chega a última sala da pirâmide. Nota-se que a sala";
     char Texto2[] = "está vazia, você acha isso estranho, será que todo esse sacrifício foi feito em vão?";
     char Texto3[] = "de repente você escuta uma voz sussurrante dizendo: “O que você procura não está aqui,";
     char Texto4[] = "mas posso te dizer como encontrar, siga meus conselhos, você não tem muito tempo”.";
-    char Texto5[] = "Sem entender o que estava acontecendo você segue o caminho da voz.";
+    char Texto5[] = "Sem entender o que estava acontecendo você segue o caminho da voz." ANSI_COLOR_RESET;
 
     coordxy(28, 5);
     printf(ANSI_COLOR_CYAN "=== Caixa de dialogo ======================================================================");

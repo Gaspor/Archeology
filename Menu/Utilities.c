@@ -93,7 +93,7 @@ void SetaLeftRight (int La,int coordy,int BLimite,int LOper,char *SetaModel,char
 // Efeito Texto em Slow //
 char SlowText(char *Text)
 {
-    int i, TimeText = 0;
+    int i, TimeText = 1;
     for (i = 0; Text[i] != '\0'; i++)
     {
         printf("%c",Text[i]);
@@ -108,7 +108,8 @@ void Player(int Vida, int MusicOn)      // Nome do Player //
     system("cls");
     coordxy(x, y-4);
     printf(ANSI_COLOR_CYAN "=========================================================================");
-    for (y = 0; y < 6; y++){
+    for (y = 0; y < 6; y++)
+    {
         coordxy(x, y+7);
         printf("|                                                                       |");
     }
@@ -128,7 +129,8 @@ void Player(int Vida, int MusicOn)      // Nome do Player //
 KbLore:
     coordxy(x+20, y+9);
     printf(ANSI_COLOR_CYAN "=================================");
-    for (y = 0; y < 6; y++){
+    for (y = 0; y < 6; y++)
+    {
         coordxy(x+20,y+16);
         printf("|                               |");
     }
@@ -160,38 +162,39 @@ KbLore:
 
 void Lore(int Vida, int MusicOn)    // História primeiro Cenário
 {
-    int Vidas = Vida, o = MusicOn, x = 5, y = 1;
+    int Vidas = Vida, o = MusicOn, x = 4, y = 1;
     system("cls");
-    char History1[] = ANSI_COLOR_DARK_CYAN "  No Egito antigo, há muitas eras, antes da humanidade nascer, acontecia uma imensa batalha, algo que nenhum mortal poderia presenciar.";
-    char History2[] = "  Os Deuses antigos travaram uma batalha mortal pelo poder de um amuleto, aquele que possuísse tal amuleto ampliaria seus poderes e reinaria sobre o mundo.";
-    char History3[] = "  Os Deuses lutaram por séculos para obter tal poder, mas no meio desta grande batalha, Osíris o Deus do julgamento interveio, e com seu imenso poder";
-    char History4[] = " amaldiçoou o amuleto, permitindo apenas o uso para aqueles que não possuem o poder divino. Com o passar das eras o amuleto se perdeu e o grande";
-    char History5[] = " Deus Rá criou a humanidade. Os Deuses se dispersaram e pareciam ter se esquecido do amuleto, até que no ano 51 A.C um soldado percebeu que algo";
-    char History6[] = " brilhava em meio a terra, tomado pela curiosidade ele decide vasculhar o chão, e finalmente encontra um amuleto até então desconhecido, tudo o que";
-    char History7[] = " ele via era seu formato peculiar. Com o amuleto desenterrado um enorme poder surgia dele, humanos não podiam perceber, mas os Deuses perceberam";
-    char History8[] = " na hora que o amuleto havia sido encontrado, mas sem saber o que era, o soldado coloca o amuleto em volta do pescoço, e sem perceber o poder";
-    char History9[] = " flui pelo seu corpo, os soldados aliados que estavam em volta perceberam o comportamento estranho de seu companheiro, mas quando se";
-    char History10[] = " aproximam dele o portador do amuleto simplesmente se torna cinzas, assustados com a cena os soldados em volta reparam que vinha um brilho";
-    char History11[] = " do artefato desconhecido e ligam a morte de seu amigo diretamente ao amuleto. Assustados com a presença de algo tão poderoso os soldados";
-    char History12[] = " informam ao faraó sobre o ocorrido, e sem acreditar no que ouvia e totalmente aterrorizado o faraó ordena aos seus súditos que construam uma enorme";
-    char History13[] = " pirâmide em volta do amuleto, e que o enterrem o mais fundo possível nas catacumbas da nova pirâmide. Os Deuses não tinham muita influência no";
-    char History14[] = " mundo mortal, mas o que eles não sabiam era que Seth tentaria manipular um mortal para obter o \“Olho de Hórus\” e retirar sua maldição.";
-    char History15[] = "  Com a maldição desfeita, Seth reinará sobre todos os Deuses e seus respectivos reinos, Seth libertará toda a escuridão sobre o mundo e o assim";
-    char History16[] = " governará por toda eternidade." ANSI_COLOR_RESET;
+    char History1[] = ANSI_COLOR_DARK_CYAN "  Há muitas eras, antes da humanidade nascer, acontecia uma batalha que nenhum dos mortais daquela época poderia presenciar.";
+    char History2[] = "  Uma batalha entre Deuses antigos pelo poder de um amuleto, aquele que possuísse tal artefato ampliaria seus poderes e reinaria sobre o mundo.";
+    char History3[] = "  Os Deuses lutaram por séculos para obter tal poder, mas no meio desta grande batalha, Osíris, o Deus do julgamento interveio, e com seu imenso poder";
+    char History4[] = " amaldiçoou o amuleto, permitindo o uso apenas para aqueles que não possuíssem o poder divino. Com o passar das eras o amuleto se perdeu e o grande";
+    char History5[] = " Deus Rá criou a humanidade. Os Deuses pareciam ter se esquecido do artefato, até que no ano 51 A.C um soldado percebeu que algo brilhava em meio";
+    char History6[] = " a terra, tomado pela curiosidade ele decide vasculhar o chão, e finalmente encontra algo até então desconhecido pelos mortais daquele tempo, tudo o que";
+    char History7[] = " ele via era seu formato peculiar. Com este artefato desenterrado um enorme poder emergiu dele, os humanos não podiam perceber tal poder, mas os Deuses ";
+    char History8[] = " perceberam na hora que o amuleto havia sido encontrado. Por curiosidade o soldado coloca o amuleto em volta de seu pescoço, e sem perceber um grande poder";
+    char History9[] = " começou a fluir pelo seu corpo, os soldados aliados que estavam em volta perceberam o comportamento estranho de seu companheiro, mas quando se";
+    char History10[] = " aproximaram do soldado ele se transforma em cinzas na frente de seus olhos, assustados com a cena, os soldados em volta repararam que vinha um brilho";
+    char History11[] = " estranho daquele artefato, e ligam a morte de seu amigo diretamente ao amuleto. Assustados com a presença de algo tão poderoso, os";
+    char History12[] = " soldados informaram ao faraó sobre o ocorrido, sem acreditar no que acabara de ouvir e totalmente aterrorizado, o faraó ordena aos seus súditos que";
+    char History13[] = " construam uma enorme pirâmide em volta daquele estranho amuleto, e que o enterrem o mais fundo possível nas catacumbas da nova pirâmide. ";
+    char History14[] = " Os Deuses não tinham muita influência no mundo mortal, mas o que eles não sabiam era que Seth tentaria manipular um mortal para obter o \“Olho de Hórus\”";
+    char History15[] = " e retirar sua maldição. Com a maldição desfeita, Seth poderá reinar sobre todos os Deuses, e seus reinos, Seth libertará toda a escuridão sobre o mundo ";
+    char History16[] = " e assim o governará por toda eternidade." ANSI_COLOR_RESET;
 
     char Texto2[] = ANSI_COLOR_DARK_CYAN "  Vocé é um arqueólogo conhecido como " ANSI_COLOR_CYAN;
     char Texto3[] = ANSI_COLOR_DARK_CYAN ", ao estudar está lenda você decide ir em busca deste artefato antigo...";
-    char Texto4[] = " Essa será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis desafios..." ANSI_COLOR_RESET;
+    char Texto4[] = " Esta será um jornada tortuosa, e para enfim alcançar o antigo artefato, você terá que passar pelos mais difíceis desafios..." ANSI_COLOR_RESET;
 
     coordxy(x, y);
-    printf(ANSI_COLOR_CYAN "=== História ==================================================================================================================================================\n");
-    while (y <= 38){
+    printf(ANSI_COLOR_CYAN "=== História ===================================================================================================================================================\n");
+    while (y <= 38)
+    {
         coordxy(x, y+1);
-        printf("|                                                                                                                                                             |");
+        printf("|                                                                                                                                                              |");
         y++;
     }
     coordxy(x, y);
-    printf("===============================================================================================================================================================");
+    printf("================================================================================================================================================================");
 
     coordxy(x+2, 3);
     SlowText(History1);
@@ -238,6 +241,7 @@ void Lore(int Vida, int MusicOn)    // História primeiro Cenário
 void Pause(char *Text)
 {
     printf(Text);
+    fflush(stdin);
     getch();
 }
 
@@ -336,10 +340,12 @@ void PrintVida(Vida)
     {
         printf("\033[1;31m============\n| Vidas: %d |\n============\033[1;0m\n", Vidas);
     }
-    else if (Vidas >= 10 && Vidas < 100){
+    else if (Vidas >= 10 && Vidas < 100)
+    {
         printf("\033[1;31m=============\n| Vidas: %d |\n=============\033[1;0m\n", Vidas);
     }
-    else if (Vidas >= 100 && Vidas < 1000){
+    else if (Vidas >= 100 && Vidas < 1000)
+    {
         printf("\033[1;31m==============\n| Vidas: %d |\n==============\033[1;0m\n", Vidas);
     }
     else if (Vidas == 0)
@@ -355,13 +361,12 @@ void PrintVida(Vida)
 void Vencedor(int MusicOn)  // Função caso o jogador vença o jogo
 {
     int o = MusicOn;
-    coordxy(55, 20);
-    Pause(ANSI_COLOR_CYAN "Pressione qualquer tecla para continuar..." ANSI_COLOR_RESET);
+    Pause(" ");
     system("cls");
-    char Texto1[] = ANSI_COLOR_DARK_CYAN "A batalha foi longa mas enfim Seth foi derrotado, com sua morte o mundo viverá em paz novamente. Porém a paz nunca é duradoura...";
-    char Texto2[] = "Sistema: Parabéns " ANSI_COLOR_RED;
+    char Texto1[] = ANSI_COLOR_DARK_CYAN "A batalha foi longa, mas finalmente Seth foi derrotado, com sua morte o mundo viverá em paz novamente. Porém a paz nunca é duradoura...";
+    char Texto2[] = "Sistema: Parabéns " ANSI_COLOR_CYAN;
     char Texto3[] = ANSI_COLOR_DARK_CYAN ", você venceu Seth e restaurou a ordem.";
-    printf(ANSI_COLOR_CYAN "  === Caixa de Diálogo ==================================================================================================================\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  |                                                                                                                                     |\n  =======================================================================================================================================" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_CYAN "  === Caixa de Diálogo ======================================================================================================================\n  |                                                                                                                                         |\n  |                                                                                                                                         |\n  |                                                                                                                                         |\n  |                                                                                                                                         |\n  |                                                                                                                                         |\n  |                                                                                                                                         |\n  |                                                                                                                                         |\n  ===========================================================================================================================================" ANSI_COLOR_RESET);
 
     coordxy(4, 2);
     SlowText(Texto1);
@@ -403,13 +408,15 @@ void GameOver(int MusicOn)    // Função de GameOver //
 {
     int o = MusicOn;
     system("cls");
+    coordxy(75, 20);
     char GameOver[] = ANSI_COLOR_RED "Game Over" ANSI_COLOR_RESET;
     Pause(SlowText(GameOver));
     system("cls");
     Menu(o);
 }
 
-void Archeology(){
+void Archeology()
+{
     coordxy(70, 15);
     printf(ANSI_COLOR_RED "Archeology Game" ANSI_COLOR_RESET);
 }

@@ -15,7 +15,7 @@ void Fase2Cenario2(int Vida, int MusicOn)
     SlowText(Text2Fase1);
     coordxy(0, 12);
     printf(ANSI_COLOR_CYAN "  Resolva o anagrama: \n\n");
-    printf("   ======================= \n   |                     |\n   |  \e[0;36mA B R I N I L O T\e[1;36m  |\n   |                     |\n   |   \e[0;36mE O R H S U D\e[1;36m     |\n   |                     |\n   =======================\n\n Resposta do anagrama: " ANSI_COLOR_RESET);
+    printf("   ======================= \n   |                     |\n   |  \e[0;36mA B R I N I L O T\e[1;36m  |\n   |                     |\n   |   \e[0;36mE O R H S U D\e[1;36m     |\n   |                     |\n   =======================\n\n Resposta do anagrama: " ANSI_COLOR_DARK_CYAN);
     fflush(stdin);
     gets(RespostaChar);
     if (strcasecmp (RespostaChar, "LABIRINTO DE HORUS")== 0)

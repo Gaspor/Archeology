@@ -4,6 +4,7 @@ void MenuDeDesenvolvedor(int Vida, int MusicOn)
 {
     int Vidas = Vida, o = MusicOn, opcao = 0, i = 0;
     system("cls");
+    PrintVida(Vidas);
     coordxy(60, 15);
     printf(ANSI_COLOR_CYAN "===========================================");
     for (i = 0; i < 11; i++)
@@ -33,7 +34,7 @@ void MenuDeDesenvolvedor(int Vida, int MusicOn)
         system("cls");
         PrintVida(Vidas);
         coordxy(50, 13);
-        printf("==================================================================");
+        printf(ANSI_COLOR_CYAN "==================================================================");
         coordxy(50, 14);
         printf("|                                                                |");
         coordxy(50, 15);
@@ -43,21 +44,21 @@ void MenuDeDesenvolvedor(int Vida, int MusicOn)
         coordxy(50, 17);
         printf("==================================================================");
         coordxy(52, 15);
-        printf("Digite o novo valor da vida do Player: ", Vidas);
+        printf(ANSI_COLOR_DARK_CYAN "Digite o novo valor da vida do Player: ", Vidas);
         fflush(stdin);
         scanf("%d", &Vidas);
         if (Vidas >= 1000)
         {
-            coordxy(50, 17);
-            Pause("Número de vidas excede o limite, o sistema te deixará com o total de vidas máximas permitidas que é 999.");
+            coordxy(35, 19);
+            Pause(ANSI_COLOR_RED "Número de vidas excede o limite, o sistema te deixará com o total de vidas máximas permitidas que é 999." ANSI_COLOR_RESET);
             Vidas = 999;
             MenuDeDesenvolvedor(Vidas, o);
         }
         if (Vidas < 1000)
         {
             Sleep(1000);
-            coordxy(50, 17);
-            Pause("Vida mudada com sucesso!");
+            coordxy(50, 19);
+            Pause(ANSI_COLOR_CYAN "Vida mudada com sucesso!" ANSI_COLOR_RESET);
             MenuDeDesenvolvedor(Vidas, o);
         }
     case 3:
@@ -77,6 +78,7 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
 {
     int Vidas = Vida, o = MusicOn, opcao = 0, i = 0;
     system("cls");
+    PrintVida(Vidas);
     coordxy(60, 12);
     printf(ANSI_COLOR_CYAN "===========================================");
     for (i = 0; i < 17; i++)
@@ -152,8 +154,16 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         printf("Iniciando a Fase 2..." ANSI_COLOR_RESET);
         Sleep(1500);
         system("cls");
-        //PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
-        Fase2(Vidas, o);
+        if (o == 0)
+        {
+            PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+            Fase2(Vidas, o);
+        }
+        else
+        {
+            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
+            Fase2(Vidas, o);
+        }
     case 3:
         system("cls");
         coordxy(60, 16);
@@ -172,8 +182,16 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         printf("Iniciando a Fase 3..." ANSI_COLOR_RESET);
         Sleep(1500);
         system("cls");
-        //PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
-        Fase3(Vidas, o);
+        if (o == 0)
+        {
+            PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+            Fase3(Vidas, o);
+        }
+        else
+        {
+            PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
+            Fase3(Vidas, o);
+        }
     case 4:
         system("cls");
         coordxy(60, 16);
@@ -211,8 +229,16 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         printf("Iniciando a Fase 1 (Segundo cenário)..." ANSI_COLOR_RESET);
         Sleep(1500);
         system("cls");
-        //PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
-        Fase1Cenario2(Vidas, o);
+        if (o == 0)
+        {
+            PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+            Fase1Cenario2(Vidas, o);
+        }
+        else
+        {
+            PlaySound(TEXT("Cenario2.wav"), NULL, SND_ASYNC|SND_LOOP);
+            Fase1Cenario2(Vidas, o);
+        }
     case 6:
         system("cls");
         coordxy(55, 16);
@@ -231,7 +257,16 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         printf("Iniciando a Fase 2 (Segundo cenário)..." ANSI_COLOR_RESET);
         Sleep(1500);
         system("cls");
-        //PlaySound(TEXT("Fases.wav"), NULL, SND_ASYNC|SND_LOOP);
+        if (o == 0)
+        {
+            PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+            Fase2Cenario2(Vidas, o);
+        }
+        else
+        {
+            PlaySound(TEXT("Cenario2.wav"), NULL, SND_ASYNC|SND_LOOP);
+            Fase2Cenario2(Vidas, o);
+        }
         Fase2Cenario2(Vidas, o);
     case 7:
         system("cls");
@@ -251,7 +286,16 @@ void SelectFase(int Vida, int MusicOn)    // Função para desenvolvedores para se
         printf("Iniciando a Fase 3 (Segundo cenário)..." ANSI_COLOR_RESET);
         Sleep(1500);
         system("cls");
-        Fase3Cenario2(Vidas, o);
+        if (o == 0)
+        {
+            PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
+            Fase3Cenario2(Vidas, o);
+        }
+        else
+        {
+            PlaySound(TEXT("Cenario2.wav"), NULL, SND_ASYNC|SND_LOOP);
+            Fase3Cenario2(Vidas, o);
+        }
     case 8:
         system("cls");
         coordxy(55, 16);
