@@ -1,3 +1,6 @@
 #Archeology Game
 
-Este é um projeto feito por alunos do primeiro período de computação do Unifagoc.
+Este é um projeto de um jogo minimalista textual de quiz e puzzles feito por alunos do primeiro período de Ciência da Computação do UniFagoc - Centro Universitário Governador Ozanam Coelho.
+Esse projeto deu início em Fevereiro de 2020, usamos a metodologia Canvas para fazer o planejamento do jogo, também usamos o conceito de descrição narrativa e de fluxograma para ter um roteiro á ser seguido, para este projeto foi usada a linguagem C.
+
+Para mais informações, entre em nosso site: https://sites.google.com/view/archeologygame/início
