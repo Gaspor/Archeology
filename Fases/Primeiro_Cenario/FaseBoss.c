@@ -180,7 +180,7 @@ void BossEsfinge(int Vida, int MusicOn)   // Inicio da luta com a Esfinge //
             coordxy(100, 14);
             printf("Não tenho tempo para essas questões filosóficas, me deixe passar");
             coordxy(100, 15);
-            printf("Não idade adulta ele pensa muito, e pensar nos faz andar" ANSI_COLOR_RESET);
+            printf("Na idade adulta ele pensa muito, e pensar nos faz andar" ANSI_COLOR_RESET);
             opcao = SetaUpDown(12, 97, 4, 1, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
 
             if (opcao == 1)
