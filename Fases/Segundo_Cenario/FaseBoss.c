@@ -2,7 +2,7 @@
 
 void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
 {
-    int opcao = 0, CoolDown = 0, Vidas = Vida, o = MusicOn, VidaSeth = 10, VidaArqueologo = 700, Random = 0, RandomSeth = 0, CoolDownOlhosdeAguia = 0, i = 0;
+    int opcao = 0, CoolDown = 0, Vidas = Vida, o = MusicOn, VidaSeth = 100, VidaArqueologo = 70, Random = 0, RandomSeth = 0, CoolDownOlhosdeAguia = 0, i = 0;
 
     if (o == 0)
         PlaySound(TEXT("null.wav"), NULL, SND_ASYNC);
@@ -70,29 +70,29 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 Pause(SlowText(Texto4));
             }
             coordxy(2, 6);
-            printf(ANSI_COLOR_CYAN "=====================");
+            printf(ANSI_COLOR_CYAN "====== ATAQUE ======== TURNOS ==");
             coordxy(2, 7);
-            printf("|                   |");
+            printf("|                   |     0    |");
             coordxy(2, 8);
-            printf("|                   |");
+            printf("|                   |          |");
             coordxy(2, 9);
-            printf("|                   |");
+            printf("|                   |     \033[1;31m0\e[1;36m    |");
             coordxy(2, 10);
-            printf("|                   |");
+            printf("|                   |          |");
             coordxy(2, 11);
-            printf("|                   |");
+            printf("|                   |     \033[1;33m0\e[1;36m    |");
             coordxy(2, 12);
-            printf("=====================" ANSI_COLOR_RESET);
+            printf("================================" ANSI_COLOR_RESET);
             coordxy(6, 7);
-            printf("Lamina de Hórus");
+            printf(ANSI_COLOR_CYAN "Lamina de Hórus" ANSI_COLOR_RESET);
             coordxy(6, 9);
-            if (CoolDownOlhosdeAguia == 0)
+            if (CoolDownOlhosdeAguia <= 0)
             {
                 printf(ANSI_COLOR_RED "Olhos de Águia" ANSI_COLOR_RESET);
             }
             else
             {
-                printf(ANSI_COLOR_DARK_RED "Olhos de Águia" ANSI_COLOR_RESET);
+                printf(ANSI_COLOR_DARK_RED "Olhos de Águia  \e[1;36m|\033[0;31m     %d" ANSI_COLOR_RESET, CoolDownOlhosdeAguia);
             }
             coordxy(6, 11);
             if (CoolDown <= 0)
@@ -101,7 +101,7 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
             }
             else
             {
-                printf(ANSI_COLOR_DARK_YELLOW "Raio Solar" ANSI_COLOR_RESET);
+                printf(ANSI_COLOR_DARK_YELLOW "Raio Solar      \e[1;36m|\033[0;33m     %d" ANSI_COLOR_RESET, CoolDown);
             }
             opcao = SetaUpDown(7, 3, 3, 2, ANSI_COLOR_DARK_RED "->" ANSI_COLOR_RESET, "  ");
 
@@ -146,12 +146,13 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                 {
                     Perdedor(Vidas, o, VidaSeth);
                 }
+                CoolDownOlhosdeAguia--;
                 CoolDown--;
                 break;
             case 2:
                 system("cls");
 
-                if (CoolDownOlhosdeAguia != 1)
+                if (CoolDownOlhosdeAguia <= 0)
                 {
                     coordxy(53, 10);
                     printf(ANSI_COLOR_CYAN "=== Log de Batalha ====================================================");
@@ -189,7 +190,7 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                     {
                         Perdedor(Vidas, o, VidaSeth);
                     }
-                    CoolDownOlhosdeAguia = 1;
+                    CoolDownOlhosdeAguia = 5;
                     CoolDown--;
                     break;
                 }
@@ -250,6 +251,7 @@ void BossSeth(int Vida, int MusicOn, int argc, char *argv[])    //Boss final
                     {
                         Perdedor(Vidas, o, VidaSeth);
                     }
+                    CoolDownOlhosdeAguia--;
                     CoolDown = 2;
                     break;
                 }
@@ -280,7 +282,7 @@ int DanoPlayer(int Soma)
     int Dano = 0;
 
     srand(time(NULL));
-    Dano = rand()%6 + Soma;
+    Dano = rand()%7 + Soma;
 
     return Dano;
 }
