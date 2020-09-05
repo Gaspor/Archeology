@@ -12,4 +12,4 @@
   - :speech_balloon: Ramon Costa: <a href="https://instagram.com/gaspor3" rel="nofollow">:computer: Github </a>
 
 
-###### Para mais informações, entre em nosso site: https://sites.google.com/view/archeologygame/início
+###### Para mais informações, entre em nosso [site](https://sites.google.com/view/archeologygame/início).
