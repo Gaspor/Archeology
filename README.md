@@ -1,4 +1,4 @@
-#Archeology Game
+## Archeology Game
 
 Este é um projeto de um jogo minimalista textual de quiz e puzzles feito por alunos do primeiro período de Ciência da Computação do UniFagoc - Centro Universitário Governador Ozanam Coelho.
 
